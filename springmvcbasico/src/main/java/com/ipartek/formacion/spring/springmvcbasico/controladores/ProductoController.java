@@ -1,6 +1,9 @@
 package com.ipartek.formacion.spring.springmvcbasico.controladores;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,12 +18,12 @@ import lombok.extern.java.Log;
 public class ProductoController {
 
 	@GetMapping
-	public String getProducto(){
+	public String getProducto(Producto producto){
 		return "producto";
 	}
 	
 	@PostMapping 
-	public String postProducto(Producto producto) {
+	public String postProducto(@Valid Producto producto, BindingResult bindingResult) {
 		log.info(producto.toString());
 		return "producto";
 	}
