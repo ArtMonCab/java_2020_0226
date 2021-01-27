@@ -38,7 +38,8 @@ public class SpringjdbcApplication implements CommandLineRunner {
 			System.out.println(dao.obtenerPorId(1L));
 		} catch (DataAccessException e) {
 			System.out.println("Error de acceso a datos");
-			e.printStackTrace();
+			System.out.println(e.getMessage());
+			//e.printStackTrace();
 		}
 	}
 

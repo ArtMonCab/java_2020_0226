@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 import com.ipartek.formacion.spring.uf2177_1.entidades.Medicamento;
 
 @Repository
-public class medicamentoMySqlDao implements Dao<Medicamento> {
+public class MedicamentoMySqlDao implements Dao<Medicamento> {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
@@ -27,27 +27,15 @@ public class medicamentoMySqlDao implements Dao<Medicamento> {
 		return jdbcTemplate.queryForObject("SELECT * FROM medicamentos WHERE id = ?",
 				new BeanPropertyRowMapper<Medicamento>(Medicamento.class), new Object[] { id });
 	}
+	
+	@Override
+	public Medicamento obtenerPorRef(String ref) {
+		return jdbcTemplate.queryForObject("SELECT * FROM medicamentos WHERE referencia = ?",
+				new BeanPropertyRowMapper<Medicamento>(Medicamento.class), new Object[] { ref });
+	}
 
 	@Override
 	public Medicamento agregar(Medicamento medicamento) {
-		/*
-		 * 		KeyHolder keyHolder = new GeneratedKeyHolder();
-
-		jdbcTemplate.update(connection -> {
-			PreparedStatement ps = connection.prepareStatement(
-					"INSERT INTO clientes (nombre, apellidos, cif, fecha_nacimiento) VALUES (?, ?, ?, ?)",
-					Statement.RETURN_GENERATED_KEYS);
-			ps.setString(1, cliente.getNombre());
-			ps.setString(2, cliente.getApellidos());
-			ps.setString(3, cliente.getCif());
-			ps.setObject(4, cliente.getFechaNacimiento());
-			return ps;
-		}, keyHolder);
-
-		cliente.setId(keyHolder.getKey().longValue());
-		
-		return cliente;
-		 */
 		
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 		jdbcTemplate.update(connection -> {
@@ -67,14 +55,21 @@ public class medicamentoMySqlDao implements Dao<Medicamento> {
 
 	@Override
 	public Medicamento modificar(Medicamento medicamento) {
-		jdbcTemplate.update("UPDATE medicamento SET referencia = ?, nombre = ?, precio= ? WHERE id = ?",
-				new Object[] { medicamento.getReferencia(), medicamento.getNombre(), medicamento.getPrecio() });
+		
+		jdbcTemplate.update("UPDATE medicamentos SET referencia = ?, nombre = ?, precio = ? WHERE id = ?",
+				new Object[] { medicamento.getReferencia(), medicamento.getNombre(), medicamento.getPrecio(), medicamento.getId() });
 		return medicamento;
 	}
 
 	@Override
 	public void borrar(Long id) {
 		jdbcTemplate.update("DELETE FROM medicamentos WHERE id = ?", new Object[] { id });
+		
+	}
+	
+	@Override
+	public void borrarPorRef(String ref) {
+		jdbcTemplate.update("DELETE FROM medicamentos WHERE referencia = ?", new Object[] { ref });
 		
 	}
 
