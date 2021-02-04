@@ -25,13 +25,14 @@ import lombok.ToString;
 public class Categoria {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	private String nombre;
 	private String descripcion;
+	
 	
 	@ToString.Exclude //Excluye el elemento del toString
 	@EqualsAndHashCode.Exclude //Excluye el elemento del hashCode
 	@OneToMany(mappedBy = "categoria") //, fetch = FetchType.LAZY) Es el valor por defecto. Con el Get no trae todos los productos de la categoria. El otro valor posible es EAGER
-	private Set<Producto> productos = new HashSet<>();
+	private final Set<Producto> productos = new HashSet<>();
 	
 }

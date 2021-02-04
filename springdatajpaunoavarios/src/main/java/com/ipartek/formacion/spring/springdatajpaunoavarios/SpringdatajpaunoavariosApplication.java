@@ -36,10 +36,10 @@ public class SpringdatajpaunoavariosApplication implements CommandLineRunner{
 	
 	@Transactional
 	private void inicializarDatos() {
-		Categoria informatica = new Categoria(0, "Informática", "La de siempre");
+		Categoria informatica = new Categoria(null, "Informática", "La de siempre");
 		
-		Producto monitor = new Producto(0, "Monitor", new BigDecimal("123.45"), informatica);
-		Producto raton = new Producto(0, "Ratón", new BigDecimal("12.34"), informatica);
+		Producto monitor = new Producto(null, "Monitor", new BigDecimal("123.45"), informatica);
+		Producto raton = new Producto(null, "Ratón", new BigDecimal("12.34"), informatica);
 		
 		categorias.save(informatica);
 		
