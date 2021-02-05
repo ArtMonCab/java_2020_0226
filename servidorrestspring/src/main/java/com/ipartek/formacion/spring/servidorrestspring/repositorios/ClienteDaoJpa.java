@@ -11,6 +11,7 @@ public class ClienteDaoJpa implements Dao<Cliente>{
 
 	@Autowired
 	private ClienteRepository repo;
+
 	@Override
 	public Iterable<Cliente> obtenerTodos() {
 		return repo.findAll();
@@ -22,7 +23,7 @@ public class ClienteDaoJpa implements Dao<Cliente>{
 	}
 
 	@Override
-	public Cliente agregar(Cliente cliente) {
+	public Cliente insertar(Cliente cliente) {
 		return repo.save(cliente);
 	}
 
@@ -35,7 +36,6 @@ public class ClienteDaoJpa implements Dao<Cliente>{
 	@Override
 	public void borrar(Long id) {
 		repo.deleteById(id);
-		
 	}
 
 }

@@ -28,36 +28,38 @@ public class ClienteApi {
 	}
 	
 	@GetMapping("{id}")
-	public ResponseEntity<Cliente> getPorId(@PathVariable Long id){
+	public ResponseEntity<Cliente> getPorId(@PathVariable Long id) {
 		Cliente cliente = dao.obtenerPorId(id);
 		
-		if (cliente == null) {
-			return new ResponseEntity<Cliente>(cliente, HttpStatus.NOT_FOUND);
+		if(cliente == null) {
+			return new ResponseEntity<Cliente>(HttpStatus.NOT_FOUND);
 		}
+		
 		return new ResponseEntity<Cliente>(cliente, HttpStatus.OK);
 	}
 	
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Cliente post(@RequestBody Cliente cliente) {
-		return dao.agregar(cliente);
+		return dao.insertar(cliente);
 	}
 	
 	@PutMapping("{id}")
-	public Cliente put(@RequestBody Cliente cliente) {
-		return dao.modificar(cliente);
+	public ResponseEntity<Cliente> put(@PathVariable Long id, @RequestBody Cliente cliente) {
+		if(id != cliente.getId()) {
+			return new ResponseEntity<Cliente>(HttpStatus.BAD_REQUEST);
+		}
+		return new ResponseEntity<Cliente>(dao.modificar(cliente), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("{id}")
-	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public ResponseEntity<Cliente> delete(@PathVariable Long id) {
 		try {
 			dao.borrar(id);
-			return new ResponseEntity<Cliente>(cliente, HttpStatus.NO_CONTENT);
-		}catch (Exception e) {
-			new ResponseEntity<Cliente>(cliente, HttpStatus.NOT_FOUND);
+			return new ResponseEntity<Cliente>(HttpStatus.NO_CONTENT);
+		} catch(Exception e) {
+			return new ResponseEntity<Cliente>(HttpStatus.NOT_FOUND);
 		}
-		
 	}
 	
 }
