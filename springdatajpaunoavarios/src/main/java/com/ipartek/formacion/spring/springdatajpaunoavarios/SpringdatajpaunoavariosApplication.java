@@ -10,17 +10,26 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ipartek.formacion.spring.springdatajpaunoavarios.entidades.Categoria;
 import com.ipartek.formacion.spring.springdatajpaunoavarios.entidades.Producto;
+import com.ipartek.formacion.spring.springdatajpaunoavarios.repositorios.CategoriaDao;
 import com.ipartek.formacion.spring.springdatajpaunoavarios.repositorios.CategoriaRepository;
+import com.ipartek.formacion.spring.springdatajpaunoavarios.repositorios.Dao;
 import com.ipartek.formacion.spring.springdatajpaunoavarios.repositorios.ProductoRepository;
 
 @SpringBootApplication
 public class SpringdatajpaunoavariosApplication implements CommandLineRunner{
 	
 	@Autowired
+	private Dao<Producto> daoProductos;
+
+	@Autowired
+	private CategoriaDao daoCategorias;
+
+	@Autowired
 	private ProductoRepository productos;
-	
+
 	@Autowired
 	private CategoriaRepository categorias;
+	
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringdatajpaunoavariosApplication.class, args);
@@ -28,9 +37,20 @@ public class SpringdatajpaunoavariosApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		inicializarDatos();
 		
-		mostrarDatos();
+		System.out.println(daoProductos.obtenerPorId(2L));
+
+		Categoria categoria = daoCategorias.obtenerPorIdConProductos(1L);
+
+		System.out.println(categoria);
+
+		for (Producto producto : categoria.getProductos()) {
+			System.out.println(producto);
+		}		
+		
+		//inicializarDatos();
+		
+		//mostrarDatos();
 	}
 	
 	
