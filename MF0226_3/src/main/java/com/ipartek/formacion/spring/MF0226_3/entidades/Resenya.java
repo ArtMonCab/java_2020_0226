@@ -12,13 +12,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-
 @Entity
 @Table(name="Resenya")
 @Data 
 public class Resenya {
-
+	private int codigo;
+	private String descripcion;
+	private Date fecha;
+	private int alumnoCodigo;
+	private int cursoCodigo;
 	
 
 }

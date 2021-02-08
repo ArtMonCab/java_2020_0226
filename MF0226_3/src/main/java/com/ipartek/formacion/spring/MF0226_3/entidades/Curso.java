@@ -1,6 +1,5 @@
 package com.ipartek.formacion.spring.MF0226_3.entidades;
 
-import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

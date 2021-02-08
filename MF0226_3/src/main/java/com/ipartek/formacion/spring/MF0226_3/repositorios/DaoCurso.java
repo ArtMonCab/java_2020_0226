@@ -1,6 +1,6 @@
 package com.ipartek.formacion.spring.MF0226_3.repositorios;
 
-public interface Dao<T> {
+public interface DaoCurso<T> {
 	Iterable<T> obtenerTodos();
 	T obtenerPorId(Long id);
 	
