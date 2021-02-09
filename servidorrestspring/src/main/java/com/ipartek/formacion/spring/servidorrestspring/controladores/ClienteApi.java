@@ -17,13 +17,13 @@ import com.ipartek.formacion.spring.servidorrestspring.entidades.Cliente;
 import com.ipartek.formacion.spring.servidorrestspring.repositorios.Dao;
 
 @RestController
-@RequestMapping("api/clientes/")
+@RequestMapping("/api/clientes")
 public class ClienteApi {
 	@Autowired
 	private Dao<Cliente> dao;
 	
 	@GetMapping
-	public  Iterable<Cliente> get(){
+	public Iterable<Cliente> get() {
 		return dao.obtenerTodos();
 	}
 	
@@ -37,6 +37,7 @@ public class ClienteApi {
 		
 		return new ResponseEntity<Cliente>(cliente, HttpStatus.OK);
 	}
+	
 	
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
@@ -61,5 +62,4 @@ public class ClienteApi {
 			return new ResponseEntity<Cliente>(HttpStatus.NOT_FOUND);
 		}
 	}
-	
 }

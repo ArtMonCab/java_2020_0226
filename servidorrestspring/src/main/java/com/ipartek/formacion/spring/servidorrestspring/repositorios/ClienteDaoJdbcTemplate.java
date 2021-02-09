@@ -26,6 +26,7 @@ public class ClienteDaoJdbcTemplate implements Dao<Cliente> {
 
 	@Override
 	public Cliente obtenerPorId(Long id) {
+		///Quiero solo un objeto, no varios
 		return jdbc.queryForObject("SELECT * FROM clientes WHERE id = ?", new BeanPropertyRowMapper<Cliente>(Cliente.class), id);
 	}
 
