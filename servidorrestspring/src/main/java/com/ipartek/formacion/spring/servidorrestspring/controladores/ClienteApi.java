@@ -28,7 +28,7 @@ public class ClienteApi {
 	}
 	
 	@GetMapping("{id}")
-	public ResponseEntity<Cliente> getPorId(@PathVariable Long id) {
+	public ResponseEntity<Cliente> getPorId(@PathVariable int id) {
 		Cliente cliente = dao.obtenerPorId(id);
 		
 		if(cliente == null) {

@@ -8,19 +8,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="Resenya")
-@Data 
+@Table(name="resenya")
+@Data @AllArgsConstructor @NoArgsConstructor
 public class Resenya {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigo;
 	private String descripcion;
-	private Date fecha;
 	private int alumnoCodigo;
 	private int cursoCodigo;
 	
-
+;
 }

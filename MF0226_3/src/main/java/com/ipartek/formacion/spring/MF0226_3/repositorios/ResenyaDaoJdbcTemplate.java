@@ -1,6 +1,5 @@
 package com.ipartek.formacion.spring.MF0226_3.repositorios;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 
@@ -9,10 +8,12 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
 
 import com.ipartek.formacion.spring.MF0226_3.entidades.Resenya;
 
-public class ResenyaDaoJdbcTemplate implements DaoResenya<Resenya>{
+@Repository
+public class ResenyaDaoJdbcTemplate implements ResenyaDao{
 
 	@Autowired
 	private JdbcTemplate jdbc;
@@ -23,7 +24,7 @@ public class ResenyaDaoJdbcTemplate implements DaoResenya<Resenya>{
 	}
 
 	@Override
-	public Resenya obtenerPorId(Long id) {
+	public Resenya obtenerPorId(int id) {
 		return jdbc.queryForObject("SELECT * FROM resenya WHERE codigo = ?", new BeanPropertyRowMapper<Resenya>(Resenya.class));
 	}
 
@@ -33,12 +34,11 @@ public class ResenyaDaoJdbcTemplate implements DaoResenya<Resenya>{
 
 		jdbc.update(connection -> {
 			PreparedStatement ps = connection.prepareStatement(
-					"INSERT INTO resenya(descripcion, fecha, alumno_codigo, curso_codigo) VALUES (?, ?, ?, ?)",
+					"INSERT INTO resenya(descripcion, alumno_codigo, curso_codigo) VALUES (?, ?, ?)",
 					Statement.RETURN_GENERATED_KEYS);
-			ps.setString(1,  resenya.getDescripcion());
-			ps.setDate(2, (Date) resenya.getFecha());
-			ps.setInt(3, resenya.getAlumnoCodigo());
-			ps.setInt(4, resenya.getCursoCodigo());
+			ps.setString(1, resenya.getDescripcion());
+			ps.setInt(2, resenya.getAlumnoCodigo());
+			ps.setInt(3, resenya.getCursoCodigo());
 			
 			return ps;
 		}, keyholder);
@@ -49,13 +49,13 @@ public class ResenyaDaoJdbcTemplate implements DaoResenya<Resenya>{
 
 	@Override
 	public Resenya modificar(Resenya resenya) {
-		jdbc.update("UPDATE resenya SET descripcion = ?, fecha = ?, alumnoCodigo = ?, cursoCodigo WHERE id = ?", 
-				resenya.getDescripcion(), resenya.getFecha(), resenya.getAlumnoCodigo(), resenya.getCursoCodigo(),resenya.getCodigo());
+		jdbc.update("UPDATE resenya SET descripcion = ?, alumnoCodigo = ?, cursoCodigo = ? WHERE id = ?", 
+				resenya.getDescripcion(), resenya.getAlumnoCodigo(), resenya.getCursoCodigo(),resenya.getCodigo());
 		return resenya;
 	}
 
 	@Override
-	public void borrar(Long id) {
+	public void borrar(int id) {
 		jdbc.update("DELETE FROM curso WHERE resenya = ?", id);
 		
 	}
