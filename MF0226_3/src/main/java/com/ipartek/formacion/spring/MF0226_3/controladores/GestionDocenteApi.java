@@ -22,12 +22,13 @@ public class GestionDocenteApi {
 	private DaoCurso<Curso> daoCurso;
 	private DaoResenya<Resenya> daoResenya;
 	
-	@GetMapping
+	@GetMapping("curso")
 	public Iterable<Curso> get() {
 		return daoCurso.obtenerTodos();
 	}
 	
-	public ResponseEntity<Curso> getPorId
+	@GetMapping("curso/{id}")
+	public ResponseEntity<Curso> get
 	/*
 	 	@GetMapping("{id}")
 	public ResponseEntity<Cliente> getPorId(@PathVariable Long id) {
