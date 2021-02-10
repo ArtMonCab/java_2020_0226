@@ -1,0 +1,181 @@
+swagger: "2.0"
+info:
+  description: "Prueba final módulo MF0226_3."
+  version: "1.0.0"
+  title: "MF0226-3"
+host: "localhost:8080"
+basePath: "/api"
+tags:
+- name: "curso"
+  description: "Cursos de la academia"
+- name: "resenya"
+  description: "Reseñas de los cursos"
+- name: "profesor"
+  description: "Profesores de la academia"
+
+paths:
+  /curso:
+    get:
+      tags:
+      - "curso"
+      summary: "Listado de cursos"
+      description: "Listado de todos los cursos"
+      operationId: "obtenerTodos"
+      produces:
+      - "application/xml"
+      - "application/json"
+      responses:
+        "200":
+          description: "Operacion exitosa"
+          schema:
+            $ref: "/cursos"
+        "400":
+          description: "No se encuentra"
+        "404":
+          description: "No se encuentra"
+
+  /cursos/{id}:
+    get:
+      tags:
+      - "curso"
+      summary: "Encontrar curso por id"
+      description: "Returns a single pet"
+      operationId: "obtenerPorId"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "id del curso"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "soperación exitosa"
+          schema:
+            $ref: "/cursos/{1}"
+        "400":
+          description: "Id no valida"
+        "404":
+          description: "Curso no encontrado"
+
+
+
+  /resenya:
+    post:
+      tags:
+      - "resenya"
+      summary: "Insertar reseña"
+      description: ""
+      operationId: "insertar"
+      produces:
+      - "application/xml"
+      - "application/json"
+      responses:
+        "200":
+          description: "operacion exitosa"
+          schema:
+            $ref: "/resenyas"
+        "400":
+          description: "Reseña invalida"
+          
+  /resenya/{id}:
+    put:
+      tags:
+      - "resenya"
+      summary: "Modifica una resena existente"
+      description: ""
+      operationId: "modificar"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "The name that needs to be fetched. Use user1 for testing. "
+        required: true
+        type: "integer"
+      responses:
+        "400":
+          description: "ID no valido"
+        "404":
+          description: "Reseña no encontrada"
+        "405":
+          description: "Excepcion de validación"
+ 
+          
+    delete:
+      tags:
+      - "resenya"
+      summary: "Borrar una reseña por su ID"
+      description: "Requiere valores enteros positivos"
+      operationId: "borrar"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID de la reseña que se quiere borrar"
+        required: true
+        type: "integer"
+        minimum: 1.0
+        format: "int64"
+      responses:
+        "400":
+          description: "ID ivalida"
+        "404":
+          description: "Reseña no encontrada"
+
+
+
+definitions:
+  Profesor:
+    type: "object"
+    properties:
+      codigo:
+        type: "integer"
+        format: "int64"
+      nombre:
+        type: "string"
+      apellidos:
+        type: "string"
+    xml:
+      name: "Profesor"
+  Curso:
+    type: "object"
+    properties:
+      codigo:
+        type: "integer"
+        format: "int64"
+      nombre:
+        type: "string"
+      identificador:
+        type: "string"
+      nHoras:
+        type: "integer"
+        format: "int64"
+    xml:
+      name: "Curso"
+  Resenya:
+    type: "object"
+    properties:
+      codigo:
+        type: "integer"
+        format: "int64"
+      descripcion:
+        type: "string"
+
+      alumnoCodigo:
+        type: "integer"
+        format: "int32"
+      cursoCodigo:
+        type: "integer"
+        format: "int32"
+    xml:
+      name: "Resenya"
