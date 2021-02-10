@@ -49,14 +49,15 @@ public class ResenyaDaoJdbcTemplate implements ResenyaDao{
 
 	@Override
 	public Resenya modificar(Resenya resenya) {
-		jdbc.update("UPDATE resenya SET descripcion = ?, alumnoCodigo = ?, cursoCodigo = ? WHERE id = ?", 
+		jdbc.update("UPDATE resenya SET descripcion = ?, alumno_codigo = ?, curso_codigo = ? WHERE codigo = ?", 
 				resenya.getDescripcion(), resenya.getAlumnoCodigo(), resenya.getCursoCodigo(),resenya.getCodigo());
 		return resenya;
 	}
 
 	@Override
 	public void borrar(int id) {
-		jdbc.update("DELETE FROM curso WHERE resenya = ?", id);
+		jdbc.update("DELETE FROM resenya WHERE codigo = ?", id);
+		
 		
 	}
 

@@ -35,7 +35,7 @@ public class ResenyaApi {
 	}
 	
 	@PutMapping("{id}")
-	public ResponseEntity<Resenya> put(@PathVariable Long id, @RequestBody Resenya resenya) {
+	public ResponseEntity<Resenya> put(@PathVariable int id, @RequestBody Resenya resenya) {
 		if(id != resenya.getCodigo()) {
 			return new ResponseEntity<Resenya>(HttpStatus.BAD_REQUEST);
 		}
