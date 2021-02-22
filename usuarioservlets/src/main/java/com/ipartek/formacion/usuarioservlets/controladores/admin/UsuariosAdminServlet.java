@@ -15,13 +15,10 @@ import com.ipartek.formacion.usuarioservlets.accesodatos.UsuarioDaoMySql;
 import com.ipartek.formacion.usuarioservlets.entidades.Usuario;
 
 @WebServlet("/admin/usuarios")
-public class UsuariosAdminServlet extends HttpServlet{
-
-
+public class UsuariosAdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private static final Logger LOG = Logger.getLogger(UsuariosAdminServlet.class.getName());
-	
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,9 +27,16 @@ public class UsuariosAdminServlet extends HttpServlet{
 		Iterable<Usuario> usuarios = dao.obtenerTodos();
 		
 		LOG.log(Level.INFO, "Usuarios: {0}", usuarios);
+		
+		request.setAttribute("usuarios", usuarios);
+		
+		request.getRequestDispatcher("/WEB-INF/vistas/admin/usuarios.jsp").forward(request, response);
+		
+		// KISS: Keep It Simple Stupid
+		// DRY: Don't Repeat Yourself
+		// https://tantacom.com/principios-diseno-software-kiss-dry-solid/
 	}
-	
-	
+
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
