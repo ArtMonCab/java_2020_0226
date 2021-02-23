@@ -1,4 +1,4 @@
-package com.ipartek.formacion.usuarioservlets.accesodatos.admin;
+package com.ipartek.formacion.usuarioservlets.controladores.admin;
 
 import java.io.IOException;
 import java.util.logging.Level;
