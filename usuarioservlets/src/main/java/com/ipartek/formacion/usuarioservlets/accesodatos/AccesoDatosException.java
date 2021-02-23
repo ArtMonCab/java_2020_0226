@@ -2,13 +2,15 @@ package com.ipartek.formacion.usuarioservlets.accesodatos;
 
 public class AccesoDatosException extends RuntimeException{
 
-	private static final long serialVersionUID = 2634754698824646214L;
+
+	private static final long serialVersionUID = -968649284878195231L;
 
 	public AccesoDatosException() {
 		super();
 	}
 
-	public AccesoDatosException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+	public AccesoDatosException(String message, Throwable cause, boolean enableSuppression,
+			boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
 	}
 
@@ -23,7 +25,7 @@ public class AccesoDatosException extends RuntimeException{
 	public AccesoDatosException(Throwable cause) {
 		super(cause);
 	}
-
-
+	
+	
 
 }

@@ -1,51 +1,63 @@
 package com.ipartek.formacion.usuarioservlets.entidades;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable {
+
+	private static final long serialVersionUID = 5009408407679518258L;
+	
 	private Long id;
 	private String email;
 	private String password;
 	
 	private Rol rol;
-
+	
+	/**
+	 * Constructor de conveniencia para recibir datos de una capa de presentación, directamente en formato String
+	 * @param id id en formato String
+	 * @param email igual que lo pasaríamos al constructor principal
+	 * @param password igual que lo pasaríamos al contructor principal
+	 * @param rol sólo el id de rol, sin más información (en formato texto)
+	 */
+	public Usuario(String id, String email, String password, String rol) {
+		this(Long.parseLong(id), email, password, new Rol(Long.parseLong(rol), null, null));
+	}
+	
+	public Usuario(String email, String password, String rol) {
+		this(null, email, password, new Rol(Long.parseLong(rol), null, null));
+	}
+	
+	
 	public Usuario(Long id, String email, String password, Rol rol) {
 		setId(id);
 		setEmail(email);
 		setPassword(password);
 		setRol(rol);
 	}
-
 	public Long getId() {
 		return id;
 	}
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 	public String getEmail() {
 		return email;
 	}
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 	public String getPassword() {
 		return password;
 	}
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 	public Rol getRol() {
 		return rol;
 	}
-
 	public void setRol(Rol rol) {
 		this.rol = rol;
 	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -55,7 +67,6 @@ public class Usuario {
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		return result;
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -82,13 +93,10 @@ public class Usuario {
 			return false;
 		return true;
 	}
-
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", email=" + email + ", password=" + password + "]";
 	}
 	
 	
-
-
 }

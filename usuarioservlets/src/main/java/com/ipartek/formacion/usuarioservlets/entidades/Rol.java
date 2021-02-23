@@ -1,13 +1,16 @@
 package com.ipartek.formacion.usuarioservlets.entidades;
 
+import java.io.Serializable;
 import java.util.Set;
 
-public class Rol {	
-	
+public class Rol implements Serializable {
+
+	private static final long serialVersionUID = -9126819596564648847L;
+
 	private Long id;
 	private String nombre;
 	private String descripcion;
-
+	
 	private Set<Usuario> usuarios;
 
 	public Rol(Long id, String nombre, String descripcion) {
@@ -96,11 +99,4 @@ public class Rol {
 	public String toString() {
 		return "Rol [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + "]";
 	}
-	
-	
-	
-	
-	
-	
-
 }

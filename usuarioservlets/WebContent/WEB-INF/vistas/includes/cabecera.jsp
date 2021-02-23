@@ -16,11 +16,16 @@
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
 
-<title>Productos UF1465-2</title>
+<title>Usuario Servlets</title>
+
+<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+<script src="js/jquery-3.5.1.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">Productos</a>
+		<a class="navbar-brand" href="#">Usuario Servlets</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -30,19 +35,41 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="#">Principal
-						<span class="sr-only">(current)</span>
-				</a></li>
+				<li class="nav-item active"><a class="nav-link" href="#">Principal</a></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false"> Administración </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">Usuarios</a> <a
-							class="dropdown-item" href="#">Roles</a>
+						<a class="dropdown-item" href="admin/usuarios">Usuarios</a> <a
+							class="dropdown-item" href="admin/roles">Roles</a>
 					</div></li>
+			</ul>
+			<ul class="navbar-nav">
+				<c:choose>
+					<c:when test="${sessionScope.usuario != null}">
+						<li class="nav-item active"><span class="navbar-text">${sessionScope.usuario.email}</span></li>
+						<li class="nav-item active"><a class="nav-link" href="logout">Logout</a>
+						</li>
+					</c:when>
+					<c:otherwise>
+						<li class="nav-item active"><a class="nav-link" href="login">Login</a>
+						</li>
+					</c:otherwise>
+				</c:choose>
 			</ul>
 		</div>
 	</nav>
+
+	<c:if test="${mensaje != null}">
+		<div class="alert alert-${nivel} alert-dismissible fade show"
+			role="alert">
+			${mensaje}
+			<button type="button" class="close" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+	</c:if>
 
 	<main class="container">

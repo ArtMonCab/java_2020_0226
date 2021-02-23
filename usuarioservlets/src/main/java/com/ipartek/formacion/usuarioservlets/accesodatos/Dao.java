@@ -1,8 +1,8 @@
 package com.ipartek.formacion.usuarioservlets.accesodatos;
 
 public interface Dao<T> {
+	
 	default Iterable<T> obtenerTodos() {
-		
 		throw new AccesoDatosException("NO IMPLEMENTADO");
 	}
 
