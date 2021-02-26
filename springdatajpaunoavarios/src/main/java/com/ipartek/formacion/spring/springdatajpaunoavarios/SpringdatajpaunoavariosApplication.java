@@ -38,7 +38,7 @@ public class SpringdatajpaunoavariosApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
-		System.out.println(daoProductos.obtenerPorId(2L));
+		/*System.out.println(daoProductos.obtenerPorId(2L));
 
 		Categoria categoria = daoCategorias.obtenerPorIdConProductos(1L);
 
@@ -46,11 +46,11 @@ public class SpringdatajpaunoavariosApplication implements CommandLineRunner{
 
 		for (Producto producto : categoria.getProductos()) {
 			System.out.println(producto);
-		}		
+		}	*/	
 		
-		//inicializarDatos();
+		inicializarDatos();
 		
-		//mostrarDatos();
+		mostrarDatos();
 	}
 	
 	
