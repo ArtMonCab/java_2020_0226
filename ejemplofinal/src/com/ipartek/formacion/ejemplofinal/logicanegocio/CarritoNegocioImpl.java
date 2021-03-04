@@ -22,4 +22,14 @@ public class CarritoNegocioImpl implements CarritoNegocio{
 		return productos;
 	}
 
+	@Override
+	public Producto productoPorId(Long id) {
+
+		Producto producto = daoProducto.obtenerPorId(id);
+		log.info(producto.toString());
+		return producto;	
+	}
+	
+	
+
 }
