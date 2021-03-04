@@ -5,7 +5,7 @@ public class FabricaNegocio {
 	
 	private static CarritoNegocio carritoNegocio = new CarritoNegocioImpl();
 	
-	public CarritoNegocio getCarritoNegocio() {
+	public static CarritoNegocio getCarritoNegocio() {
 		return carritoNegocio;
 	}
 
