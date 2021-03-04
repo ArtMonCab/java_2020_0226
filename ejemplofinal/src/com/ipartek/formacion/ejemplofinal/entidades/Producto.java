@@ -1,5 +1,6 @@
 package com.ipartek.formacion.ejemplofinal.entidades;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Set;
 
@@ -8,7 +9,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data @NoArgsConstructor @AllArgsConstructor
-public class Producto {
+public class Producto implements Serializable{
+	
+	private static final long serialVersionUID = -1067728694838158604L;
+	
 	private Long id;
 	private String nombre;
 	private String descripcion;
