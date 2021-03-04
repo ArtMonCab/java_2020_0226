@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -14,12 +16,12 @@ import com.ipartek.formacion.ejemplofinal.entidades.Departamento;
 import com.ipartek.formacion.ejemplofinal.entidades.Producto;
 
 public class ProductoDaoMySql implements Dao<Producto>{
-	private static final String SQL_SELECT = "SELECT p.id AS id, p.nombre AS nombre, p.descripcion AS descripcion, precio, descuento, unidad_medida, precio_unidad_medida, cantidad, d.id AS d_id, d.nombre AS d_nombre, d.descripcion AS d_descripcion FROM productos JOIN departamentos d ON p.departamentos_id = d.id";
+	private static final String SQL_SELECT = "SELECT p.id AS id, p.nombre AS nombre, p.descripcion AS descripcion, url_imagen, precio, descuento, unidad_medida, precio_unidad_medida, cantidad, d.id AS d_id, d.nombre AS d_nombre, d.descripcion AS d_descripcion FROM productos JOIN departamentos d ON p.departamentos_id = d.id";
 	
 	private DataSource dataSource;
 	
 	
-	private ProductoDaoMySql() {
+	ProductoDaoMySql() {
 		try {
 			InitialContext initCtx=new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
@@ -31,13 +33,13 @@ public class ProductoDaoMySql implements Dao<Producto>{
 
 
 	@Override
-	public Iterable<Producto> obtenerTodos() {
+	public Set<Producto> obtenerTodos() {
 
 		try (Connection con = dataSource.getConnection();
 				Statement st = con.createStatement();
 				ResultSet rs = st.executeQuery(SQL_SELECT)) {
 			
-			ArrayList<Producto> productos = new ArrayList<>();
+			Set<Producto> productos = new HashSet<>();
 			
 			Producto producto;
 			Departamento departamento;
