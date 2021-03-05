@@ -1,4 +1,4 @@
-package com.ipartek.formacion.uf1466_2.controladores;
+ package com.ipartek.formacion.uf1466_2.controladores;
 
 import java.io.IOException;
 import java.util.logging.Level;
@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 
 import com.ipartek.formacion.uf1466_2.accesodatos.LibroDao;
 import com.ipartek.formacion.uf1466_2.accesodatos.LibroDaoMySql;
@@ -35,7 +36,30 @@ public class ListadoServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		
+		request.setCharacterEncoding("UTF-8");
+		
+		String opcion = request.getParameter("opcion");
+		String termino = request.getParameter("termino");
+		
+		LOG.log(Level.INFO, opcion+" - "+termino);
+
+		if (opcion == "1") {
+			doGet(request, response);
+		}
+		
+		if (opcion == "2") {
+			//LibroDao dao = new LibroDaoMySql();
+			
+			//Libro libro = dao.obtenerPorIsbn(termino);
+			
+			request.getRequestDispatcher("/WEB-INF/vistas/detalle.jsp").forward(request, response);
+			response.sendRedirect(request.getContextPath() + "/detalle");
+		}
+		
+
+
+		
 	}
 
 }
