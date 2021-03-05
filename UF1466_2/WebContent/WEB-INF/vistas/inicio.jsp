@@ -12,9 +12,8 @@
 	<div class="form-group row">
 		<div class="offset-sm-2 col-sm-10">
 			<button type="submit" class="btn btn-primary" id="cargar" name="cargar">Cargar archivo</button>
-			<button type="submit" class="btn btn-primary"id="listar" name="listar">Ir a listado</button>
 		</div>
-		</div>
+	</div>
  
 
 </form>

@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 </main>
 <footer>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-info">
 		<a class="navbar-brand" href="#">&copy; 2021 Arturo Montañez</a>
 	</nav>
 </footer>
