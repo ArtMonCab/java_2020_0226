@@ -1,6 +1,7 @@
  package com.ipartek.formacion.uf1466_2.controladores;
 
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ipartek.formacion.uf1466_2.accesodatos.LibroDao;
 import com.ipartek.formacion.uf1466_2.accesodatos.LibroDaoMySql;
+import com.ipartek.formacion.uf1466_2.entidades.Autor;
 import com.ipartek.formacion.uf1466_2.entidades.Libro;
 
 
@@ -42,20 +44,27 @@ public class ListadoServlet extends HttpServlet {
 		String opcion = request.getParameter("opcion");
 		String termino = request.getParameter("termino");
 		
-		LOG.log(Level.INFO, opcion+" - "+termino);
+		//LOG.log(Level.INFO, opcion+" - "+termino);
+		//request.setAttribute("libros", libros);
 
-		if (opcion == "1") {
-			doGet(request, response);
-		}
+		Autor autor = new Autor(1L, "Miguel", "De Cervantes");
+		Libro libro = new Libro(1L, "Prueba", "1223134123", autor);
+
+		request.setAttribute("libro", libro);
+ 		request.getRequestDispatcher("/WEB-INF/vistas/busqueda.jsp").forward(request, response);
+		//response.sendRedirect(request.getContextPath() + "/busqueda");
+
+		//if (opcion == "1") {
+			//doGet(request, response);
+		//}
 		
-		if (opcion == "2") {
+		//if (opcion == "2") {
 			//LibroDao dao = new LibroDaoMySql();
 			
 			//Libro libro = dao.obtenerPorIsbn(termino);
 			
-			request.getRequestDispatcher("/WEB-INF/vistas/detalle.jsp").forward(request, response);
-			response.sendRedirect(request.getContextPath() + "/detalle");
-		}
+			
+		//}
 		
 
 

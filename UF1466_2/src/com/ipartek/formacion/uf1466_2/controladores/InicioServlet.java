@@ -55,6 +55,7 @@ public class InicioServlet extends HttpServlet {
 		 		request.setAttribute("libros", libros);
 		
 		 		request.getRequestDispatcher("/WEB-INF/vistas/listado.jsp").forward(request, response);
+		 		//response.sendRedirect(request.getContextPath() + "/listado");
 			}else {
 				System.out.println("Ha habido algún error");
 				doGet(request, response);
