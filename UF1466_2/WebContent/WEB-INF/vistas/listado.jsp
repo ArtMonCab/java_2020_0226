@@ -3,10 +3,10 @@
 
 <%@ include file="/WEB-INF/vistas/includes/cabecera.jsp" %>
 
-<form method="post">
+<form action="busqueda" method="get">
   <div class="form-inline">
     <div class="col-auto my-1">
-      <label class="mr-sm-2" for="inlineFormCustomSelect">Opciones de busqueda</label>
+      <label class="mr-sm-2" for="opcion">Opciones de busqueda</label>
 
     </div>
 
