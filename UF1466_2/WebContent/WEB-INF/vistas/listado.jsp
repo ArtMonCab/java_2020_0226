@@ -3,7 +3,7 @@
 
 <%@ include file="/WEB-INF/vistas/includes/cabecera.jsp" %>
 
-<form>
+<form method="post">
   <div class="form-inline">
     <div class="col-auto my-1">
       <label class="mr-sm-2" for="inlineFormCustomSelect">Opciones de busqueda</label>
@@ -34,7 +34,6 @@
 				<th scope="col">Título</th>
 				<th scope="col">ISBN</th>
 				<th scope="col">Autor</th>
-				<th scope="col">Acción</th>
 			</tr>
 		</thead>
 		<tbody>
