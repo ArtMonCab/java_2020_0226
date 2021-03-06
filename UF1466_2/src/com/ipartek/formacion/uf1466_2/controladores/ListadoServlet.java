@@ -47,24 +47,29 @@ public class ListadoServlet extends HttpServlet {
 		//LOG.log(Level.INFO, opcion+" - "+termino);
 		//request.setAttribute("libros", libros);
 
-		Autor autor = new Autor(1L, "Miguel", "De Cervantes");
-		Libro libro = new Libro(1L, "Prueba", "1223134123", autor);
+		//Autor autor = new Autor(1L, "Miguel", "De Cervantes");
+		//Libro libro = new Libro(1L, "Prueba", "1223134123", autor);
 
-		request.setAttribute("libro", libro);
+ 		LibroDao dao = new LibroDaoMySql();
+		
+ 		Iterable<Libro> libros = dao.obtenerPorIsbn("844151860");
+ 		//Iterable<Libro> libros = dao.obtenerPorTitulo("Ja");
+
+ 		LOG.log(Level.INFO, "Libros: {0}", libros);
+
+ 		request.setAttribute("libros", libros);
+
  		request.getRequestDispatcher("/WEB-INF/vistas/busqueda.jsp").forward(request, response);
+ 		
+ 		//if ((opcion == "1") || (opcion == "2")) {
+ 			
+ 		//}else {
+ 			//doGet(request, response);
+ 		//}
+ 		
 		//response.sendRedirect(request.getContextPath() + "/busqueda");
 
-		//if (opcion == "1") {
-			//doGet(request, response);
-		//}
-		
-		//if (opcion == "2") {
-			//LibroDao dao = new LibroDaoMySql();
-			
-			//Libro libro = dao.obtenerPorIsbn(termino);
-			
-			
-		//}
+
 		
 
 
