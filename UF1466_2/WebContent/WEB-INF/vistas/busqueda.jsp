@@ -15,17 +15,27 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<th scope="col">Opción</th>
-				<th scope="col">en</th>
-				<th scope="col">construcción</th>
-				<th scope="col">.</th>
-			</tr>
+			<c:forEach items="${libros}" var="l">
+				<tr>
+					<th scope="row">${l.id}</th>
+					<td>${l.titulo}</td>
+					<td>${l.isbn}</td>
+					<td>${l.autor.nombre}&nbsp;${l.autor.apellidos}</td>
+				</tr>
+			</c:forEach>
 		</tbody>
 	</table>
 	
 
-
+	
 </div>
 
+<div class="container">
+	<div class="row">
+		<a class="btn btn-primary" href="listado" role="button">Volver al listado</a>
+	</div>
+	<div class="row">
+		&nbsp;
+  	</div>
+</div>
 <%@ include file="/WEB-INF/vistas/includes/pie.jsp" %>
