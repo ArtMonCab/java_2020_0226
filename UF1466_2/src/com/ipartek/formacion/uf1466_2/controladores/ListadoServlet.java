@@ -26,6 +26,8 @@ public class ListadoServlet extends HttpServlet {
 		LibroDao dao = new LibroDaoMySql();
 		
 		Iterable<Libro> libros = dao.obtenerTodos();
+		//Iterable<Libro> libros = dao.obtenerPorIsbn("8448139801");
+		//Iterable<Libro> libros = dao.obtenerPorTitulo("%ja%");
 		
 		LOG.log(Level.INFO, "Libros: {0}", libros);
 		
@@ -42,23 +44,21 @@ public class ListadoServlet extends HttpServlet {
 		String opcion = request.getParameter("opcion");
 		String termino = request.getParameter("termino");
 		
-		LOG.log(Level.INFO, opcion+" - "+termino);
+		//LOG.log(Level.INFO, opcion+" - "+termino);
 
-		if (opcion == "1") {
-			doGet(request, response);
-		}
+		//request.getRequestDispatcher("/WEB-INF/vistas/busqueda.jsp").forward(request, response);
+ 		LibroDao dao = new LibroDaoMySql();
 		
-		if (opcion == "2") {
-			//LibroDao dao = new LibroDaoMySql();
-			
-			//Libro libro = dao.obtenerPorIsbn(termino);
-			
-			request.getRequestDispatcher("/WEB-INF/vistas/detalle.jsp").forward(request, response);
-			response.sendRedirect(request.getContextPath() + "/detalle");
-		}
+ 		Iterable<Libro> libros = dao.obtenerTodos();
+
+ 		LOG.log(Level.INFO, "Libros: {0}", libros);
+
+ 		request.setAttribute("libros", libros);
+
+ 		request.getRequestDispatcher("/WEB-INF/vistas/busqueda.jsp").forward(request, response);
+ 		
+		//response.sendRedirect(request.getContextPath() + "/busqueda");
 		
-
-
 		
 	}
 

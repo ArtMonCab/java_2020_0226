@@ -19,9 +19,8 @@ import com.ipartek.formacion.uf1466_2.entidades.Libro;
 public class LibroDaoMySql implements LibroDao {
 	
 	private static final String SQL_SELECT = "SELECT  l.id, l.titulo, l.isbn, a.id, a.nombre, a.apellidos FROM libros l JOIN autores a ON l.autores_id = a.id";
-	private static final String SQL_SELECT_ID= SQL_SELECT + " WHERE l.id = %?%";
 	private static final String SQL_SELECT_TITULO = SQL_SELECT + " WHERE l.titulo like ?";
-	private static final String SQL_SELECT_ISBN= SQL_SELECT + "WHERE l.isbn like ?";
+	private static final String SQL_SELECT_ISBN= SQL_SELECT + " WHERE l.isbn = ?";
 	
 
 	private DataSource dataSource = null;
@@ -41,6 +40,7 @@ public class LibroDaoMySql implements LibroDao {
 		try (Connection con = dataSource.getConnection();
 				Statement st = con.createStatement();
 				ResultSet rs = st.executeQuery(SQL_SELECT)) {
+			
 			ArrayList<Libro> libros = new ArrayList<>();
 			Libro libro;
 			Autor autor;
@@ -93,23 +93,26 @@ public class LibroDaoMySql implements LibroDao {
 	}
 
 	@Override
-	public Libro obtenerPorIsbn(String isbn) {
+	public Iterable<Libro> obtenerPorIsbn(String isbn) {
 		try (Connection con = dataSource.getConnection();
 				PreparedStatement pst = con.prepareStatement(SQL_SELECT_ISBN);) {
 
 			pst.setString(1, isbn);
 			ResultSet rs = pst.executeQuery();
 
-			Libro libro = null;
-			Autor autor = null;
+			ArrayList<Libro> libros = new ArrayList<>();
+			Libro libro;
+			Autor autor;
 
-			if (rs.next()) {
+			while (rs.next()) {
 				autor = new Autor(rs.getLong("a.id"), rs.getString("a.nombre"), rs.getString("a.apellidos"));
 
 				libro = new Libro(rs.getLong("l.id"), rs.getString("l.titulo"), rs.getString("l.isbn"), autor);
+
+				libros.add(libro);
 			}
 
-			return libro;
+			return libros;
 		} catch (SQLException e) {
 			throw new AccesoDatosException("No se ha podido obtener el libro cuyo isbn es: " + isbn, e);
 		} catch (Exception e) {

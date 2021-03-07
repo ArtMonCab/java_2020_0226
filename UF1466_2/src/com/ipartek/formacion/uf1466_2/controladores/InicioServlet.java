@@ -46,7 +46,7 @@ public class InicioServlet extends HttpServlet {
 			Process runProcess = Runtime.getRuntime().exec(restaurar);
 			int processComplete = runProcess.waitFor();
 			if(processComplete == 0) {
-		 		LibroDao dao = new LibroDaoMySql();
+		 		/*LibroDao dao = new LibroDaoMySql();
 				
 		 		Iterable<Libro> libros = dao.obtenerTodos();
 		
@@ -54,7 +54,8 @@ public class InicioServlet extends HttpServlet {
 		
 		 		request.setAttribute("libros", libros);
 		
-		 		request.getRequestDispatcher("/WEB-INF/vistas/listado.jsp").forward(request, response);
+		 		request.getRequestDispatcher("/WEB-INF/vistas/listado.jsp").forward(request, response);*/
+		 		response.sendRedirect(request.getContextPath() + "/listado");
 			}else {
 				System.out.println("Ha habido algún error");
 				doGet(request, response);

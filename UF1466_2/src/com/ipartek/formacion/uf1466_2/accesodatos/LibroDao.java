@@ -8,7 +8,7 @@ public interface LibroDao extends Dao<Libro>{
 		throw new AccesoDatosException("NO IMPLEMENTADO");
 	}
 	
-	default Libro obtenerPorIsbn(String isbn) {
+	default Iterable<Libro> obtenerPorIsbn(String isbn) {
 		throw new AccesoDatosException("NO IMPLEMENTADO");
 	}
 	
