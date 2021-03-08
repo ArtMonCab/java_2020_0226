@@ -4,7 +4,7 @@
 
 <h2>Restaurar base de datos</h2>
 
-<form method="post">
+<form method="post" novalidate enctype="multipart/form-data">
 
   <div class="form-group">
     <input type="file" class="form-control-file" id="archivo" name="archivo">

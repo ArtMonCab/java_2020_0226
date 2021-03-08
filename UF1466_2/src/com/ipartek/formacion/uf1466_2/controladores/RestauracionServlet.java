@@ -19,13 +19,16 @@ import com.ipartek.formacion.uf1466_2.entidades.Libro;
 
 
 @WebServlet("/restauracion")
-
+@MultipartConfig(fileSizeThreshold = 1024 * 1024,
+maxFileSize = 1024 * 1024 * 5, 
+maxRequestSize = 1024 * 1024 * 5 * 5)
 public class RestauracionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private static final Logger LOG = Logger.getLogger(RestauracionServlet.class.getName());
+	
+	private static final String UPLOAD_DIRECTORY = "backupbd";
        
-	private static final String DIRECTORIO_BACKUP = "c:/backup/";
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		request.getRequestDispatcher("/WEB-INF/vistas/restauracion.jsp").forward(request, response);
@@ -34,20 +37,34 @@ public class RestauracionServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("utf-8");
 		
-		//Ojo, para que funcione el archivo debe cogerse del directorio indicado en DIRECTORIO_BACKUP, que en este caso es "c:\backup"
-		String archivo = request.getParameter("archivo");
+		String uploadPath = getServletContext().getRealPath("") + File.separator + UPLOAD_DIRECTORY;
+		File uploadDir = new File(uploadPath);
+		if (!uploadDir.exists()) uploadDir.mkdir();
 		
-		String usuario ="root";
-		String password = "";
-		String origen = DIRECTORIO_BACKUP + archivo;
-		String[] restaurar = new String[] { "mysql ", "--user=" + usuario, "--password=" + password, "-e",
-			    "source " + origen };
+		String nombreFichero = null;
+		
+		for (Part part : request.getParts()) {
+		    nombreFichero = part.getSubmittedFileName();
+		    
+		    LOG.info("Nombre de fichero: [" + nombreFichero + "]");
+		    
+		    if(nombreFichero != null && nombreFichero.trim().length() > 0) {
+		    	LOG.info("Nombre de fichero ACEPTADO: [" + nombreFichero + "]");
+			    part.write(uploadPath + File.separator + nombreFichero);
+			    
+			    break;
+		    }
+		}
+		
+
+		
+		String restaurar = "mysql -uroot -e \"source " + uploadPath + File.separator + nombreFichero + "\"";
 		try {
 			Process runProcess = Runtime.getRuntime().exec(restaurar);
-			int processComplete = runProcess.waitFor();
-			if(processComplete == 0) {
+			int procesoCompletado = runProcess.waitFor();
+			if(procesoCompletado == 0) {
 		 		response.sendRedirect(request.getContextPath() + "/listado");
 			}else {
 				System.out.println("Ha habido algún error");
