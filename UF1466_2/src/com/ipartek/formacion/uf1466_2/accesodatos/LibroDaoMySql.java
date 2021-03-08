@@ -19,13 +19,8 @@ import com.ipartek.formacion.uf1466_2.entidades.Libro;
 public class LibroDaoMySql implements LibroDao {
 	
 	private static final String SQL_SELECT = "SELECT  l.id, l.titulo, l.isbn, a.id, a.nombre, a.apellidos FROM libros l JOIN autores a ON l.autores_id = a.id";
-<<<<<<< HEAD
 	private static final String SQL_SELECT_TITULO = SQL_SELECT + " WHERE l.titulo like ?";
 	private static final String SQL_SELECT_ISBN= SQL_SELECT + " WHERE l.isbn = ?";
-=======
-	private static final String SQL_SELECT_TITULO = SQL_SELECT + " WHERE l.titulo like %?%";
-	private static final String SQL_SELECT_ISBN= SQL_SELECT + "WHERE l.isbn = ?";
->>>>>>> refs/remotes/origin/master
 	
 
 	private DataSource dataSource = null;
@@ -75,6 +70,7 @@ public class LibroDaoMySql implements LibroDao {
 
 			pst.setString(1, titulo);
 			ResultSet rs = pst.executeQuery();
+
 			ArrayList<Libro> libros = new ArrayList<>();
 			Libro libro;
 			Autor autor;
@@ -96,7 +92,6 @@ public class LibroDaoMySql implements LibroDao {
 		}
 	}
 
-	
 	@Override
 	public Iterable<Libro> obtenerPorIsbn(String isbn) {
 		try (Connection con = dataSource.getConnection();
@@ -104,18 +99,11 @@ public class LibroDaoMySql implements LibroDao {
 
 			pst.setString(1, isbn);
 			ResultSet rs = pst.executeQuery();
-			
+
 			ArrayList<Libro> libros = new ArrayList<>();
 			Libro libro;
 			Autor autor;
 
-<<<<<<< HEAD
-			ArrayList<Libro> libros = new ArrayList<>();
-			Libro libro;
-			Autor autor;
-
-=======
->>>>>>> refs/remotes/origin/master
 			while (rs.next()) {
 				autor = new Autor(rs.getLong("a.id"), rs.getString("a.nombre"), rs.getString("a.apellidos"));
 
@@ -126,11 +114,12 @@ public class LibroDaoMySql implements LibroDao {
 
 			return libros;
 		} catch (SQLException e) {
-			throw new AccesoDatosException("No se ha podido obtener el libro cuyo ISBN es: " + isbn, e);
+			throw new AccesoDatosException("No se ha podido obtener el libro cuyo isbn es: " + isbn, e);
 		} catch (Exception e) {
 			throw new AccesoDatosException(
-					"ERROR NO ESPERADO: No se ha podido obtener el libro cuyo ISBN es: " + isbn, e);
+					"ERROR NO ESPERADO: No se ha podido obtener el libro cuyo isbn es: " + isbn, e);
 		}
 	}
+
 	
 }

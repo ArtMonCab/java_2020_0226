@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ipartek.formacion.uf1466_2.accesodatos.LibroDao;
 import com.ipartek.formacion.uf1466_2.accesodatos.LibroDaoMySql;
-import com.ipartek.formacion.uf1466_2.entidades.Autor;
 import com.ipartek.formacion.uf1466_2.entidades.Libro;
 
 
@@ -41,14 +40,7 @@ public class ListadoServlet extends HttpServlet {
 		
 		String opcion  = request.getParameter("opcion");
 		String termino = request.getParameter("termino");
-<<<<<<< HEAD
-=======
-		
-		//LOG.log(Level.INFO, opcion+" - "+termino);
-		//request.setAttribute("libros", libros);
->>>>>>> refs/remotes/origin/master
 
-<<<<<<< HEAD
 		LibroDao dao = new LibroDaoMySql();
 		
 		Iterable<Libro> libros = null;
@@ -82,32 +74,6 @@ public class ListadoServlet extends HttpServlet {
 
 			doGet(request, response);
 		}
-=======
-		//Autor autor = new Autor(1L, "Miguel", "De Cervantes");
-		//Libro libro = new Libro(1L, "Prueba", "1223134123", autor);
-
- 		LibroDao dao = new LibroDaoMySql();
-		
- 		Iterable<Libro> libros = dao.obtenerPorIsbn("844151860");
- 		//Iterable<Libro> libros = dao.obtenerPorTitulo("Ja");
-
- 		LOG.log(Level.INFO, "Libros: {0}", libros);
-
- 		request.setAttribute("libros", libros);
-
- 		request.getRequestDispatcher("/WEB-INF/vistas/busqueda.jsp").forward(request, response);
- 		
- 		//if ((opcion == "1") || (opcion == "2")) {
- 			
- 		//}else {
- 			//doGet(request, response);
- 		//}
- 		
-		//response.sendRedirect(request.getContextPath() + "/busqueda");
-
-
-		
->>>>>>> refs/remotes/origin/master
 
 		
 		
