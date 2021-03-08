@@ -3,10 +3,14 @@
 
 <%@ include file="/WEB-INF/vistas/includes/cabecera.jsp" %>
 
+<<<<<<< HEAD
 <form action="listado" method="post">
+=======
+<form action="busqueda" method="get">
+>>>>>>> refs/remotes/origin/master
   <div class="form-inline">
     <div class="col-auto my-1">
-      <label class="mr-sm-2" for="inlineFormCustomSelect">Opciones de busqueda</label>
+      <label class="mr-sm-2" for="opcion">Opciones de busqueda</label>
 
     </div>
 
