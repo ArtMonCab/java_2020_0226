@@ -29,12 +29,14 @@ public class AddCarritoServlet extends HttpServlet {
 		
 		//Todo Mejora la creacion del carrito
 		
+		
+		//Borrado porque se le ha puesto un listener
 		//Compruebo que el carrito no se ha creado antes.
-		if (carrito == null) {
-			carrito = new Carrito();
+		//if (carrito == null) {
+			//carrito = new Carrito();
 			
-			session.setAttribute("carrito", carrito);
-		}
+			//session.setAttribute("carrito", carrito);
+		//}
 		
 		carrito.addProducto(producto, 1);
 		

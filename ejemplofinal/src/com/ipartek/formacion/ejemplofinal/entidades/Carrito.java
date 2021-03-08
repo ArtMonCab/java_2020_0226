@@ -13,20 +13,22 @@ public class Carrito implements Serializable{
 		//Si se trata del mismo producto, en vez de añadir otro producto incrementa la cantidad.
 		Long id = producto.getId();
 		
+		DetalleCarrito linea;
+		
 		//Si el producto ya existe, modifico la cantidad,
 		if(lineas.containsKey(id)) {
-			DetalleCarrito linea = lineas.get(id);
+			linea = lineas.get(id);
 			
 			linea.setCantidad(linea.getCantidad() + producto.getCantidad());
 		
 			//Si el producto no existe, se añade el producto al treemap
 		}else {
-			DetalleCarrito linea = new DetalleCarrito(producto, cantidad);
+			linea = new DetalleCarrito(producto, cantidad);
 			
 			lineas.put(id,  linea);
 		}
 		
-		DetalleCarrito linea = new DetalleCarrito(producto, cantidad);
+		linea = new DetalleCarrito(producto, cantidad);
 		
 		lineas.put(producto.getId(), linea);
 	}
