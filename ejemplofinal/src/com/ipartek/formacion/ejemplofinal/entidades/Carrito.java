@@ -36,4 +36,9 @@ public class Carrito implements Serializable{
 	public Iterable<DetalleCarrito> obtenerLineas(){
 		return lineas.values();
 	}
+
+	public Object getLinea() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -5,6 +5,7 @@
 <h2>Restaurar base de datos</h2>
 
 <form method="post">
+
   <div class="form-group">
     <input type="file" class="form-control-file" id="archivo" name="archivo">
   </div>

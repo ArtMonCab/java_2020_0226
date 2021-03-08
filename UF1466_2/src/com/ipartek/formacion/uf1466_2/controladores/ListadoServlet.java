@@ -1,6 +1,7 @@
  package com.ipartek.formacion.uf1466_2.controladores;
 
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -9,7 +10,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 
 import com.ipartek.formacion.uf1466_2.accesodatos.LibroDao;
 import com.ipartek.formacion.uf1466_2.accesodatos.LibroDaoMySql;
@@ -26,8 +26,6 @@ public class ListadoServlet extends HttpServlet {
 		LibroDao dao = new LibroDaoMySql();
 		
 		Iterable<Libro> libros = dao.obtenerTodos();
-		//Iterable<Libro> libros = dao.obtenerPorIsbn("8448139801");
-		//Iterable<Libro> libros = dao.obtenerPorTitulo("%ja%");
 		
 		LOG.log(Level.INFO, "Libros: {0}", libros);
 		
@@ -38,26 +36,46 @@ public class ListadoServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		request.setCharacterEncoding("UTF-8");
 		
-		String opcion = request.getParameter("opcion");
+		String opcion  = request.getParameter("opcion");
 		String termino = request.getParameter("termino");
+
+		LibroDao dao = new LibroDaoMySql();
 		
-		//LOG.log(Level.INFO, opcion+" - "+termino);
-
-		//request.getRequestDispatcher("/WEB-INF/vistas/busqueda.jsp").forward(request, response);
- 		LibroDao dao = new LibroDaoMySql();
+		Iterable<Libro> libros = null;
 		
- 		Iterable<Libro> libros = dao.obtenerTodos();
+		LOG.info("Opcion: "+ opcion);
+		LOG.info("Termino: " + termino);
+		
+		
+ 		if (termino != null) {
+ 			//Busqueda por titulo
+ 			if (opcion.equals("1") ) {
+ 				libros = dao.obtenerPorTitulo("%" + termino+ "%");
+ 			}
+ 			
+ 			//Busqueda por ISBN
+ 			if (opcion.equals("2")) {
+ 				libros = dao.obtenerPorIsbn(termino);
+ 			}
+ 			
+			
+			request.getSession().setAttribute("libros", libros);
+			LOG.log(Level.INFO, "Libros: {0}", libros);
+			request.getRequestDispatcher("/WEB-INF/vistas/busqueda.jsp").forward(request, response);
+			
 
- 		LOG.log(Level.INFO, "Libros: {0}", libros);
+		} else {
+			request.setAttribute("mensaje", "No se ha encontrado ningún libro con ese termino");
+			request.setAttribute("nivel", "danger");
 
- 		request.setAttribute("libros", libros);
+			request.setAttribute("termino", termino);
 
- 		request.getRequestDispatcher("/WEB-INF/vistas/busqueda.jsp").forward(request, response);
- 		
-		//response.sendRedirect(request.getContextPath() + "/busqueda");
+			doGet(request, response);
+		}
+
+		
 		
 		
 	}

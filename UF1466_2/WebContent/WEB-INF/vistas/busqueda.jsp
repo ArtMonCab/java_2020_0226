@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%@ include file="/WEB-INF/vistas/includes/cabecera.jsp" %>
-
+<form action="inicio" method="post">
 <h2>Libros encontrados</h2>
 <div class="table-responsive">
 	<table class="table table-striped table-bordered table-hover table-sm">
@@ -39,4 +39,5 @@
   	</div>
 </div>
 
+</form>
 <%@ include file="/WEB-INF/vistas/includes/pie.jsp" %>

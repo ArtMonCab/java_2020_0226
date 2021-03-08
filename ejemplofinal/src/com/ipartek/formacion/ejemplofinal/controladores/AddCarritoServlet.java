@@ -26,22 +26,15 @@ public class AddCarritoServlet extends HttpServlet {
 		
 		Carrito carrito = (Carrito) session.getAttribute("carrito");
 		
-		
-		//Todo Mejora la creacion del carrito
-		
-		
-		//Borrado porque se le ha puesto un listener
-		//Compruebo que el carrito no se ha creado antes.
-		//if (carrito == null) {
-			//carrito = new Carrito();
+		/*Borrado porque se le ha puesto un listener
+		Compruebo que el carrito no se ha creado antes.
+		if (carrito == null) {
+			carrito = new Carrito();
 			
-			//session.setAttribute("carrito", carrito);
-		//}
+			session.setAttribute("carrito", carrito);
+		}*/
 		
 		carrito.addProducto(producto, 1);
-		
-		
-		
 		
 		request.getRequestDispatcher(Config.PATH_VISTAS + "carrito.jsp").forward(request, response);
 	}
