@@ -1,6 +1,5 @@
 package com.ipartek.formacion.ejemplofinal.logicanegocio;
 
-import com.ipartek.formacion.ejemplofinal.entidades.Cliente.ClienteNegocioImpl;
 
 public class FabricaNegocio {
 	private FabricaNegocio() {}
