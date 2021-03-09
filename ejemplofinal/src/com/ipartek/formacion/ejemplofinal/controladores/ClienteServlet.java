@@ -16,12 +16,12 @@ import com.ipartek.formacion.ejemplofinal.entidades.Cliente;
 public class ClienteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher(Config.PATH_VISTAS + "cliente.jsp").forward(request, response);
 	}
 
-
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
@@ -33,9 +33,14 @@ public class ClienteServlet extends HttpServlet {
 		String fechaNacimiento =request.getParameter("fecha-nacimiento");
 		
 		//Empaquetarlo en un objeto
-		Cliente cliente = new Cliente(null, nombre,apellidos, LocalDate.parse(fechaNacimiento), null);
+		Cliente cliente = new Cliente(null, nombre,apellidos, cif,LocalDate.parse(fechaNacimiento), null);
 				
-		Config.clienteNegocio.altaCliente();	
+		//Todo: Validar cliente
+		
+		Config.clienteNegocio.altaCliente(cliente);
+		
+		request.setAttribute("cliente", cliente);
+		request.getRequestDispatcher("/crear-factura").forward(request, response);
 				
 				
 	}

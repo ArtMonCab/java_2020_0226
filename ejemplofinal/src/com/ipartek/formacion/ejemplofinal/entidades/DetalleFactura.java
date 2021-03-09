@@ -2,6 +2,7 @@ package com.ipartek.formacion.ejemplofinal.entidades;
 
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,4 +15,8 @@ public class DetalleFactura implements Serializable{
 	private Factura factura;
 	private Producto producto;
 	private Integer cantidad;
+	
+	public BigDecimal getTotal() {
+		return producto.getPrecio().multiply(new BigDecimal(cantidad));
+	}
 }

@@ -16,7 +16,7 @@ import com.ipartek.formacion.ejemplofinal.entidades.Producto;
 public class AddCarritoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		
@@ -39,6 +39,7 @@ public class AddCarritoServlet extends HttpServlet {
 		request.getRequestDispatcher(Config.PATH_VISTAS + "carrito.jsp").forward(request, response);
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}

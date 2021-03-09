@@ -22,7 +22,7 @@ import com.ipartek.formacion.ejemplofinal.entidades.Factura;
 public class CrearFacturaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Cliente cliente = (Cliente) request.getAttribute("cliente");
 		Carrito carrito = (Carrito) request.getSession().getAttribute("carrito");
@@ -35,14 +35,21 @@ public class CrearFacturaServlet extends HttpServlet {
 		Set<DetalleFactura> detallesFactura = new HashSet<>();
 		
 		
-		for (DetalleCarrito detalle: carrito.getLinea()) {
-			
+		for (DetalleCarrito detalle: carrito.getLineas()) {	
+			detallesFactura.add(
+					new DetalleFactura(factura, detalle.getProducto(), detalle.getCantidad()));
 		}
 		
+		factura.setDetallesFactura(detallesFactura);
 		
+		Config.carritoNegocio.guardarFactura(factura);
+		
+		request.setAttribute("factura", factura);
+		
+		request.getRequestDispatcher("/factura").forward(request, response);
 	}
 
-
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}

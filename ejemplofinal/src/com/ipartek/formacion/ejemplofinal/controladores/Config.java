@@ -1,11 +1,12 @@
 package com.ipartek.formacion.ejemplofinal.controladores;
 
 import com.ipartek.formacion.ejemplofinal.logicanegocio.CarritoNegocio;
+import com.ipartek.formacion.ejemplofinal.logicanegocio.ClienteNegocio;
 import com.ipartek.formacion.ejemplofinal.logicanegocio.FabricaNegocio;
 
 public class Config {
 
-	public static Object clienteNegocio;
+
 	private Config() {}
 	
 	static final String PATH_VISTAS = "/WEB-INF/vistas/";
