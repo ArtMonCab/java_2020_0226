@@ -1,7 +1,7 @@
-3<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ include file="/WEB-INF/vistas/includes/cabecera.jsp" %>
+<%@ include file="/WEB-INF/vistas/includes/cabecera.jsp"%>
 
 <fmt:setLocale value="es-ES" />
 
@@ -70,12 +70,12 @@
 	</div>
 
 	<div class="row">
-		<p class="text-right">
-			<fmt:parseDate value="${factura.fecha}" pattern="yyyy-MM-dd"
-				var="fecha" type="date" />
-		</p>
 
-		<div>
+		<fmt:parseDate value="${factura.fecha}" pattern="yyyy-MM-dd"
+			var="fecha" type="date" />
+
+		<div class="text-right">
+			Número de factura: ${factura.codigo}<br />
 			Fecha de factura:
 			<fmt:formatDate value="${fecha}" dateStyle="long" />
 		</div>
@@ -126,6 +126,4 @@
 		</table>
 	</div>
 </div>
-
-
-<%@ include file="/WEB-INF/vistas/includes/pie.jsp" %>
+<%@ include file="/WEB-INF/vistas/includes/pie.jsp"%>

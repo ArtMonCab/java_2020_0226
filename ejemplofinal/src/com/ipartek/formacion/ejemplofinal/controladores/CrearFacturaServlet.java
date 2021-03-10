@@ -24,26 +24,27 @@ public class CrearFacturaServlet extends HttpServlet {
        
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//TODO Utilizar sesion y comprobar si existe o no el cliente
+		//Recojo la información
 		Cliente cliente = (Cliente) request.getAttribute("cliente");
 		Carrito carrito = (Carrito) request.getSession().getAttribute("carrito");
 		
+		
+		//Proceso la información recibida
 		Factura factura = new Factura();
 		
 		factura.setFecha(LocalDate.now());
 		factura.setCliente(cliente);
 		
-		Set<DetalleFactura> detallesFactura = new HashSet<>();
-		
-		
-		for (DetalleCarrito detalle: carrito.getLineas()) {	
-			detallesFactura.add(
+		for(DetalleCarrito detalle: carrito.getLineas()) {
+			factura.getDetallesFactura().add(
 					new DetalleFactura(factura, detalle.getProducto(), detalle.getCantidad()));
 		}
 		
-		factura.setDetallesFactura(detallesFactura);
 		
 		Config.carritoNegocio.guardarFactura(factura);
 		
+		//Envio la inromación pprocesada a factura
 		request.setAttribute("factura", factura);
 		
 		request.getRequestDispatcher("/factura").forward(request, response);

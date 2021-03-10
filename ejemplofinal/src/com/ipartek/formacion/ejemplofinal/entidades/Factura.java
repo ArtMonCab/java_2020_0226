@@ -3,6 +3,7 @@ package com.ipartek.formacion.ejemplofinal.entidades;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 import lombok.AllArgsConstructor;
@@ -14,10 +15,10 @@ import lombok.ToString;
 @Data @NoArgsConstructor @AllArgsConstructor
 public class Factura implements Serializable{
 
-	private static final long serialVersionUID = 1984576805839244452L;
-	
 	private static final BigDecimal IVA = new BigDecimal("0.21");
 	
+	private static final long serialVersionUID = 2396176411731906644L;
+
 	private Long id;
 	private String codigo;
 	private LocalDate fecha;
@@ -26,7 +27,7 @@ public class Factura implements Serializable{
 	
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
-	private Set<DetalleFactura> detallesFactura;
+	private Set<DetalleFactura> detallesFactura = new HashSet<>();
 	
 	public BigDecimal getTotal() {
 		BigDecimal total = BigDecimal.ZERO;
