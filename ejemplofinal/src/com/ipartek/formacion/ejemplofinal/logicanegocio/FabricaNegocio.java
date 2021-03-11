@@ -6,6 +6,7 @@ public class FabricaNegocio {
 	
 	private static CarritoNegocio carritoNegocio = new CarritoNegocioImpl();
 	private static ClienteNegocio clienteNegocio = new ClienteNegocioImpl();
+	private static UsuarioNegocio usuarioNegocio = new UsuarioNegocioImpl();
 	
 	public static CarritoNegocio getCarritoNegocio() {
 		return carritoNegocio;
@@ -13,6 +14,10 @@ public class FabricaNegocio {
 
 	public static ClienteNegocio getClienteNegocio() {
 		return clienteNegocio;
+	}
+
+	public static UsuarioNegocio getUsuarioNegocio() {
+		return usuarioNegocio;
 	}
 
 
