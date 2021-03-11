@@ -38,7 +38,7 @@ class ProductoDaoMySql implements Dao<Producto> {
 	}
 
 	@Override
-	public Producto obtenerPorId(Long id) {
+	public Producto obtenerPorId(long id) {
 		try (Connection con = Config.dataSource.getConnection();
 				PreparedStatement pst = con.prepareStatement(SQL_SELECT_ID);
 				) {
