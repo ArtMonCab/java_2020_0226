@@ -11,7 +11,7 @@ public class EjecutarComando {
 	public static void main(String[] args) throws IOException, InterruptedException {
 
 		Process p = Runtime.getRuntime()
-				.exec("mysqldump -u root -padmin supermercado");
+				.exec("mysqldump -u root  supermercado");
 
 		try (InputStream is = p.getInputStream(); FileOutputStream fos = new FileOutputStream("backup_pruebas.sql")) {
 			byte[] buffer = new byte[1000];
