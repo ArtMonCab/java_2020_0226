@@ -6,9 +6,9 @@
 
 <form method="post" novalidate enctype="multipart/form-data">
 
-  <div class="form-group">
-    <input type="file" class="form-control-file" id="archivo" name="archivo">
-  </div>
+  	<div class="form-group">
+    	<input type="file" class="form-control-file" id="archivo" name="archivo">
+  	</div>
 
 	<div class="form-group row">
 		<div class="offset-sm-2 col-sm-10">
