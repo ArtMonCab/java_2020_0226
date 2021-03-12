@@ -3,24 +3,20 @@
 
 <%@ include file="/WEB-INF/vistas/includes/cabecera.jsp" %>
 
-<form method="post" novalidate enctype="multipart/form-data">
-
+<form action="index" method="post">
+	<h1>Copiar base de dato gestiondocente</h1>
   	<div class="form-group">
-    	<input type="file" class="form-control-file" id="archivoRestaurar" name="archivoRestaurar">
+    	<label for="nombre"><h4>Nuevo nombre</h4></label>
+    	<input type="text" class="form-control" id="nombre" name="nombre" value="backup_gestiondocente">
   	</div>
 
 	<div class="form-group row">
 		<div class="offset-sm-2 col-sm-10">
-			<button type="submit" class="btn btn-primary" id="cargar" name="cargar">Restaurar</button>
+			<button type="submit" class="btn btn-primary" id="ejecutar" name="ejecutar">ejecutar</button>
 		</div>
 	</div>
  
 
-	<div class="form-group row">
-		<div class="offset-sm-2 col-sm-10">
-			<button type="submit" class="btn btn-primary" id="cargar" name="cargar">&nbsp;Guardar&nbsp;</button>
-		</div>
-	</div>
 </form>
 
 <br>
