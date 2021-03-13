@@ -44,6 +44,7 @@ public class IndexServlet extends HttpServlet {
 		//Hacer la copia de la base de datos gestion docente
 		
 		try {
+			//En caso de usar passwor, abria que poner -p[password]
 			Process p = Runtime
 			            .getRuntime()
 			            .exec("mysqldump -u root gestiondocente");
@@ -71,7 +72,7 @@ public class IndexServlet extends HttpServlet {
 	
 	
 	//Copio la nueva base de datos
-		
+		//En caso de usar passwor, abria que poner -p[password]
 		try {
 			Process p = Runtime
 					.getRuntime()
