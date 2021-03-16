@@ -2,8 +2,6 @@ package com.ipartek.formacion.ejemplofinal.controladores;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +14,14 @@ import com.ipartek.formacion.ejemplofinal.entidades.Cliente;
 import com.ipartek.formacion.ejemplofinal.entidades.DetalleCarrito;
 import com.ipartek.formacion.ejemplofinal.entidades.DetalleFactura;
 import com.ipartek.formacion.ejemplofinal.entidades.Factura;
+import com.ipartek.formacion.ejemplofinal.entidades.Usuario;
 
+/**
+ * Controlador que se encarga de crear la factura de un usuario al finalizar la compra mediante get.
+ * 
+ * @author Arturo Montañez
+ * @version 1.0
+ */
 
 @WebServlet("/crear-factura")
 public class CrearFacturaServlet extends HttpServlet {
@@ -24,9 +29,17 @@ public class CrearFacturaServlet extends HttpServlet {
        
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//TODO Utilizar sesion y comprobar si existe o no el cliente
 		//Recojo la información
-		Cliente cliente = (Cliente) request.getAttribute("cliente");
+		Cliente cliente;
+		
+		Usuario usuario = (Usuario)request.getSession().getAttribute("usuario");
+		
+		if(usuario != null && usuario.getCliente() != null) {
+			cliente = usuario.getCliente();
+		} else {
+			cliente = (Cliente) request.getAttribute("cliente");
+		}
+		
 		Carrito carrito = (Carrito) request.getSession().getAttribute("carrito");
 		
 		

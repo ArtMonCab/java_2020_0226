@@ -5,6 +5,13 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+/**
+ * Configuración de la aplicacion. Indica que base de datos estamos usando.
+ * 
+ * @author Arturo Montañez
+ * @version 1.0
+ */
+
 class Config {
 	private static final String JDBC_SUPERMERCADO = "jdbc/supermercado";
 

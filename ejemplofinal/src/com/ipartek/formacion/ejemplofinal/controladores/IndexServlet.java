@@ -7,6 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Controlador que muestra la página inicial de la aplicación mediante get.
+ * En la vista se muestran los productos disponibles para la compra
+ * 
+ * @author Arturo Montañez
+ * @version 1.0
+ */
 @WebServlet("/IndexServlet")
 public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

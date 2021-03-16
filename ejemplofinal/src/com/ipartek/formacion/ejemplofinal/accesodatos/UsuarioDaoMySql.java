@@ -3,16 +3,28 @@ package com.ipartek.formacion.ejemplofinal.accesodatos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.time.LocalDate;
 
 import com.ipartek.formacion.ejemplofinal.entidades.Cliente;
 import com.ipartek.formacion.ejemplofinal.entidades.Usuario;
+
+/**
+ * Implementa los métodos de el interfaz DaoUsuario
+ * 
+ * @author Arturo Montañez
+ * @version 1.0
+ */
 
 public class UsuarioDaoMySql implements DaoUsuario{
 
 	private static final String SQL_EMAIL = "SELECT * FROM usuarios u LEFT JOIN clientes c ON u.clientes_id = c.id WHERE email = ?";
 
 	@Override
+	/**
+	 * Método donde se obtiene un usuario por email
+	 * 
+	 * @param email
+	 * @return Usuario
+	 */
 	public Usuario obtenerPorEmail(String email) {
 		try (Connection con = Config.dataSource.getConnection();
 				PreparedStatement ps = con.prepareStatement(SQL_EMAIL)) {
@@ -24,7 +36,7 @@ public class UsuarioDaoMySql implements DaoUsuario{
 			Cliente cliente = null;
 			
 			if(rs.next()) {
-				cliente = new Cliente(rs.getLong("c.id"), rs.getString("c.nombre"), rs.getString("c.apellidos"), rs.getString("c.cif"), (LocalDate) rs.getObject("c.fecha_nacimiento"), null);
+				cliente = new Cliente(rs.getLong("c.id"), rs.getString("c.nombre"), rs.getString("c.apellidos"), rs.getString("c.cif"), rs.getDate("c.fecha_nacimiento").toLocalDate(), null);
 				usuario = new Usuario(rs.getLong("u.id"), rs.getString("u.email"), rs.getString("u.password"), cliente);
 			}
 			

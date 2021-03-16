@@ -2,7 +2,12 @@ package com.ipartek.formacion.ejemplofinal.accesodatos;
 
 import java.util.Set;
 
-import com.ipartek.formacion.ejemplofinal.entidades.Producto;
+/**
+ * Interfaz donde se declaran los métodos con los datos
+ * @author Arturo Montañez
+ * @version 1.0
+ * @param <T>
+ */
 
 public interface Dao<T> {
 	default Set<T> obtenerTodos(){

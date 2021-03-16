@@ -9,6 +9,13 @@ import java.time.LocalDate;
 
 import com.ipartek.formacion.ejemplofinal.entidades.DetalleFactura;
 import com.ipartek.formacion.ejemplofinal.entidades.Factura;
+
+/**
+ * Implementa los métodos de DaoFactura
+ * 
+ * @author Arturo Montañez
+ * @version 1.0
+ */
 public class FacturaDaoMySql implements DaoFactura {
 	
 
@@ -17,7 +24,14 @@ public class FacturaDaoMySql implements DaoFactura {
 	private static final String SQL_CODIGO = "SELECT MAX(codigo) FROM supermercado.facturas WHERE codigo LIKE CONCAT(?, '____')";
 	
 	@Override
+	/**
+	 * Método que se inserta una nueva factura
+	 * 
+	 * @param factura
+	 * @return Factura
+	 */
 	public Factura insertar(Factura factura) {
+
 		try (Connection con = Config.dataSource.getConnection()) {
 			con.setAutoCommit(false);
 			
@@ -72,6 +86,11 @@ public class FacturaDaoMySql implements DaoFactura {
 	}
 
 	@Override
+	/**
+	 * Método donde se obtiene el último código disponible
+	 * 
+	 * @return id_factura
+	 */
 	public String obtenerUltimoCodigo() {
 		try (Connection con = Config.dataSource.getConnection();
 				PreparedStatement ps = con.prepareStatement(SQL_CODIGO);

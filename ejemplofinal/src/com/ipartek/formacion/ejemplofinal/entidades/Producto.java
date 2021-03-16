@@ -7,9 +7,20 @@ import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+/**
+ * Representa los productos
+ * 
+ * @author Arturo Montañez
+ * @version 1.0
+ * 
+ */
 
 @Data @NoArgsConstructor @AllArgsConstructor
 public class Producto implements Serializable{
+	
+	/**
+	 * Necesario para los elementos Serializables
+	 */
 	
 	private static final long serialVersionUID = -1067728694838158604L;
 	

@@ -11,7 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ipartek.formacion.ejemplofinal.entidades.Cliente;
 
-
+/**
+ * Controlador que gestiona a los clientes para la creación de facturas.
+ * En el post recoge la información, la empaqueta en  un objeto cliente, y la manda a crear-factura
+ * 
+ * @author Arturo Montañez
+ * @version 1.0
+ */
 @WebServlet("/cliente")
 public class ClienteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -25,17 +31,20 @@ public class ClienteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		//Recoger información
-		
+		/*
+		 * Recoger información
+		 */
 		String nombre = request.getParameter("Nombre");
 		String apellidos = request.getParameter("apellidos");
 		String cif = request.getParameter("cif");
 		String fechaNacimiento =request.getParameter("fecha-nacimiento");
+
 		
-		//Empaquetarlo en un objeto
+		/*
+		 * Empaquetarlo en un objeto
+		 */
 		Cliente cliente = new Cliente(null, nombre,apellidos, cif,LocalDate.parse(fechaNacimiento), null);
 				
-		//Todo: Validar cliente
 		
 		Config.clienteNegocio.altaCliente(cliente);
 		

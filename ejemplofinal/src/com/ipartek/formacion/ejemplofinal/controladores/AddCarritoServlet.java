@@ -11,6 +11,12 @@ import javax.servlet.http.HttpSession;
 import com.ipartek.formacion.ejemplofinal.entidades.Carrito;
 import com.ipartek.formacion.ejemplofinal.entidades.Producto;
 
+/**
+ * Controlador que añade los productos al carrito mediante get
+ * 
+ * @author Arturo Montañez
+ * @version 1.0
+ */
 
 @WebServlet("/add-carrito")
 public class AddCarritoServlet extends HttpServlet {

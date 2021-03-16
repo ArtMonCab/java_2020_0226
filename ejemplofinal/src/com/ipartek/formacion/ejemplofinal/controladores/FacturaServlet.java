@@ -7,6 +7,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Controlador que se encarga de mostrar la factura. 
+ * Pasa a la vista factura.jsp en el get
+ * 
+ * @author Arturo Montañez
+ * @version
+ */
+
 @WebServlet("/factura")
 public class FacturaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

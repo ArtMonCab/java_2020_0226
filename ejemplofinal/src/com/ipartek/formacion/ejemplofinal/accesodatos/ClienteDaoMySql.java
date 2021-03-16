@@ -9,12 +9,25 @@ import com.ipartek.formacion.ejemplofinal.entidades.Cliente;
 
 import lombok.extern.java.Log;
 
+/**
+ * Acceso a los datos de clientes, con todas las sentencias SQL que se usan
+ * 
+ * @author Arturo Montañez
+ * @version 1.0
+ */
+
 @Log
 class ClienteDaoMySql implements Dao<Cliente> {
 	
 	private static final String SQL_INSERT = "INSERT INTO clientes (nombre, apellidos, cif, fecha_nacimiento) VALUES (?, ?, ?, ?)";
 
+
 	@Override
+	/**
+	 * Método en el que inserto un nuevo cliente
+	 * @param cliente que hay que insertar
+	 * @return el nuevo cliente
+	 */
 	public Cliente insertar(Cliente cliente) {
 		try (Connection con = Config.dataSource.getConnection();
 				PreparedStatement ps = con.prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS);

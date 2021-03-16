@@ -11,6 +11,13 @@ import com.ipartek.formacion.ejemplofinal.entidades.Producto;
 
 import lombok.extern.java.Log;
 
+/**
+ * Clase donde se implementan los métodos del interfaz CarritoNegocio
+ * 
+ * 
+ * @author Arturo Montañez
+ * @version 1.0
+ */
 
 @Log
 public class CarritoNegocioImpl implements CarritoNegocio{
@@ -18,6 +25,11 @@ public class CarritoNegocioImpl implements CarritoNegocio{
 	private Dao<Producto> daoProducto = DaoFabrica.getDaoProducto();
 	private DaoFactura daoFactura = DaoFabrica.getDaoFactura();
 	
+	/**
+	 * Método donde se obtiene el listado de todos los productos
+	 * 
+	 * @return Set<Producto> 
+	 */
 	@Override
 	public Set<Producto> listadoProductos() {
 		
@@ -25,7 +37,13 @@ public class CarritoNegocioImpl implements CarritoNegocio{
 		log.info(productos.toString());
 		return productos;
 	}
-
+	
+	
+	/** Método donde se obtiene un producto buscandolo por su Id
+	 * 
+	 * @param id
+	 * @return Producto
+	 */
 	@Override
 	public Producto productoPorId(Long id) {
 
@@ -34,6 +52,13 @@ public class CarritoNegocioImpl implements CarritoNegocio{
 		return producto;	
 	}
 	
+	
+	/**
+	 * Método se guarda una factura
+	 * 
+	 * @param factura
+	 * @return Factura
+	 */
 	@Override
 	public Factura guardarFactura(Factura factura) {
 		String codigo = daoFactura.obtenerUltimoCodigo(); //20210001
