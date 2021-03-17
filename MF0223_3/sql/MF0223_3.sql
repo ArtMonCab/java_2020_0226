@@ -23,18 +23,18 @@ USE `mf0223_3`;
 
 LOCK TABLES `categorias` WRITE;
 /*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
-INSERT INTO `categorias` VALUES (1,'Primero'),(2,'Segundo'),(3,'Postre'),(4,'Entrante'),(5,'Aperitivo'),(6,'Merienda');
+INSERT INTO `categorias` VALUES (1,'Primero'),(2,'Segundo'),(3,'Postre'),(4,'Entrante'),(5,'Aperitivo'),(6,'Merienda'),(7,'Otros');
 /*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Dumping data for table `comidas`
+-- Dumping data for table `platos`
 --
 
-LOCK TABLES `comidas` WRITE;
-/*!40000 ALTER TABLE `comidas` DISABLE KEYS */;
-INSERT INTO `comidas` VALUES (1,'Patatas a la riojana',456,'Patatas, pimientos, chorizo, sal, ajo',0,1,1),(2,'Cuscus',345,'Semola de trigo, verduras, pollo ',0,1,5),(3,'Lentejas',567,'Lentejas, aceite, pimiento, cebolla, patata, zanahoria, chorizo, panceta',0,1,1),(4,'Pizza',456,'Masa de trigo,tomate, mozzarella, anchoas, orégano, alcaparras y aceite.',0,2,6),(5,'Chuleton ternera',987,'Chuleton ternera, aceite, sal',0,2,1),(6,'Sushi',345,'Pescado, arroz, algas',0,4,2),(7,'Ensalada verde',123,'Lechuga, tomate, cebolla, aceite, sal, aceitunas',1,1,1);
-/*!40000 ALTER TABLE `comidas` ENABLE KEYS */;
+LOCK TABLES `platos` WRITE;
+/*!40000 ALTER TABLE `platos` DISABLE KEYS */;
+INSERT INTO `platos` VALUES (1,'Patatas a la riojana',456,'Patatas, pimientos, chorizo, sal, ajo','Media',1,1),(2,'Cuscus',345,'Semola de trigo, verduras, pollo ','Baja',1,5),(3,'Lentejas',567,'Lentejas, aceite, pimiento, cebolla, patata, zanahoria, chorizo, panceta','Media',1,1),(4,'Pizza',456,'Masa de trigo,tomate, mozzarella, anchoas, orégano, alcaparras y aceite.','Baja',2,6),(5,'Chuleton ternera',987,'Chuleton ternera, aceite, sal','Media',2,1),(6,'Sushi',345,'Pescado, arroz, algas','Alta',4,2),(7,'Ensalada verde',123,'Lechuga, tomate, cebolla, aceite, sal, aceitunas','Alta',1,1);
+/*!40000 ALTER TABLE `platos` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -43,7 +43,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `procedencias` WRITE;
 /*!40000 ALTER TABLE `procedencias` DISABLE KEYS */;
-INSERT INTO `procedencias` VALUES (1,'Tradicional'),(2,'Asiatica'),(3,'Moderna'),(4,'Mexicana'),(5,'Arabe'),(6,'Italiana');
+INSERT INTO `procedencias` VALUES (1,'Tradicional'),(2,'Asiatica'),(3,'Moderna'),(4,'Mexicana'),(5,'Arabe'),(6,'Italiana'),(7,'Otros');
 /*!40000 ALTER TABLE `procedencias` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-03-17 10:45:37
+-- Dump completed on 2021-03-17 18:03:07
