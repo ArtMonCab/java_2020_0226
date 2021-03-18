@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
  * Pasa a la vista factura.jsp en el get
  * 
  * @author Arturo Montañez
- * @version
+ * @version 1.0
  */
 
 @WebServlet("/factura")

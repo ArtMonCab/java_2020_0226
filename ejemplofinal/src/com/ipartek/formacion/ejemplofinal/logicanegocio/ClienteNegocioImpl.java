@@ -10,7 +10,7 @@ import lombok.extern.java.Log;
  * Clase donde se implementan los métodos declaradas en la interfaz ClienteNegocio
  * 
  * @author Arturo Montañez
- * @version
+ * @version 1.0
  *
  */
 @Log
@@ -20,7 +20,7 @@ public class ClienteNegocioImpl implements ClienteNegocio {
 	/**
 	 * Método donde damos de alta un cliente.
 	 * 
-	 * @param  cliente
+	 * @param  cliente coge como parametro un cliente
 	 * @return Cliente
 	 */
 	@Override

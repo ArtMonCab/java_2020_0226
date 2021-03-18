@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.ipartek.formacion.ejemplofinal.accesodatos"},{"l":"com.ipartek.formacion.ejemplofinal.controladores"},{"l":"com.ipartek.formacion.ejemplofinal.entidades"},{"l":"com.ipartek.formacion.ejemplofinal.listener"},{"l":"com.ipartek.formacion.ejemplofinal.logicanegocio"}]

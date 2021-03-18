@@ -28,7 +28,7 @@ public class CarritoNegocioImpl implements CarritoNegocio{
 	/**
 	 * Método donde se obtiene el listado de todos los productos
 	 * 
-	 * @return Set<Producto> 
+	 * @return Devuelve una lista de productos 
 	 */
 	@Override
 	public Set<Producto> listadoProductos() {
@@ -41,7 +41,7 @@ public class CarritoNegocioImpl implements CarritoNegocio{
 	
 	/** Método donde se obtiene un producto buscandolo por su Id
 	 * 
-	 * @param id
+	 * @param  id coge como parametro el ID del producto
 	 * @return Producto
 	 */
 	@Override
@@ -56,7 +56,7 @@ public class CarritoNegocioImpl implements CarritoNegocio{
 	/**
 	 * Método se guarda una factura
 	 * 
-	 * @param factura
+	 * @param factura Coge como parametro la factura
 	 * @return Factura
 	 */
 	@Override

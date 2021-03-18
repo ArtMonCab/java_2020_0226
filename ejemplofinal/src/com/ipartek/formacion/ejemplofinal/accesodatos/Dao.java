@@ -6,7 +6,7 @@ import java.util.Set;
  * Interfaz donde se declaran los métodos con los datos
  * @author Arturo Montañez
  * @version 1.0
- * @param <T>
+ * @param <T> Es el objeto que le vamso a pasar al Dao
  */
 
 public interface Dao<T> {

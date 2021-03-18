@@ -25,10 +25,10 @@ public class LogicaNegocioException extends RuntimeException{
 	/**
 	 * Constructor LogicaNegocioException con parametros
 	 * 
-	 * @param message
-	 * @param cause
-	 * @param enableSuppression
-	 * @param writableStackTrace
+	 * @param message mensaje que le vamos a pasar
+	 * @param cause causa de la excepción
+	 * @param enableSuppression habilitar borrado
+	 * @param writableStackTrace Traza
 	 */
 	public LogicaNegocioException(String message, Throwable cause, boolean enableSuppression,
 			boolean writableStackTrace) {
@@ -38,8 +38,8 @@ public class LogicaNegocioException extends RuntimeException{
 	/**
 	 * Constructor LogicaNegocioException con parametros
 	 * 
-	 * @param message
-	 * @param cause
+	 * @param message Mensaje que le vamos a pasar
+	 * @param cause Causa de la excepción
 	 */
 	public LogicaNegocioException(String message, Throwable cause) {
 		super(message, cause);
@@ -48,7 +48,7 @@ public class LogicaNegocioException extends RuntimeException{
 	/**
 	 * Constructor LogicaNegocioException con parametros
 	 * 
-	 * @param message
+	 * @param message Mensaje que le vamso a pasar
 	 */
 	public LogicaNegocioException(String message) {
 		super(message);
@@ -57,7 +57,7 @@ public class LogicaNegocioException extends RuntimeException{
 	/**
 	 * Constructor LogicaNegocioException con parametros
 	 * 
-	 * @param cause
+	 * @param cause Causa de la excepción
 	 */
 	public LogicaNegocioException(Throwable cause) {
 		super(cause);

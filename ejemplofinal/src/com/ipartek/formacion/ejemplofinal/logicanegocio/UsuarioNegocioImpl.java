@@ -17,7 +17,7 @@ public class UsuarioNegocioImpl implements UsuarioNegocio{
 	/**
 	 * Método que usamos para validar al usuario, Devuelve true o false.
 	 * 
-	 * @param usuario
+	 * @param usuario lo pasamos como parametro
 	 * @return boolean
 	 */
 	@Override

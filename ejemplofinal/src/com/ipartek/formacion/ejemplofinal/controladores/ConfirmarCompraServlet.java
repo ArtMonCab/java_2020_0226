@@ -15,7 +15,7 @@ import com.ipartek.formacion.ejemplofinal.entidades.Usuario;
  * Controlador que se encarga de finalizar la compra de un cliente y crear la factura mediante get.
  * 
  * @author Arturo Montañez
- * @version
+ * @version 1.0
  */ 
 
 @WebServlet("/confirmar-compra")

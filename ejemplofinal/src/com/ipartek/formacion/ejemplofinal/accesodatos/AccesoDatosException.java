@@ -22,10 +22,10 @@ public class AccesoDatosException extends RuntimeException {
 	/**
 	 * Constructor AccesoDatosException con parametros
 	 * 
-	 * @param message
-	 * @param cause
-	 * @param enableSuppression
-	 * @param writableStackTrace
+	 * @param message Mensaje que le vamos a pasar
+	 * @param cause Causa de la excepción
+	 * @param enableSuppression Habilitar borrado
+	 * @param writableStackTrace Escribir traza
 	 */
 	public AccesoDatosException(String message, Throwable cause, boolean enableSuppression,
 			boolean writableStackTrace) {
@@ -35,8 +35,8 @@ public class AccesoDatosException extends RuntimeException {
 	/**
 	 * Constructor AccesoDatosException con parametros
 	 * 
-	 * @param message
-	 * @param cause
+	 * @param message Mensaje que le vamos a pasar
+	 * @param cause Causa de la excepción
 	 */
 	public AccesoDatosException(String message, Throwable cause) {
 		super(message, cause);
@@ -45,7 +45,7 @@ public class AccesoDatosException extends RuntimeException {
 	/**
 	 * Constructor AccedoDatosException con parametros
 	 * 
-	 * @param message
+	 * @param message Mensaje 	que le vamso a pasar
 	 */
 	public AccesoDatosException(String message) {
 		super(message);
@@ -54,7 +54,7 @@ public class AccesoDatosException extends RuntimeException {
 	/**
 	 * Constructor AccesoDatosException con parametros
 	 * 
-	 * @param cause
+	 * @param cause Causa de la Excepción
 	 */
 	public AccesoDatosException(Throwable cause) {
 		super(cause);

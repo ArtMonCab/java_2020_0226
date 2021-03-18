@@ -6,7 +6,7 @@ import com.ipartek.formacion.ejemplofinal.entidades.Factura;
  * Interfaz donde se añade al interfaz Dao el método para obtener el último codigo usado.
  * 
  * @author Arturo Montañez
- * @version
+ * @version 1.0
  */
 
 

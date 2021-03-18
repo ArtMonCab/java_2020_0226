@@ -20,7 +20,7 @@ public class SesionListener implements HttpSessionListener {
 	/**
 	 * Método que al iniciar una sesión, asigna un carrito al usuario.
 	 * 
-	 * @param se
+	 * @param se Coge como parametro la sesión
 	 */
 
 	@Override
@@ -32,7 +32,7 @@ public class SesionListener implements HttpSessionListener {
 
 	/**
 	 * Método que cierra la sesión
-	 * @param se
+	 * @param se Coge como parametro la sesión
 	 */
 
 	@Override

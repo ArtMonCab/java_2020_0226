@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
  * Vuelve a la pagina inicial.
  * 
  * @author Arturo Montañez
- * @version
+ * @version 1.0
  */
 @WebServlet("/logout")
 public class LogoutServlet extends HttpServlet {
