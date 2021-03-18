@@ -7,7 +7,7 @@ import java.util.Set;
  * 
  * @author Arturo Montañez
  * @version 1.0
- * @param <T> Es el objeto que le vamso a pasar al Dao
+ * @param <T> Es el objeto que le vamos a pasar al Dao
  */
 public interface Dao<T> {
 	

@@ -1,6 +1,8 @@
 package com.ipartek.formacion.mf0223_3.accesodatos;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -11,9 +13,11 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+
 import com.ipartek.formacion.mf0223_3.entidades.Categoria;
 import com.ipartek.formacion.mf0223_3.entidades.Origen;
 import com.ipartek.formacion.mf0223_3.entidades.Plato;
+//https://javajhon.blogspot.com/2019/10/jsp-cbo.html
 
 /**
  * Implementa los métodos de Dao para Plato
@@ -28,6 +32,7 @@ public class PlatoDaoMySql implements Dao<Plato>{
 			+ "from platos p \r\n"
 			+ "left join categorias c on p.categorias_id = c.id\r\n"
 			+ "left join origenes o on p.origenes_id = o.id";
+	private static final String SQL_INSERT = "INSERT INTO platos (nombre_plato, calorias, elaboracion, dificultad) VALUES (?,?,?,?)";
 
 	private DataSource dataSource = null;
 	
@@ -84,9 +89,43 @@ public class PlatoDaoMySql implements Dao<Plato>{
 	 */
 	@Override
 	public Plato insertar(Plato plato) {
-		return Dao.super.insertar(plato);
+		try (Connection con = Config.dataSource.getConnection()) {
+			con.setAutoCommit(false);
+			
+			return insertarImpl(plato, con);
+		} catch (Exception e) {
+			throw new AccesoDatosException("Error al insertar el plato " + plato, e);
+		}
 	}
 	
 	
+	private Plato insertarImpl(Plato plato, Connection con) throws SQLException {
+		try (PreparedStatement ps = con.prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS)){
+		
+			ps.setString(1, plato.getNombre_plato());
+			ps.setInt(2, plato.getCalorias());
+			ps.setString(3, plato.getElaboracion());
+			ps.setString(4, plato.getDificultad());
 
+			int num = ps.executeUpdate();
+
+			if (num != 1) {
+				throw new AccesoDatosException("Ha habido una incidencia en la inserción del plato: " + num);
+			}
+
+			ResultSet rs = ps.getGeneratedKeys();
+
+			rs.next();
+
+			plato.setId(rs.getLong(1));
+
+			
+			con.commit();
+
+			return plato;
+		} catch (Exception e) {
+			con.rollback();
+			throw new AccesoDatosException("Se ha hecho rollback", e);
+		}
+	}
 }

@@ -20,7 +20,7 @@ import com.ipartek.formacion.mf0223_3.entidades.Origen;
  */
 
 public class OrigenDaoMySql implements Dao<Origen> {
-	private static final String SQL_SELECT = "select id, nombre_origen FROM origenes";
+	private static final String SQL_SELECT = "SELECT id, nombre_origen FROM origenes";
 
 	private DataSource dataSource = null;
 	

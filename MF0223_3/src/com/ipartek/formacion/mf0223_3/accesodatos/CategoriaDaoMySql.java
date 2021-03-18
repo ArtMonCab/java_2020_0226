@@ -21,7 +21,7 @@ import com.ipartek.formacion.mf0223_3.entidades.Categoria;
  */
 public class CategoriaDaoMySql implements Dao<Categoria> {
 
-	private static final String SQL_SELECT = "select id, nombre_categoria FROM categorias";
+	private static final String SQL_SELECT = "SELECT id, nombre_categoria FROM categorias";
 
 	private DataSource dataSource = null;
 	
@@ -40,7 +40,7 @@ public class CategoriaDaoMySql implements Dao<Categoria> {
 	
 	 /** Obtiene todas las categorias de la base de datos
 	 * 
-	 * @returncategorias
+	 * @return categorias
 	 */
 	@Override
 	public Iterable<Categoria> obtenerTodos() {
