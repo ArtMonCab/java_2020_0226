@@ -12,17 +12,17 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import com.ipartek.formacion.mf0223_3.entidades.Categoria;
-import com.ipartek.formacion.mf0223_3.entidades.Comida;
+import com.ipartek.formacion.mf0223_3.entidades.Plato;
 import com.ipartek.formacion.mf0223_3.entidades.Procedencia;
 
 /**
- * Implementa los mÃ©todos de Dao para comida
+ * Implementa los métodos de Dao para comida
  * 
- * @author Arturo MontaÃ±ez
+ * @author Arturo Montañez
  * @version 1.0
  */
 
-public class ComidaDaoMySql implements Dao<Comida>{
+public class ComidaDaoMySql implements Dao<Plato>{
 	
 	private static final String SQL_SELECT = "select p.id, p.nombre_plato, p.calorias, p.elaboracion, p.dificultad, c.id, c.nombre_categoria, p.id, p.nombre_procedencia \r\n"
 			+ "from platos p \r\n"
@@ -47,11 +47,11 @@ public class ComidaDaoMySql implements Dao<Comida>{
 	 * @return comidas
 	 */
 	@Override
-	public Iterable<Comida> obtenerTodos() {
+	public Iterable<Plato> obtenerTodos() {
 		try(Connection con = dataSource.getConnection();
 				Statement st = con.createStatement();
 				ResultSet rs = st.executeQuery(SQL_SELECT)){
-			ArrayList<Comida> comidas = new ArrayList<>();
+			ArrayList<Plato> comidas = new ArrayList<>();
 			Categoria categoria;
 			Procedencia procedencia;
 			
@@ -74,9 +74,9 @@ public class ComidaDaoMySql implements Dao<Comida>{
 	 * @return Comida
 	 */
 	@Override
-	public Comida insertar(Comida comida) {
+	public Plato insertar(Plato comida) {
 		// TODO Auto-generated method stub
-		return Dao.super.insertar(objeto);
+		return Dao.super.insertar(comida);
 	}
 	
 	

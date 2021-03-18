@@ -9,15 +9,15 @@ import lombok.NoArgsConstructor;
 /**
  * Representa las comidas
  * 
- * @author Arturo MontaÃ±ez
+ * @author Arturo Montañez
  * @version 1.0
  */
 
 @Data @NoArgsConstructor @AllArgsConstructor
-public class Comida {
+public class Plato {
 	
 	private long id;
-	private String plato;
+	private String nombre_plato;
 	private int calorias;
 	private String elaboracion;
 	private String dificultad;

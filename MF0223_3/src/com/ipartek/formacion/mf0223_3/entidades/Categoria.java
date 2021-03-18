@@ -11,15 +11,15 @@ import lombok.NoArgsConstructor;
 /**
  * Representa las categorias
  * 
- * @author Arturo MontaÃ±ez
+ * @author Arturo Montañez
  * @version 1.0
  */
 
 @Data @NoArgsConstructor @AllArgsConstructor
 public class Categoria {
 	private long id;
-	private String nombre;
+	private String nombre_categoria;
 	
-	private Set<Comida> comida;
+	private Set<Plato> comida;
 	
 }

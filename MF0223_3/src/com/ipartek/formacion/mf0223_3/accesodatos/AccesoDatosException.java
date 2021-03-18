@@ -3,7 +3,7 @@ package com.ipartek.formacion.mf0223_3.accesodatos;
 /**
  * Captura las excepciones y lanza el mensaje
  * 
- * @author Arturo MontaÃ±ez
+ * @author Arturo Montañez
  * @version 1.0
  */
 public class AccesoDatosException extends RuntimeException{
@@ -23,10 +23,10 @@ public class AccesoDatosException extends RuntimeException{
 	/**
 	 * Constructor AccesoDatosException con parametros
 	 * 
-	 * @param message
-	 * @param cause
-	 * @param enableSuppression
-	 * @param writableStackTrace
+	 * @param message Mensaje que se va a enviar
+	 * @param cause Causa de la excepción
+	 * @param enableSuppression Habilitar borrado
+	 * @param writableStackTrace Permiso de escritura
 	 */
 	public AccesoDatosException(String message, Throwable cause, boolean enableSuppression,
 			boolean writableStackTrace) {
@@ -36,8 +36,8 @@ public class AccesoDatosException extends RuntimeException{
 	/**
 	 * Constructor AccesoDatosException con parametros
 	 * 
-	 * @param message
-	 * @param cause
+	 * @param message MEnsaje que se va a enviar
+	 * @param cause Causa de la excepción
 	 */
 	public AccesoDatosException(String message, Throwable cause) {
 		super(message, cause);
@@ -46,7 +46,7 @@ public class AccesoDatosException extends RuntimeException{
 	/**
 	 * Constructor AccedoDatosException con parametros
 	 * 
-	 * @param message
+	 * @param message mensaje que se va a enviar
 	 */
 	public AccesoDatosException(String message) {
 		super(message);
@@ -55,7 +55,7 @@ public class AccesoDatosException extends RuntimeException{
 	/**
 	 * Constructor AccesoDatosException con parametros
 	 * 
-	 * @param cause
+	 * @param cause Causa de la excepción
 	 */
 	public AccesoDatosException(Throwable cause) {
 		super(cause);
