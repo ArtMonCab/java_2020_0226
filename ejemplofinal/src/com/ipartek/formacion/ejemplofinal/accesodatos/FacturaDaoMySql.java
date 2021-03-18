@@ -61,7 +61,7 @@ public class FacturaDaoMySql implements DaoFactura {
 			factura.setId(rs.getLong(1));
 
 			try (PreparedStatement pst = con.prepareStatement(SQL_INSERT_DETALLE, Statement.RETURN_GENERATED_KEYS)){
-				
+			//Meto la parte del detalle	
 				pst.setLong(1, factura.getId());
 				
 				for(DetalleFactura detalle: factura.getDetallesFactura()) {
