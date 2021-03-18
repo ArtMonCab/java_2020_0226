@@ -23,6 +23,6 @@ public class Plato {
 	private String dificultad;
 	
 	private Categoria categoria;
-	private Origen procedencia;
+	private Origen origen;
 
 }

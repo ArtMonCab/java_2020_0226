@@ -1,7 +1,48 @@
-3<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <%@ include file="/WEB-INF/vistas/includes/cabecera.jsp" %>
 
-<H1>AGREGAR</H1>
+<form action="agregar" method="post">
+  <h2>Nuevo plato</h2>
+  <div class="form-row">
+    <div class="form-group col-md-10">
+      <label for="plato">Plato</label>
+      <input type="text" class="form-control" id="plato" name="plato">
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="calorias">Calorias</label>
+      <input type="text" class="form-control" id="calorias" name="calorias">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="elaboracion">Elaboración</label>
+    <textarea class="form-control" id="elaboracion" name="elaboracion" rows="10"></textarea>
+  </div>
+
+  <div class="form-row">
+
+    <div class="form-group col-md-4">
+      <label for="dificultad">Dificultad</label>
+      <select id="dificultad" class="form-control" name="dificultad">
+        <option selected>Choose...</option>
+        <option>...</option>
+      </select>
+    </div>
+        <div class="form-group col-md-6">
+      <label for="categoria">Categoria</label>
+      <input type="text" class="form-control" id="categoria" name="categoria">
+    </div>
+    <div class="form-group col-md-2">
+      <label for="origen">Origen</label>
+      <input type="text" class="form-control" id="origen" name="origen"">
+    </div>
+  </div>
+  <div class="form-group">
+  	<button type="submit" class="btn btn-primary">Agregar plato</button>
+  </div>
+  
+</form>
+ 
 <%@ include file="/WEB-INF/vistas/includes/pie.jsp" %>

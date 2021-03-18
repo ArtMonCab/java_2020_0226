@@ -3,7 +3,9 @@
 
 <%@ include file="/WEB-INF/vistas/includes/cabecera.jsp" %>
 
+<form action="listado" method="post">
 <h2>Listado de platos</h2>
+
 <div class="table-responsive">
 	<table class="table table-striped table-bordered table-hover table-sm">
 		<thead>
@@ -25,15 +27,21 @@
 					<td>${p.calorias}</td>
 					<td>${p.elaboracion}</td>
 					<td>${p.dificultad}</td>
-					<td>Categoria</td>
-					<td>Origen</td>
+					<td>${p.categoria.nombre_categoria}</td>
+					<td>${p.origen.nombre_origen}</td>
 					
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 	
-
+  <div class="form-inline">
+    <div class="col-auto my-1">
+    	<button type="submit" class="btn btn-primary">Agregar plato</button>
+    </div>
+</div>
+	
+</form>
 
 </div>
 <%@ include file="/WEB-INF/vistas/includes/pie.jsp" %>

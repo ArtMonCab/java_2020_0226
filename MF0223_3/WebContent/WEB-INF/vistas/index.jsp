@@ -16,7 +16,7 @@
 			<button type="submit" class="btn btn-primary" id="cargar" name="cargar">Cargar base de datos</button>
 		</div>
 		<div class="offset-sm-2 col-4">
-			<button type="submit" class="btn btn-primary" id="listado" name="listado">Ir al listado</button>
+			<a href="listado" class="btn btn-primary" role="button" aria-pressed="true">Ir al listado de platos</a>
 		</div>
 	</div>
  
