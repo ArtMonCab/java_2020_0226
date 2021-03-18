@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `mf0223_3` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `mf0223_3`;
 -- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
 --
 -- Host: localhost    Database: mf0223_3
@@ -18,6 +16,20 @@ USE `mf0223_3`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `categorias`
+--
+
+DROP TABLE IF EXISTS `categorias`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `categorias` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `nombre_categoria` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `categorias`
 --
 
@@ -26,6 +38,53 @@ LOCK TABLES `categorias` WRITE;
 INSERT INTO `categorias` VALUES (1,'Primero'),(2,'Segundo'),(3,'Postre'),(4,'Entrante'),(5,'Aperitivo'),(6,'Merienda'),(7,'Otros');
 /*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `origenes`
+--
+
+DROP TABLE IF EXISTS `origenes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `origenes` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `nombre_origen` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `origenes`
+--
+
+LOCK TABLES `origenes` WRITE;
+/*!40000 ALTER TABLE `origenes` DISABLE KEYS */;
+INSERT INTO `origenes` VALUES (1,'Tradicional'),(2,'Asiatica'),(3,'Moderna'),(4,'Mexicana'),(5,'Arabe'),(6,'Italiana'),(7,'Otros');
+/*!40000 ALTER TABLE `origenes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `platos`
+--
+
+DROP TABLE IF EXISTS `platos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `platos` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `nombre_plato` varchar(100) NOT NULL,
+  `calorias` int NOT NULL,
+  `elaboracion` text NOT NULL,
+  `dificultad` enum('Alta','Media','Baja') NOT NULL,
+  `categorias_id` bigint DEFAULT NULL,
+  `origenes_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_comidas_categorias_idx` (`categorias_id`),
+  KEY `fk_comidas_procedencias1_idx` (`origenes_id`),
+  CONSTRAINT `fk_comidas_categorias` FOREIGN KEY (`categorias_id`) REFERENCES `categorias` (`id`),
+  CONSTRAINT `fk_comidas_procedencias1` FOREIGN KEY (`origenes_id`) REFERENCES `origenes` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `platos`
@@ -38,14 +97,12 @@ INSERT INTO `platos` VALUES (1,'Patatas a la riojana',456,'Patatas, pimientos, c
 UNLOCK TABLES;
 
 --
--- Dumping data for table `procedencias`
+-- Dumping events for database 'mf0223_3'
 --
 
-LOCK TABLES `procedencias` WRITE;
-/*!40000 ALTER TABLE `procedencias` DISABLE KEYS */;
-INSERT INTO `procedencias` VALUES (1,'Tradicional'),(2,'Asiatica'),(3,'Moderna'),(4,'Mexicana'),(5,'Arabe'),(6,'Italiana'),(7,'Otros');
-/*!40000 ALTER TABLE `procedencias` ENABLE KEYS */;
-UNLOCK TABLES;
+--
+-- Dumping routines for database 'mf0223_3'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -56,4 +113,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-03-17 18:03:07
+-- Dump completed on 2021-03-18 11:57:23

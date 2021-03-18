@@ -13,10 +13,10 @@ import lombok.NoArgsConstructor;
  * @version 1.0
  */
 @Data @NoArgsConstructor @AllArgsConstructor
-public class Procedencia {
+public class Origen {
 
 	private long id;
-	private String nombre_procedencia;
+	private String nombre_origen;
 	
 	private Set<Plato> comida;
 }

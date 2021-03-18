@@ -12,8 +12,8 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import com.ipartek.formacion.mf0223_3.entidades.Categoria;
+import com.ipartek.formacion.mf0223_3.entidades.Origen;
 import com.ipartek.formacion.mf0223_3.entidades.Plato;
-import com.ipartek.formacion.mf0223_3.entidades.Procedencia;
 
 /**
  * Implementa los métodos de Dao para comida
@@ -22,16 +22,16 @@ import com.ipartek.formacion.mf0223_3.entidades.Procedencia;
  * @version 1.0
  */
 
-public class ComidaDaoMySql implements Dao<Plato>{
+public class PlatoDaoMySql implements Dao<Plato>{
 	
-	private static final String SQL_SELECT = "select p.id, p.nombre_plato, p.calorias, p.elaboracion, p.dificultad, c.id, c.nombre_categoria, p.id, p.nombre_procedencia \r\n"
+	private static final String SQL_SELECT = "select p.id, p.nombre_plato, p.calorias, p.elaboracion, p.dificultad, c.id, c.nombre_categoria, p.id, o.nombre_origen \r\n"
 			+ "from platos p \r\n"
 			+ "left join categorias c on p.categorias_id = c.id\r\n"
-			+ "left join procedencias p on p.procedencias_id = p.id";
+			+ "left join procedencias o on o.origenes_id = p.id";
 
 	private DataSource dataSource = null;
 	
-	public ComidaDaoMySql() {
+	public PlatoDaoMySql() {
 		try {
 			InitialContext initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
@@ -44,23 +44,28 @@ public class ComidaDaoMySql implements Dao<Plato>{
 	/**
 	 * Obtiene todos los platos de la base de datos
 	 * 
-	 * @return comidas
+	 * @return platos 
 	 */
 	@Override
 	public Iterable<Plato> obtenerTodos() {
 		try(Connection con = dataSource.getConnection();
 				Statement st = con.createStatement();
 				ResultSet rs = st.executeQuery(SQL_SELECT)){
-			ArrayList<Plato> comidas = new ArrayList<>();
+			ArrayList<Plato> platos = new ArrayList<>();
 			Categoria categoria;
-			Procedencia procedencia;
+			Origen origen;
+			Plato plato;
 			
 			while (rs.next()) {
-				procedencia = new Procedencia(rs.getLong("p.id"),rs.getString("p.procedencia"), null);
+				origen = new Origen(rs.getLong("o.id"), rs.getString("o.nombre_origen"), null);
+				
+				categoria = new Categoria(rs.getLong("c.id"), rs.getString("c.nombre_categoria"), null);
+				
+				plato = new Plato(rs.getLong("p.id"), rs.getString("p.nombre_plato"), rs.getInt("p.calorias"), rs.getString("p.elaboracion"), rs.getString("p.dificultad"), categoria, origen);
 				
 			}
 			
-			return comidas;
+			return platos;
 		}catch (SQLException e) {
 			throw new AccesoDatosException("No se ha podido obtener todos los registros de comidas", e);
 		}catch (Exception e) {
@@ -71,12 +76,11 @@ public class ComidaDaoMySql implements Dao<Plato>{
 	/**
 	 * Inserta un nuevo plato en la base de datos
 	 * @param comida
-	 * @return Comida
+	 * @return Plato 
 	 */
 	@Override
-	public Plato insertar(Plato comida) {
-		// TODO Auto-generated method stub
-		return Dao.super.insertar(comida);
+	public Plato insertar(Plato plato) {
+		return Dao.super.insertar(plato);
 	}
 	
 	
