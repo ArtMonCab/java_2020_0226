@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/mf0223_3">
+	<Resource type="javax.sql.DataSource" auth="Container"
+		name="jdbc/mf0223_3" driverClassName="com.mysql.cj.jdbc.Driver"
+		url="jdbc:mysql://localhost:3306/mf0223_3?serverTimezone=UTC" username="root"
+		password="" maxTotal="100" maxIdle="30" maxWaitMillis="10000"
+		validationQuery="SELECT 1 FROM dual" />
+</Context>

@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Representa las comidas
+ * Representa los platos
  * 
  * @author Arturo Montañez
  * @version 1.0

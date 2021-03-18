@@ -24,13 +24,16 @@ import com.ipartek.formacion.mf0223_3.entidades.Plato;
 
 public class PlatoDaoMySql implements Dao<Plato>{
 	
-	private static final String SQL_SELECT = "select p.id, p.nombre_plato, p.calorias, p.elaboracion, p.dificultad, c.id, c.nombre_categoria, p.id, o.nombre_origen \r\n"
+	private static final String SQL_SELECT = "select p.id, p.nombre_plato, p.calorias, p.elaboracion, p.dificultad, c.id, c.nombre_categoria, o.id, o.nombre_origen \r\n"
 			+ "from platos p \r\n"
 			+ "left join categorias c on p.categorias_id = c.id\r\n"
-			+ "left join procedencias o on o.origenes_id = p.id";
+			+ "left join origenes o on p.origenes_id = o.id";
 
 	private DataSource dataSource = null;
 	
+	/**
+	 * Genera una instancia de la clase
+	 */
 	public PlatoDaoMySql() {
 		try {
 			InitialContext initCtx = new InitialContext();
@@ -63,6 +66,7 @@ public class PlatoDaoMySql implements Dao<Plato>{
 				
 				plato = new Plato(rs.getLong("p.id"), rs.getString("p.nombre_plato"), rs.getInt("p.calorias"), rs.getString("p.elaboracion"), rs.getString("p.dificultad"), categoria, origen);
 				
+				platos.add(plato);
 			}
 			
 			return platos;

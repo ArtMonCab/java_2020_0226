@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Representa las procedencias
+ * Representa los origenes
  * 
  * @author Arturo Montañez
  * @version 1.0
