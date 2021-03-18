@@ -25,13 +25,14 @@
 
     <div class="form-group col-md-4">
       <label for="dificultad">Dificultad</label>
-      <select id="dificultad" class="form-control" name="dificultad">
-        <option selected>Choose...</option>
-        <option>...</option>
-      </select>
+    	<select class="custom-select mr-sm-2" id="dificultad" name=dificultad">
+        	<option value="1">Facil</option>
+        	<option value="2">Medio</option>
+        	<option value="3">Dificil</option>
+     	 </select>
     </div>
         <div class="form-group col-md-6">
-      <label for="categoria">Categoria</label>
+      <label for="categoria">Categoría</label>
       <input type="text" class="form-control" id="categoria" name="categoria">
     </div>
     <div class="form-group col-md-2">

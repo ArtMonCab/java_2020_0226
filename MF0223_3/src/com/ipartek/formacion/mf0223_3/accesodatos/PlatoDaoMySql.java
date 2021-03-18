@@ -16,7 +16,7 @@ import com.ipartek.formacion.mf0223_3.entidades.Origen;
 import com.ipartek.formacion.mf0223_3.entidades.Plato;
 
 /**
- * Implementa los métodos de Dao para comida
+ * Implementa los métodos de Dao para Plato
  * 
  * @author Arturo Montañez
  * @version 1.0
@@ -71,7 +71,7 @@ public class PlatoDaoMySql implements Dao<Plato>{
 			
 			return platos;
 		}catch (SQLException e) {
-			throw new AccesoDatosException("No se ha podido obtener todos los registros de comidas", e);
+			throw new AccesoDatosException("No se ha podido obtener todos los registros de platos", e);
 		}catch (Exception e) {
 			throw new AccesoDatosException("ERROR NO ESPERADO: No se ha podido obtener todos los registros de comidas", e);
 		}
