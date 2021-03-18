@@ -22,7 +22,7 @@
     <div class="col-auto my-1">
     	<button type="submit" class="btn btn-primary">Buscar</button>
     </div>
-  </div>
+</div>
 
 <h2>Listado de libros</h2>
 <div class="table-responsive">
