@@ -1,6 +1,5 @@
 package com.ipartek.formacion.mf0223_3.accesodatos;
 
-import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,9 +19,9 @@ import com.ipartek.formacion.mf0223_3.entidades.Plato;
 //https://javajhon.blogspot.com/2019/10/jsp-cbo.html
 
 /**
- * Implementa los métodos de Dao para Plato
+ * Implementa los mï¿½todos de Dao para Plato
  * 
- * @author Arturo Montañez
+ * @author Arturo MontaÃ±ez
  * @version 1.0
  */
 
@@ -110,7 +109,7 @@ public class PlatoDaoMySql implements Dao<Plato>{
 			int num = ps.executeUpdate();
 
 			if (num != 1) {
-				throw new AccesoDatosException("Ha habido una incidencia en la inserción del plato: " + num);
+				throw new AccesoDatosException("Ha habido una incidencia en la inserciÃ³n del plato: " + num);
 			}
 
 			ResultSet rs = ps.getGeneratedKeys();

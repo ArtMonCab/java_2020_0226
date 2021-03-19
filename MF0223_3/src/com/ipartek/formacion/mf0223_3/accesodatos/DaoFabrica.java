@@ -7,7 +7,7 @@ import com.ipartek.formacion.mf0223_3.entidades.Plato;
 /**
  * Selecciona que acceso a datos vamos a usar
  * 
- * @author Arturo Montañez
+ * @author Arturo MontaÃ±ez
  *
  */
 public class DaoFabrica {
@@ -19,31 +19,31 @@ public class DaoFabrica {
 	
 	
 	/**
-	 * Método que devuelve el Dao del plato
+	 * Metodo que devuelve el Dao del plato
 	 * 
 	 * @return the daoplato
 	 */
-	public static Dao<Plato> getDaoplato() {
+	public static Dao<Plato> getDaoPlato() {
 		return daoPlato;
 	}
 	
 	
 	/**
-	 * Método que devuelve el Dao de la categoria
+	 * Metodo que devuelve el Dao de la categoria
 	 * 
 	 * @return the daocategoria
 	 */
 	
-	public static Dao<Categoria> getDaocategoria() {
+	public static Dao<Categoria> getDaoCategoria() {
 		return daoCategoria;
 	}
 	
 	
 	/**
-	 * Método que devuelve el Dao del origen
+	 * Metodo que devuelve el Dao del origen
 	 * @return the daoorigen
 	 */
-	public static Dao<Origen> getDaoorigen() {
+	public static Dao<Origen> getDaoOrigen() {
 		return daoOrigen;
 	}
 	

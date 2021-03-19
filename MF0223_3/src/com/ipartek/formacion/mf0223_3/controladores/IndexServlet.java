@@ -37,7 +37,7 @@ public class IndexServlet extends HttpServlet {
 	}
 
 
-	//En el Post cojo el fichero donde está la copia de la base de datos que quiero cargar.
+	//En el Post cojo el fichero donde estï¿½ la copia de la base de datos que quiero cargar.
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
@@ -69,7 +69,7 @@ public class IndexServlet extends HttpServlet {
 			if(procesoCompletado == 0) {
 		 		response.sendRedirect(request.getContextPath() + "/listado");
 			}else {
-				System.out.println("Ha habido algún error");
+				System.out.println("Ha habido algun error");
 				doGet(request, response);
 			}
 		} catch (InterruptedException e) {
