@@ -53,6 +53,7 @@ public class AgregarServlet extends HttpServlet {
 		int calorias = Integer.parseInt(request.getParameter("calorias"));
 		String elaboracion = request.getParameter("elaboracion");
 		String dificultad = request.getParameter("dificultad");
+		Object idCategoria = request.getParameter("categorias");
 		
 		Plato plato = new Plato(1L, nombrePlato, calorias, elaboracion, dificultad, null, null);
 		
