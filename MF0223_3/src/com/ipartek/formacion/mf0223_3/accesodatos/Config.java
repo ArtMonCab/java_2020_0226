@@ -13,7 +13,7 @@ import javax.sql.DataSource;
  */
 
 class Config {
-	private static final String JDBC_SUPERMERCADO = "jdbc/supermercado";
+	private static final String JDBC_MF0233_3 = "jdbc/mf0223_3";
 
 	private Config() {}
 	
@@ -23,9 +23,9 @@ class Config {
 		try {
 			InitialContext initCtx = new InitialContext();
 			Context envCtx = (Context) initCtx.lookup("java:comp/env");
-			dataSource = (DataSource) envCtx.lookup(JDBC_SUPERMERCADO);
+			dataSource = (DataSource) envCtx.lookup(JDBC_MF0233_3);
 		} catch (NamingException e) {
-			throw new AccesoDatosException("No se ha encontrado el JNDI de supermercado", e);
+			throw new AccesoDatosException("No se ha encontrado el JNDI de MF0233_3", e);
 		}
 	}
 }
