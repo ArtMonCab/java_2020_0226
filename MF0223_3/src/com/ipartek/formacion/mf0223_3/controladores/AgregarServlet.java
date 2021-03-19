@@ -13,7 +13,7 @@ import com.ipartek.formacion.mf0223_3.entidades.Plato;
 /**
  * Controlador que se hace agrega un plato a la base de datod
  * 
- * @author Arturo Montanez
+ * @author Arturo Montañez
  * @version 1.0
  */
 @WebServlet(name = "agregar", urlPatterns = { "/agregar" })

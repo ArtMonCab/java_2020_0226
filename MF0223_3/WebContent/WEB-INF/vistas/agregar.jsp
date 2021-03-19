@@ -28,19 +28,27 @@
   	<div class="form-row">	
     	<div class="form-group col-md-4">
       		<label for="dificultad">Dificultad</label>
-    		<select class="custom-select mr-sm-2" id="dificultad" name=dificultad">
+    		<select class="custom-select mr-sm-2" id="dificultad" name="dificultad">
         		<option value="1">Facil</option>
         		<option value="2">Medio</option>
         		<option value="3">Dificil</option>
      	 	</select>
     	</div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-4">
       		<label for="categoria">Categoría</label>
-      		<input type="text" class="form-control" id="categoria" name="categoria">
+    		<select class="custom-select mr-sm-2" id="categoria" name="categoria">
+                    <c:forEach var="c" items="${categorias}">
+                        <option value="${c[0]}">${c[1]}</option>
+                    </c:forEach>
+     	 	</select>
     	</div>
-    	<div class="form-group col-md-2">
+    	<div class="form-group col-md-4">
       		<label for="origen">Origen</label>
-      		<input type="text" class="form-control" id="origen" name="origen"">
+    		<select class="custom-select mr-sm-2" id="origen" name="origen">
+                    <c:forEach var="o" items="${origenes}">
+                        <option value="${o[0]}">${o[1]}</option>
+                    </c:forEach>
+     	 	</select>
     	</div>
   	</div>
   	
