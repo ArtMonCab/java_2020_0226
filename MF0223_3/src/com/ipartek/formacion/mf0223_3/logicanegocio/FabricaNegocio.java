@@ -10,6 +10,8 @@ package com.ipartek.formacion.mf0223_3.logicanegocio;
 public class FabricaNegocio {
 	
 	private static PlatoNegocio platoNegocio = new PlatoNegocioImpl();
+	private static CategoriaNegocio categoriaNegocio = new CategoriaNegocioImpl();
+	private static OrigenNegocio origenNegocio = new OrigenNegocioImpl();
 	
 	/**
 	 * Método para obtener platoNegocio
@@ -20,4 +22,21 @@ public class FabricaNegocio {
 		return platoNegocio;
 	}
 
+	/**
+	 * Método para obtener categoriaNegocio
+	 * 
+	 * @return platoNegocio
+	 */
+	public static CategoriaNegocio getCategoriaNegocio() {
+		return categoriaNegocio;
+	}
+	
+	/**
+	 * Método para obtener origenNegocio
+	 * 
+	 * @return platoNegocio
+	 */
+	public static OrigenNegocio getOrigenNegocio() {
+		return origenNegocio;
+	}
 }

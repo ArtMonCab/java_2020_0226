@@ -38,7 +38,7 @@
       		<label for="categoria">Categoría</label>
     		<select class="custom-select mr-sm-2" id="categoria" name="categoria">
                     <c:forEach var="c" items="${categorias}">
-                        <option value="${c[0]}">${c[1]}</option>
+                        <option value="${c.id}">${c.nombre_categoria}</option>
                     </c:forEach>
      	 	</select>
     	</div>
@@ -46,7 +46,7 @@
       		<label for="origen">Origen</label>
     		<select class="custom-select mr-sm-2" id="origen" name="origen">
                     <c:forEach var="o" items="${origenes}">
-                        <option value="${o[0]}">${o[1]}</option>
+                        <option value="${o.id}">${o.nombre_origen}</option>
                     </c:forEach>
      	 	</select>
     	</div>
