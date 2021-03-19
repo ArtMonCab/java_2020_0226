@@ -1,5 +1,7 @@
 package com.ipartek.formacion.mf0223_3.logicanegocio;
 
+import java.util.Set;
+
 import com.ipartek.formacion.mf0223_3.entidades.Plato;
 
 /**
@@ -11,5 +13,7 @@ import com.ipartek.formacion.mf0223_3.entidades.Plato;
 
 public interface PlatoNegocio {
 
+	Iterable<Plato> listadoPlatos();
+	
 	Plato agregarPlato(Plato plato);
 }

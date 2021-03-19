@@ -13,6 +13,6 @@ import com.ipartek.formacion.mf0223_3.entidades.Categoria;
 
 public interface CategoriaNegocio {
 	
-	Set<Categoria> listadoCategorias();
+	Iterable<Categoria> listadoCategorias();
 
 }

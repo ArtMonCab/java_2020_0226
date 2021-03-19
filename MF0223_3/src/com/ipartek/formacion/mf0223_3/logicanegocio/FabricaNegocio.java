@@ -4,7 +4,7 @@ package com.ipartek.formacion.mf0223_3.logicanegocio;
 /**
  * Clase donde se llama a las implementaciones de la l√≥gica de negocio
  * 
- * @author Arturo Monta√±ez
+ * @author Arturo MontaÒez
  * @version 1.0
  */
 public class FabricaNegocio {
@@ -12,7 +12,7 @@ public class FabricaNegocio {
 	private static PlatoNegocio platoNegocio = new PlatoNegocioImpl();
 	
 	/**
-	 * M√©todo para obtener platoNegocio
+	 * MÈtodo para obtener platoNegocio
 	 * 
 	 * @return platoNegocio
 	 */

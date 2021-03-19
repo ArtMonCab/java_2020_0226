@@ -28,9 +28,11 @@ public class ListadoServlet extends HttpServlet {
 	private static final Logger LOG = Logger.getLogger(ListadoServlet.class.getName());
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PlatoDaoMySql dao = new PlatoDaoMySql();
+		//PlatoDaoMySql dao = new PlatoDaoMySql();
 		
-		Iterable<Plato> platos = dao.obtenerTodos();
+		//Iterable<Plato> platos = dao.obtenerTodos();
+		
+		Iterable<Plato> platos = Config.platoNegocio.listadoPlatos();
 		
 		LOG.log(Level.INFO, "Platos: {0}", platos);
 		

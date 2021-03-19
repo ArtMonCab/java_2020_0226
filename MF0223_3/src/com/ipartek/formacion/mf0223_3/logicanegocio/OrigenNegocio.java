@@ -14,6 +14,6 @@ import com.ipartek.formacion.mf0223_3.entidades.Origen;
 
 public interface OrigenNegocio {
 	
-	Set<Origen> listadoOrigenes();
+	Iterable<Origen> listadoOrigenes();
 
 }

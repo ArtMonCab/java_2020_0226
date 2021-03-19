@@ -30,7 +30,7 @@
       		<label for="dificultad">Dificultad</label>
     		<select class="custom-select mr-sm-2" id="dificultad" name="dificultad">
         		<option value="1">Facil</option>
-        		<option value="2">Medio</option>
+        		<option value="2">Media</option>
         		<option value="3">Dificil</option>
      	 	</select>
     	</div>
