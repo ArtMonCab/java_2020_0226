@@ -15,5 +15,7 @@ import com.ipartek.formacion.mf0223_3.entidades.Origen;
 public interface OrigenNegocio {
 	
 	Iterable<Origen> listadoOrigenes();
+	
+	Origen origenPorId(Long id);
 
 }

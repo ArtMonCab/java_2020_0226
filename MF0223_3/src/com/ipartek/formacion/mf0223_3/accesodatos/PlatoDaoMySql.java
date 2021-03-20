@@ -30,7 +30,7 @@ public class PlatoDaoMySql implements Dao<Plato>{
 			+ "from platos p \r\n"
 			+ "left join categorias c on p.categorias_id = c.id\r\n"
 			+ "left join origenes o on p.origenes_id = o.id";
-	private static final String SQL_INSERT = "INSERT INTO platos (nombre_plato, calorias, elaboracion, dificultad) VALUES (?,?,?,?)";
+	private static final String SQL_INSERT = "INSERT INTO platos (nombre_plato, calorias, elaboracion, dificultad, categorias_id, origenes_id) VALUES (?,?,?,?,?,?)";
 
 	private DataSource dataSource = null;
 	
@@ -91,11 +91,13 @@ public class PlatoDaoMySql implements Dao<Plato>{
 			ps.setInt(2, plato.getCalorias());
 			ps.setString(3, plato.getElaboracion());
 			ps.setString(4, plato.getDificultad());
+			ps.setObject(5, plato.getCategoria().getId());
+			ps.setObject(6, plato.getOrigen().getId());
 
 			int num = ps.executeUpdate();
 
 			if (num != 1) {
-				throw new AccesoDatosException("Ha habido una incidencia en la inserciÃ³n del plato: " + num);
+				throw new AccesoDatosException("Ha habido una incidencia en la inserción del plato: " + num);
 			}
 
 			ResultSet rs = ps.getGeneratedKeys();

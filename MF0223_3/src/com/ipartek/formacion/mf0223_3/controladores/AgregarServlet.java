@@ -56,7 +56,13 @@ public class AgregarServlet extends HttpServlet {
 		long idCategoria = Long.parseLong(request.getParameter("categoria"));
 		long idOrigen = Long.parseLong(request.getParameter("origen"));
 		
-		Plato plato = new Plato(1L, nombrePlato, calorias, elaboracion, dificultad, null, null);
+		Categoria categoria = Config.categoriaNegocio.categoriaPorId(idCategoria);
+		Origen origen = Config.origenNegocio.origenPorId(idOrigen);
+		
+		LOG.log(Level.INFO, "Origen: {0}", origen);
+		LOG.log(Level.INFO, "Categoria: {0}", categoria);
+		
+		Plato plato = new Plato(1L, nombrePlato, calorias, elaboracion, dificultad, categoria, origen);
 		
 		Config.platoNegocio.agregarPlato(plato);
 		

@@ -14,5 +14,7 @@ import com.ipartek.formacion.mf0223_3.entidades.Categoria;
 public interface CategoriaNegocio {
 	
 	Iterable<Categoria> listadoCategorias();
+	
+	Categoria categoriaPorId(Long id);
 
 }

@@ -76,7 +76,7 @@ public class CategoriaDaoMySql implements Dao<Categoria> {
 			
 			return categoria;
 		} catch (Exception e) {
-			throw new AccesoDatosException("Error al obtener el origen id " + id, e);
+			throw new AccesoDatosException("Error al obtener la categoria id " + id, e);
 		}
 	}
 
