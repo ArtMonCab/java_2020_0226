@@ -12,10 +12,10 @@ import com.ipartek.formacion.ejemplofinal.entidades.Producto;
 import lombok.extern.java.Log;
 
 /**
- * Clase donde se implementan los mÃ©todos del interfaz CarritoNegocio
+ * Clase donde se implementan los métodos del interfaz CarritoNegocio
  * 
  * 
- * @author Arturo MontaÃ±ez
+ * @author Arturo Montañez
  * @version 1.0
  */
 
@@ -26,7 +26,7 @@ public class CarritoNegocioImpl implements CarritoNegocio{
 	private DaoFactura daoFactura = DaoFabrica.getDaoFactura();
 	
 	/**
-	 * MÃ©todo donde se obtiene el listado de todos los productos
+	 * Método donde se obtiene el listado de todos los productos
 	 * 
 	 * @return Devuelve una lista de productos 
 	 */
