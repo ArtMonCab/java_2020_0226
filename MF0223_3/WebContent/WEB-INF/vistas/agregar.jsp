@@ -3,13 +3,13 @@
 
 <%@ include file="/WEB-INF/vistas/includes/cabecera.jsp" %>
 
-<form  method="post">
+<form  action ="agregar" method="post">
  	<h2>Nuevo plato</h2>
  	
   	<div class="form-row">
     	<div class="form-group col-md-10">
       		<label for="nombrePlato">Plato</label>
-      		<input type="text" class="form-control" id="nombrePlato" name="nombrePlato">
+      		<input type="text" class="form-control" id="nombrePlato" name="nombrePlato"">
     	</div>
 
     	<div class="form-group col-md-2">
@@ -29,15 +29,15 @@
     	<div class="form-group col-md-4">
       		<label for="dificultad">Dificultad</label>
     		<select class="custom-select mr-sm-2" id="dificultad" name="dificultad">
-        		<option value="1">Facil</option>
+        		<option value="1">Alta</option>
         		<option value="2">Media</option>
-        		<option value="3">Dificil</option>
+        		<option value="3">Baja</option>
      	 	</select>
     	</div>
         <div class="form-group col-md-4">
       		<label for="categoria">Categoría</label>
     		<select class="custom-select mr-sm-2" id="categoria" name="categoria">
-                    <c:forEach var="c" items="${categorias}">
+                    <c:forEach items="${categorias}" var="c" >
                         <option value="${c.id}">${c.nombre_categoria}</option>
                     </c:forEach>
      	 	</select>

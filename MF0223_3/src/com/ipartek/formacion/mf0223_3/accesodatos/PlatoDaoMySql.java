@@ -12,11 +12,10 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-
 import com.ipartek.formacion.mf0223_3.entidades.Categoria;
 import com.ipartek.formacion.mf0223_3.entidades.Origen;
 import com.ipartek.formacion.mf0223_3.entidades.Plato;
-//https://javajhon.blogspot.com/2019/10/jsp-cbo.html
+
 
 /**
  * Implementa los m�todos de Dao para Plato
@@ -36,26 +35,13 @@ public class PlatoDaoMySql implements Dao<Plato>{
 	private DataSource dataSource = null;
 	
 	/**
-	 * Genera una instancia de la clase
-	 */
-	public PlatoDaoMySql() {
-		try {
-			InitialContext initCtx = new InitialContext();
-			Context envCtx = (Context) initCtx.lookup("java:comp/env");
-			dataSource = (DataSource) envCtx.lookup("jdbc/mf0223_3");
-		} catch (NamingException e) {
-			throw new AccesoDatosException("No se ha encontrado el JNDI de mf0223_3", e);
-		}
-	}
-
-	/**
 	 * Obtiene todos los platos de la base de datos
 	 * 
 	 * @return platos 
 	 */
 	@Override
 	public Iterable<Plato> obtenerTodos() {
-		try(Connection con = dataSource.getConnection();
+		try(Connection con = Config.dataSource.getConnection();
 				Statement st = con.createStatement();
 				ResultSet rs = st.executeQuery(SQL_SELECT)){
 			ArrayList<Plato> platos = new ArrayList<>();

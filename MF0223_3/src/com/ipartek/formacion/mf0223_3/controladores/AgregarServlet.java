@@ -14,7 +14,7 @@ import com.ipartek.formacion.mf0223_3.entidades.Categoria;
 import com.ipartek.formacion.mf0223_3.entidades.Origen;
 import com.ipartek.formacion.mf0223_3.entidades.Plato;
 
-
+//https://javajhon.blogspot.com/2019/10/jsp-cbo.html
 
 /**
  * Controlador que se hace agrega un plato a la base de datod
@@ -53,7 +53,8 @@ public class AgregarServlet extends HttpServlet {
 		int calorias = Integer.parseInt(request.getParameter("calorias"));
 		String elaboracion = request.getParameter("elaboracion");
 		String dificultad = request.getParameter("dificultad");
-		Object idCategoria = request.getParameter("categorias");
+		long idCategoria = Long.parseLong(request.getParameter("categoria"));
+		long idOrigen = Long.parseLong(request.getParameter("origen"));
 		
 		Plato plato = new Plato(1L, nombrePlato, calorias, elaboracion, dificultad, null, null);
 		
