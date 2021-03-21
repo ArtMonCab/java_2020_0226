@@ -6,9 +6,9 @@ import com.ipartek.formacion.mf0223_3.logicanegocio.OrigenNegocio;
 import com.ipartek.formacion.mf0223_3.logicanegocio.PlatoNegocio;
 
 /**
- * ConfiguraciÃ³n gestiÃ³n de la fabrica
+ * Configuración gestión de la fábrica
  * 
- * @author Arturo MontaÃ±ez
+ * @author Arturo Montañez
  * @version 1.0
  */
 public class Config {

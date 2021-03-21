@@ -6,9 +6,9 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 /**
- * ConfiguraciÃ³n de la aplicacion. Indica que base de datos estamos usando.
+ * Configuración de la aplicacion. Indica que base de datos estamos usando.
  * 
- * @author Arturo MontaÃ±ez
+ * @author Arturo Montañez
  * @version 1.0
  */
 

@@ -14,10 +14,8 @@ import com.ipartek.formacion.mf0223_3.entidades.Categoria;
 import com.ipartek.formacion.mf0223_3.entidades.Origen;
 import com.ipartek.formacion.mf0223_3.entidades.Plato;
 
-//https://javajhon.blogspot.com/2019/10/jsp-cbo.html
-
 /**
- * Controlador que se hace agrega un plato a la base de datod
+ * Controlador que se hace agrega un plato a la base de datos
  * 
  * @author Arturo Montañez
  * @version 1.0
@@ -28,6 +26,10 @@ public class AgregarServlet extends HttpServlet {
 
 	private static final Logger LOG = Logger.getLogger(ListadoServlet.class.getName());
 	
+	
+	/**
+	 * El Get carga las categorias y los origenes en los desplegables
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Iterable<Categoria> categorias= Config.categoriaNegocio.listadoCategorias();
@@ -43,14 +45,16 @@ public class AgregarServlet extends HttpServlet {
 		
 		request.setAttribute("origenes",origenes);
 		
-		
-		request.getRequestDispatcher("/WEB-INF/vistas/agregar.jsp").forward(request, response);
+		request.getRequestDispatcher(Config.PATH_VISTAS + "agregar.jsp").forward(request, response);
 	}
 
+	/**
+	 * El Post guarda el plato en la base de datos, y nos manda a la pantalla donde está el listado de platos
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String nombrePlato = request.getParameter("nombrePlato");
 		int calorias = Integer.parseInt(request.getParameter("calorias"));
+		String nombrePlato = request.getParameter("nombrePlato");
 		String elaboracion = request.getParameter("elaboracion");
 		String dificultad = request.getParameter("dificultad");
 		long idCategoria = Long.parseLong(request.getParameter("categoria"));
@@ -62,10 +66,11 @@ public class AgregarServlet extends HttpServlet {
 		LOG.log(Level.INFO, "Origen: {0}", origen);
 		LOG.log(Level.INFO, "Categoria: {0}", categoria);
 		
-		Plato plato = new Plato(1L, nombrePlato, calorias, elaboracion, dificultad, categoria, origen);
+			
+		Plato plato = new Plato(1L, nombrePlato, calorias, elaboracion, dificultad, categoria, origen);	
 		
 		Config.platoNegocio.agregarPlato(plato);
-		
+			
 		response.sendRedirect(request.getContextPath() + "/listado");
 	}
 

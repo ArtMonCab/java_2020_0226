@@ -18,9 +18,9 @@ import com.ipartek.formacion.mf0223_3.entidades.Plato;
 
 
 /**
- * Implementa los mï¿½todos de Dao para Plato
+ * Implementa los métodos de Dao para Plato
  * 
- * @author Arturo MontaÃ±ez
+ * @author Arturo Montañez
  * @version 1.0
  */
 
@@ -69,7 +69,7 @@ public class PlatoDaoMySql implements Dao<Plato>{
 
 	/**
 	 * Inserta un nuevo plato en la base de datos
-	 * @param comida
+	 * @param plato Es el nuevo plato que quiero introducir
 	 * @return Plato 
 	 */
 	@Override
@@ -83,7 +83,14 @@ public class PlatoDaoMySql implements Dao<Plato>{
 		}
 	}
 	
-	
+	/**
+	 * Implementacion de insertar
+	 * 
+	 * @param plato que quiero insertar
+	 * @param con conexion
+	 * @return plato
+	 * @throws SQLException
+	 */
 	private Plato insertarImpl(Plato plato, Connection con) throws SQLException {
 		try (PreparedStatement ps = con.prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS)){
 		

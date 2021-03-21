@@ -9,19 +9,19 @@
   	<div class="form-row">
     	<div class="form-group col-md-10">
       		<label for="nombrePlato">Plato</label>
-      		<input type="text" class="form-control" id="nombrePlato" name="nombrePlato"">
+      		<input type="text" class="form-control" id="nombrePlato" name="nombrePlato" required title="El nombre del plato es obligatorio">
     	</div>
 
     	<div class="form-group col-md-2">
       		<label for="calorias">Calorias</label>
-      		<input type="text" class="form-control" id="calorias" name="calorias">
+      		<input type="text" class="form-control" id="calorias" name="calorias" required pattern="[0-9]+" title="Las calorias deben ser un numero entero">
     	</div>
   	</div>
   	
   	<div class="form-row">
   		<div class="form-group col-md-12">
     		<label for="elaboracion">Elaboración</label>
-    		<textarea class="form-control" id="elaboracion" name="elaboracion" rows="10"></textarea>
+    		<textarea class="form-control" id="elaboracion" name="elaboracion" rows="10" required title="La elaboración es obligatorio"></textarea>
   		</div>
   	</div>
 

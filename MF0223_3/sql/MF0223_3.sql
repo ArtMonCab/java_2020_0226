@@ -85,7 +85,7 @@ CREATE TABLE `platos` (
   KEY `fk_comidas_procedencias1_idx` (`origenes_id`),
   CONSTRAINT `fk_comidas_categorias` FOREIGN KEY (`categorias_id`) REFERENCES `categorias` (`id`),
   CONSTRAINT `fk_comidas_procedencias1` FOREIGN KEY (`origenes_id`) REFERENCES `origenes` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -94,7 +94,7 @@ CREATE TABLE `platos` (
 
 LOCK TABLES `platos` WRITE;
 /*!40000 ALTER TABLE `platos` DISABLE KEYS */;
-INSERT INTO `platos` VALUES (1,'Patatas a la riojana',456,'Patatas, pimientos, chorizo, sal, ajo','Media',1,1),(2,'Cuscus',345,'Semola de trigo, verduras, pollo ','Baja',1,5),(3,'Lentejas',567,'Lentejas, aceite, pimiento, cebolla, patata, zanahoria, chorizo, panceta','Media',1,1),(4,'Pizza',456,'Masa de trigo,tomate, mozzarella, anchoas, orégano, alcaparras y aceite.','Baja',2,6),(5,'Chuleton ternera',987,'Chuleton ternera, aceite, sal','Media',2,1),(6,'Sushi',345,'Pescado, arroz, algas','Alta',4,2),(7,'Ensalada verde',123,'Lechuga, tomate, cebolla, aceite, sal, aceitunas','Alta',1,1);
+INSERT INTO `platos` VALUES (1,'Patatas a la riojana',456,'Patatas, pimientos, chorizo, sal, ajo','Media',1,1),(2,'Cuscus',345,'Semola de trigo, verduras, pollo ','Baja',1,5),(3,'Lentejas',567,'Lentejas, aceite, pimiento, cebolla, patata, zanahoria, chorizo, panceta','Media',1,1),(4,'Pizza',456,'Masa de trigo,tomate, mozzarella, anchoas, orégano, alcaparras y aceite.','Baja',2,6),(5,'Chuleton ternera',987,'Chuleton ternera, aceite, sal','Media',2,1),(6,'Sushi',345,'Pescado, arroz, algas','Alta',4,2),(7,'Ensalada verde',123,'Lechuga, tomate, cebolla, aceite, sal, aceitunas','Alta',1,1),(8,'Arroz con leche',789,'Arroz, leche, azucar, canela','Baja',3,1),(9,'Tacos',789,'Torotas de maiz, pollo, verduras, salsa de guacamole','Baja',2,4);
 /*!40000 ALTER TABLE `platos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -115,4 +115,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-03-18 13:01:06
+-- Dump completed on 2021-03-21 11:49:35

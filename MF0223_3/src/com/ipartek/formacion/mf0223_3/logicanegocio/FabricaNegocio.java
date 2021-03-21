@@ -2,7 +2,7 @@ package com.ipartek.formacion.mf0223_3.logicanegocio;
 
 
 /**
- * Clase donde se llama a las implementaciones de la lÃ³gica de negocio
+ * Clase donde se llama a las implementaciones de la lógica de negocio
  * 
  * @author Arturo Montañez
  * @version 1.0

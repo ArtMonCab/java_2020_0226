@@ -42,7 +42,7 @@
 					<li class="nav-item active"><a class="nav-link" href="listado">Listado platos
 							<span class="sr-only">(current)</span>
 					</a></li>
-					<li class="nav-item active"><a class="nav-link" href="agregar">Agregar platos
+					<li class="nav-item active"><a class="nav-link" href="agregar">Agregar plato
 							<span class="sr-only">(current)</span>
 					</a></li>
 				</ul>
@@ -51,6 +51,5 @@
 
 			</div>
 		</nav>
-
 	</header>
 	<main class="container pt-3">

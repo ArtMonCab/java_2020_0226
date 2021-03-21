@@ -27,10 +27,10 @@ public class ListadoServlet extends HttpServlet {
 
 	private static final Logger LOG = Logger.getLogger(ListadoServlet.class.getName());
 	
+	/**
+	 * EL get saca por pantalla el listado de los platos
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//PlatoDaoMySql dao = new PlatoDaoMySql();
-		
-		//Iterable<Plato> platos = dao.obtenerTodos();
 		
 		Iterable<Plato> platos = Config.platoNegocio.listadoPlatos();
 		
@@ -38,10 +38,12 @@ public class ListadoServlet extends HttpServlet {
 		
 		request.setAttribute("platos",platos);
 		
-		request.getRequestDispatcher("/WEB-INF/vistas/listado.jsp").forward(request, response);
+		request.getRequestDispatcher(Config.PATH_VISTAS + "listado.jsp").forward(request, response);
 	}
 
-
+	/**
+	 * El post nos manda a la pantalla de agregar nuevo plato
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.sendRedirect(request.getContextPath() + "/agregar");
 	}

@@ -54,8 +54,8 @@ public class OrigenDaoMySql implements Dao<Origen> {
 	
 	/** Optiene un origen por su id
 	 * 
-	 * @param id
-	 * @return origen
+	 * @param id del origen
+	 * @return Origen
 	 */
 
 	public Origen obtenerPorId(long id) {

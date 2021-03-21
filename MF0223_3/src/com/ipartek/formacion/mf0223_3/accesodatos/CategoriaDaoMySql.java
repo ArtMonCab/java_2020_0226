@@ -53,10 +53,10 @@ public class CategoriaDaoMySql implements Dao<Categoria> {
 		}
 	}
 	
-	/** Optiene un origen por su id
+	/** Optiene la categoria por su id
 	 * 
-	 * @param id
-	 * @return origen
+	 * @param id de la categoria
+	 * @return Categoria
 	 */
 
 	public Categoria obtenerPorId(long id) {

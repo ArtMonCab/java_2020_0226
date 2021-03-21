@@ -4,10 +4,21 @@ import com.ipartek.formacion.mf0223_3.accesodatos.Dao;
 import com.ipartek.formacion.mf0223_3.accesodatos.DaoFabrica;
 import com.ipartek.formacion.mf0223_3.entidades.Categoria;
 
-
+/**
+ * Clase donde se implementan los métodos de la interfaz CategoriaNegocio
+ * 
+ * @author Arturo Montañez
+ * @version 1.0
+ *
+ */
 public class CategoriaNegocioImpl implements CategoriaNegocio{
 	private Dao<Categoria> daoCategoria = DaoFabrica.getDaoCategoria();
 
+	/**
+	 * Método donde saco el listado de todos las categorias
+	 * 
+	 * @return origenes
+	 */
 	@Override
 	public Iterable<Categoria> listadoCategorias() {
 		Iterable<Categoria> categorias = daoCategoria.obtenerTodos();

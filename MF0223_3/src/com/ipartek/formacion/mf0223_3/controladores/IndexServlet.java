@@ -31,13 +31,17 @@ public class IndexServlet extends HttpServlet {
 	
 	private static final String UPLOAD_DIRECTORY = "backupbd";
 
-	//En el Get voy a la vista Index
+	/**
+	 * En el Get voy a la vista de Index.
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/vistas/index.jsp").forward(request, response);
+		request.getRequestDispatcher(Config.PATH_VISTAS + "index.jsp").forward(request, response);
 	}
 
 
-	//En el Post cojo el fichero donde estï¿½ la copia de la base de datos que quiero cargar.
+	/**
+	 * En el Post selecciono el fichero donde está la copia de la base de datos y la cargo
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
