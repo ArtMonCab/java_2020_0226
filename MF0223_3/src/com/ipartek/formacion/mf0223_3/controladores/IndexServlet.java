@@ -77,7 +77,7 @@ public class IndexServlet extends HttpServlet {
 		 		response.sendRedirect(request.getContextPath() + "/listado");
 			}else {
 				System.out.println("Ha habido algun error");
-				request.setAttribute("alerta", new Alerta("danger", "Ha habido algún error con la carga de la base de datos"));
+				request.setAttribute("alerta", new Alerta("danger", "Ha habido algún error con la carga de la base de datos. Debe seleccionar un archivo de backup correcto"));
 				doGet(request, response);
 			}
 		} catch (InterruptedException e) {
