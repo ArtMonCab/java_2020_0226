@@ -12,10 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import com.ipartek.formacion.mf0223_3.entidades.Alerta;
+
 /**
  * Controlador que se hace la carga de una base de datos desde el fichero seleccionado
  * 
- * @author Arturo Montanez
+ * @author Arturo Montañez
  * @version 1.0
  */
 
@@ -71,14 +73,17 @@ public class IndexServlet extends HttpServlet {
 			Process runProcess = Runtime.getRuntime().exec(restaurar);
 			int procesoCompletado = runProcess.waitFor();
 			if(procesoCompletado == 0) {
+				request.getSession().setAttribute("alerta", new Alerta("success", "Base de datos cargada correctamente"));
 		 		response.sendRedirect(request.getContextPath() + "/listado");
 			}else {
 				System.out.println("Ha habido algun error");
+				request.setAttribute("alerta", new Alerta("danger", "Ha habido algún error con la carga de la base de datos"));
 				doGet(request, response);
 			}
 		} catch (InterruptedException e) {
 		
 			System.out.println("Proceso no completado");
+			request.setAttribute("alerta", new Alerta("danger", "Proceso no completado"));
 			doGet(request, response);
 		}
 	}

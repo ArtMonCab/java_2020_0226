@@ -9,7 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.jsp.tagext.TryCatchFinally;
 
+import com.ipartek.formacion.mf0223_3.entidades.Alerta;
 import com.ipartek.formacion.mf0223_3.entidades.Categoria;
 import com.ipartek.formacion.mf0223_3.entidades.Origen;
 import com.ipartek.formacion.mf0223_3.entidades.Plato;
@@ -69,8 +71,14 @@ public class AgregarServlet extends HttpServlet {
 			
 		Plato plato = new Plato(1L, nombrePlato, calorias, elaboracion, dificultad, categoria, origen);	
 		
-		Config.platoNegocio.agregarPlato(plato);
-			
+		try {
+			Config.platoNegocio.agregarPlato(plato);
+			request.getSession().setAttribute("alerta", new Alerta("success", "Plato agregado correctamente"));
+		} catch (Exception e) {
+			request.setAttribute("alerta", new Alerta("danger", "No se ha podido agregar el nuevo plato"));
+		}
+		
+		
 		response.sendRedirect(request.getContextPath() + "/listado");
 	}
 
