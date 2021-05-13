@@ -1,4 +1,4 @@
-package es.teknei.concesionario.accesodatos;
+package es.teknei.concesionario.repositorios;
 
 import java.util.Set;
 

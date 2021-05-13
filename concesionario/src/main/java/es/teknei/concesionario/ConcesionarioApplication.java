@@ -1,4 +1,4 @@
-package es.teknei.concesionario;
+                                                                                                                                                                   package es.teknei.concesionario;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,7 +14,7 @@ public class ConcesionarioApplication {
 		SpringApplication.run(ConcesionarioApplication.class, args);
 	}
 	
-	@GetMapping("/hello")
+	@GetMapping("/concesionario")
 	public String hello(@RequestParam(value = "name", defaultValue = "Usuario") String name) {
 	return String.format("¡Hola %s!", name);
 	}

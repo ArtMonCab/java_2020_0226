@@ -1,4 +1,4 @@
-package es.teknei.concesionario.accesodatos;
+package es.teknei.concesionario.repositorios;
 
 public class AccesoDatosException extends RuntimeException {
 
