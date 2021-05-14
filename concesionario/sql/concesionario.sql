@@ -18,6 +18,23 @@ USE `concesionario`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `coches`
+--
+
+DROP TABLE IF EXISTS `coches`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `coches` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `marca_id` bigint NOT NULL,
+  `modelo` varchar(45) NOT NULL,
+  `matricula` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_coches_marcas_idx` (`marca_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `coches`
 --
 
@@ -28,6 +45,20 @@ INSERT INTO `coches` VALUES (1,2,'Clio','1111-BBB'),(2,2,'Megane','2222-BBB'),(3
 UNLOCK TABLES;
 
 --
+-- Table structure for table `marcas`
+--
+
+DROP TABLE IF EXISTS `marcas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `marcas` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `marcas`
 --
 
@@ -36,6 +67,14 @@ LOCK TABLES `marcas` WRITE;
 INSERT INTO `marcas` VALUES (1,'Citroen'),(2,'Renault'),(3,'Seat');
 /*!40000 ALTER TABLE `marcas` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'concesionario'
+--
+
+--
+-- Dumping routines for database 'concesionario'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -46,4 +85,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-12  8:58:09
+-- Dump completed on 2021-05-14 18:21:58

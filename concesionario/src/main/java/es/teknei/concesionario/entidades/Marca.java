@@ -23,7 +23,7 @@ public class Marca{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	private String nombre;
 	
 	@ToString.Exclude //Excluye el elemento del toString

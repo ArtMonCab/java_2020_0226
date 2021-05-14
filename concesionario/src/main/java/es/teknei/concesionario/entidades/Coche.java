@@ -20,8 +20,8 @@ public class Coche{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
-	private String nombre;
+	private Long id;
+	private String modelo;
 	private String matricula;
 	
 	@ManyToOne
