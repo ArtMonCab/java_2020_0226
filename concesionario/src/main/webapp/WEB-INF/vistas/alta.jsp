@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ include file="/templates/includes/cabecera.jsp" %>
+<%@ include file="/includes/cabecera.jsp" %>
 
 <form  action ="agregar" method="post">
  	<h2>Alta</h2>
@@ -49,4 +49,4 @@
 </form>
   
  
-<%@ include file="/templates/includes/pie.jsp" %>
+<%@ include file="/WEB-INF/vistas/includes/pie.jsp" %>
