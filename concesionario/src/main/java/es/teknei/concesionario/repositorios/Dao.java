@@ -3,7 +3,7 @@ package es.teknei.concesionario.repositorios;
 import java.util.Set;
 
 public interface Dao<T> {
-	default Iterable<T> obtenerTodos() {
+	default Set<T> obtenerTodos() {
 		throw new AccesoDatosException("NO IMPLEMENTADO");
 	}
 

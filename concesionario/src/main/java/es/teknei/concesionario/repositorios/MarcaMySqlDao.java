@@ -1,22 +1,26 @@
 package es.teknei.concesionario.repositorios;
 
 import java.util.Collection;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import es.teknei.concesionario.entidades.Coche;
 import es.teknei.concesionario.entidades.Marca;
 
-public class MarcaMySqlDao implements MarcaDao{
+@Repository
+class MarcaMySqlDao implements MarcaDao{
 	
 	@Autowired
 	private JdbcTemplate jdbc;
 	
 	@Override
-	public Iterable<Marca> obtenerTodos(){
-		return jdbc.query("SELECT * FROM marcas", new BeanPropertyRowMapper<Marca>(Marca.class));
+	public Set<Marca> obtenerTodos(){
+		return null;
+		//return jdbc.query("SELECT * FROM marcas", new BeanPropertyRowMapper<Marca>(Marca.class));
 	}
 	
 	@Override

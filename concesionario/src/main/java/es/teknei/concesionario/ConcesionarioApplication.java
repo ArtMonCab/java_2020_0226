@@ -55,15 +55,12 @@ public class ConcesionarioApplication implements CommandLineRunner{
 	@Transactional
 	private void mostrarDatos() {
 		System.out.println(coches.findById(2L).orElse(null));
+		System.out.println(coches.findAll());
 
-		Marca marca = marcas.findById(1L).orElse(null);
+		System.out.println(marcas.findById(1L).orElse(null));
+		System.out.println(marcas.findAll());
 
-		System.out.println(marca);
 
-		System.out.println("Paso 3");
-		/*for (Coche coche : marca.getCoches()) {
-			System.out.println(coche);
-		}*/
 	}
 	
 	
