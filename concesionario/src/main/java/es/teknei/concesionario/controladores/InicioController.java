@@ -23,7 +23,7 @@ public class InicioController {
 	@RequestMapping("/listado")
 	public String listado(Model modelo) {
 		modelo.addAttribute("coches", daoCoche.obtenerTodos());
-		modelo.addObject("rol", rolService.listAllRol());
+		
 		System.out.println(daoCoche.obtenerTodos());
 		return "listado";
 	}
