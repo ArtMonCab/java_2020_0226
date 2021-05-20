@@ -24,19 +24,17 @@
  	
  				<div class="form-row">	
 
-        			<div class="form-group col-md-4">
+        			<div class="form-group col-md-6">
       					<label for="marca">Marca</label>
-    					<select class="custom-select mr-sm-2" id="marca" name="marca">
-                    		<option value="1">Citroen</option>
-                    		<option value="2">Renault</option>
-                    		<option value="3">Seat</option>
-     	 				</select>
+     	 				<select class="custom-select mr-sm-2" id="marca" name="marca">
+    						<option th:each="marca: ${marcas}" th:value="${marca.id}" th:text="${marca.nombre}"></option>
+						</select>
     				</div>
 
   				</div>
   	
   				<div class="form-row">
-    				<div class="form-group col-md-10">
+    				<div class="form-group col-md-6">
       					<label for="modelo">Modelo</label>
       					<input type="text" class="form-control" id="modelo" name="modelo" required title="El modelo es obligatorio">
     				</div>
@@ -45,8 +43,8 @@
   	
   				<div class="form-row">
 
-    				<div class="form-group col-md-2">
-      					<label for="matricula">MatrÃ­cula</label>
+    				<div class="form-group col-md-6">
+      					<label for="matricula">Matrícula</label>
       					<input type="text" class="form-control" id="matricula" name="matricula" required pattern="[a-z]+" title="Las calorias deben ser un numero entero">
     				</div>
   				</div>
