@@ -7,11 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RestController;
 
-import es.teknei.concesionario.entidades.Coche;
-import es.teknei.concesionario.entidades.Marca;
 import es.teknei.concesionario.repositorios.CocheRepository;
-import es.teknei.concesionario.repositorios.Dao;
-import es.teknei.concesionario.repositorios.MarcaDao;
 import es.teknei.concesionario.repositorios.MarcaRepository;
 
 @SpringBootApplication

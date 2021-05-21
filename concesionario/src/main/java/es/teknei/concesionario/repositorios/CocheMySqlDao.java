@@ -1,6 +1,7 @@
 package es.teknei.concesionario.repositorios;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -10,29 +11,25 @@ import java.util.Set;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+
+
 import es.teknei.concesionario.entidades.Coche;
-import es.teknei.concesionario.entidades.Marca;
 
 @Repository
-class CocheMySqlDao implements Dao<Coche>{
+class CocheMySqlDao implements DaoCoche{
 	
-	private static final String SQL_SELECT = "SELECT c.id, c.modelo, c.matricula FROM coches c";
+	private static final String SQL_SELECT = "SELECT c.id, c.modelo, c.matricula, c.marca_id FROM coches c";
 	private static final String SQL_SELECT_ID = SQL_SELECT + " WHERE c.id = ?";
+	private static final String SQL_SELECT_MARCA = SQL_SELECT + " WHERE c.marca_id = ?";
 	
 	@Autowired
 	private DataSource dataSource;
-	//private JdbcTemplate jdbc;
 	
 	@Override
 	public Set<Coche> obtenerTodos() {
-		/*return jdbc.query("SELECT * \r\n"
-				+ "FROM coches c\r\n"
-				+ "LEFT JOIN marcas m ON c.marca_id = m.id\r\n", (rs, rowNum) -> 
-				new Coche(rs.getLong("c.id"), rs.getString("c.modelo"), rs.getString("c.matricula"),
-						new Marca(rs.getLong("m.id"), rs.getString("m.nombre"))));*/
+
 		
 		try (Connection con = dataSource.getConnection();
 				Statement st = con.createStatement();
@@ -56,21 +53,54 @@ class CocheMySqlDao implements Dao<Coche>{
 	
 	@Override
 	public Coche obtenerPorId(Long id) {
-		return null;
-		/*return jdbc.queryForObject("SELECT * \r\n"
-				+ "FROM coches c\r\n"
-				+ "LEFT JOIN marcas m ON c.marca_id = m.id\r\n"
-				+ "WHERE c.id = ?", (rs, rowNum) ->
-				new Coche(rs.getLong("c.id"), rs.getString("c.modelo"), rs.getString("c.matricula"),
-						new Marca(rs.getLong("m.id"), rs.getString("m.nombre"))), id);	*/
-		
+		try (Connection con = dataSource.getConnection();
+				PreparedStatement pst = con.prepareStatement(SQL_SELECT_ID);
+				) {
+			
+			pst.setLong(1, id);
+			
+			ResultSet rs = pst.executeQuery();
+			
+			Coche coche = null;
+
+			if (rs.next()) {
+				coche = mapearResultSetCoche(rs);
+			}
+			
+			return coche;
+		} catch (Exception e) {
+			throw new AccesoDatosException("Error al obtener el coche con el id " + id, e);
+		}
 	}
 	
+	@Override
+	public Set<Coche> obtenerPorMarca(long marcaId){
+		try (Connection con = dataSource.getConnection();
+				PreparedStatement pst = con.prepareStatement(SQL_SELECT_MARCA);
+				) {
+			
+			Set<Coche> coches = new HashSet<>();
+			
+			pst.setLong(1, marcaId);
+			
+			ResultSet rs = pst.executeQuery();
+			
+			Coche coche;
+
+			while (rs.next()) {
+				coche = mapearResultSetCoche(rs);
+				
+				coches.add(coche);
+			}
+			
+			return coches;
+		} catch (Exception e) {
+			throw new AccesoDatosException("Error al obtener el coche con el id " + marcaId, e);
+		}
+	}
 	private Coche mapearResultSetCoche(ResultSet rs) throws SQLException {
 		Coche coche;
-		//Marca marca;
-		//marca = new Marca(rs.getLong("m_id"), rs.getString("m_nombre"));
-		coche = new Coche(rs.getLong("id"), rs.getString("modelo"), rs.getString("matricula"), null);
+		coche = new Coche(rs.getLong("id"), rs.getString("modelo"), rs.getString("matricula"),null);
 		return coche;
 	}
 
