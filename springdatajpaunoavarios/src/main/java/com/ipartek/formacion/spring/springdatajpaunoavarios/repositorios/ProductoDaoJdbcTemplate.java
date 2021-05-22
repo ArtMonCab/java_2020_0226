@@ -2,10 +2,12 @@ package com.ipartek.formacion.spring.springdatajpaunoavarios.repositorios;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import com.ipartek.formacion.spring.springdatajpaunoavarios.entidades.Categoria;
 import com.ipartek.formacion.spring.springdatajpaunoavarios.entidades.Producto;
 
+@Repository
 public class ProductoDaoJdbcTemplate implements Dao<Producto>{
 	
 	@Autowired

@@ -1,10 +1,9 @@
 package com.ipartek.formacion.spring.springdatajpaunoavarios.entidades;
-import java.math.BigDecimal;
+
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;

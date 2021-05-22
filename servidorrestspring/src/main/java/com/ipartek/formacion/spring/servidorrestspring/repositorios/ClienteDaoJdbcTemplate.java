@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ipartek.formacion.spring.servidorrestspring.entidades.Cliente;
 
-@Repository
+//@Repository
 //Si quiero cambiar de Dao, quito de aqui @Repository y la pongo en el otro fichero
 public class ClienteDaoJdbcTemplate implements Dao<Cliente> {
 
