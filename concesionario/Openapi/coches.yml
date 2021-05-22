@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  title: ClienteREST
+  title: MarcaREST
   description: Ejemplo de REST para curso
   version: 1.0.0
 servers:
@@ -8,9 +8,9 @@ servers:
     description: Servidor de Spring Boot
     variables: {}
 paths:
-  '/clientes/{id}':
+  '/marcas/{id}':
     get:
-      summary: Obtener un cliente por id
+      summary: Obtener un marca por id
       operationId: getById
       parameters:
         - name: id
@@ -21,11 +21,11 @@ paths:
             format: int64
       responses:
         '200':
-          description: Devuelve el cliente cuyo id es el que se ha pedido
+          description: Devuelve el marca cuyo id es el que se ha pedido
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cliente'
+                $ref: '#/components/schemas/Marca'
         '404':
           description: No encontrado
     put:
@@ -41,7 +41,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Cliente'
+              $ref: '#/components/schemas/Marca'
       responses:
         '400':
            description: Petición incorrecta
@@ -50,7 +50,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cliente'
+                $ref: '#/components/schemas/Marca'
     delete:
       operationId: delete
       parameters:
@@ -66,7 +66,7 @@ paths:
         '404':
           description: No encontrado
         
-  /clientes:
+  /marcas:
     get:
       operationId: getAll
       responses:
@@ -77,14 +77,14 @@ paths:
               schema:
                 type: 'array'
                 items:
-                  $ref: '#/components/schemas/Cliente'
+                  $ref: '#/components/schemas/Marca'
     post:
       operationId: insert
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Cliente'
+              $ref: '#/components/schemas/Marca'
       responses:
         '201':
           description: Creado
@@ -92,7 +92,7 @@ paths:
            description: Petición incorrecta
 components:
   schemas:
-    Cliente:
+    Marca:
       type: object
       properties:
         id:
