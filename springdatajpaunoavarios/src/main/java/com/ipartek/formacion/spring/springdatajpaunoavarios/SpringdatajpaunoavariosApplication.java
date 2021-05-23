@@ -76,9 +76,11 @@ public class SpringdatajpaunoavariosApplication implements CommandLineRunner{
 		
 		System.out.println(categoria);
 		
+		System.out.println("------------------------------------------------");
 		for(Producto producto: categoria.getProductos()) {
 			System.out.println(producto);
 		}
+		System.out.println("------------------------------------------------");
 	}
 
 }
