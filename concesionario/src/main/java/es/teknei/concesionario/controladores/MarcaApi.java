@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import es.teknei.concesionario.entidades.Marca;
 import es.teknei.concesionario.repositorios.Dao;
+import es.teknei.concesionario.repositorios.DaoMarca;
 
 
 
@@ -22,7 +23,7 @@ import es.teknei.concesionario.repositorios.Dao;
 @RequestMapping("/api/marcas")
 public class MarcaApi {
 	@Autowired
-	private Dao<Marca> dao;
+	private DaoMarca dao;
 	
 	@GetMapping
 	public Iterable<Marca> get() {
@@ -31,7 +32,7 @@ public class MarcaApi {
 	
 	@GetMapping("{id}")
 	public ResponseEntity<Marca> getPorId(@PathVariable Long id) {
-		Marca marca = dao.obtenerPorId(id);
+		Marca marca = dao.obtenerPorIdConCoches(id);
 		
 		if(marca == null) {
 			return new ResponseEntity<Marca>(HttpStatus.NOT_FOUND);

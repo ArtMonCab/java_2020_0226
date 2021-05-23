@@ -5,9 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import es.teknei.concesionario.entidades.Coche;
 import es.teknei.concesionario.entidades.Marca;
 import es.teknei.concesionario.repositorios.Dao;
-import es.teknei.concesionario.repositorios.DaoCoche;
+import es.teknei.concesionario.repositorios.DaoMarca;
 
 //https://spring.io/guides/tutorials/rest/
 
@@ -15,10 +16,10 @@ import es.teknei.concesionario.repositorios.DaoCoche;
 public class InicioController {
 	
 	@Autowired
-	private DaoCoche cocheDao;
+	private Dao<Coche> cocheDao;
 	
 	@Autowired
-	private Dao<Marca> daoMarca;
+	private DaoMarca daoMarca;
 	
 	@RequestMapping("/alta")
 	public String alta(Model modelo) {
@@ -31,12 +32,12 @@ public class InicioController {
 	public String listado(Model modelo) {
 		Long idMarca;
 		
-		modelo.addAttribute("coches", cocheDao.obtenerPorMarca(2));
+		modelo.addAttribute("coches", daoMarca.obtenerPorIdConCoches(2L).getCoches());
 		
-		modelo.getAttribute("marca.id");
+		
 		
 		System.out.println("-----------------------------------------------");
-		System.out.println(modelo);
+		System.out.println(daoMarca.obtenerPorIdConCoches(2L).getCoches());
 		System.out.println("-----------------------------------------------");
 		
 		modelo.addAttribute("marcas", daoMarca.obtenerTodos());

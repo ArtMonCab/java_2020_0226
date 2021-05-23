@@ -5,13 +5,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RestController;
 
 import es.teknei.concesionario.repositorios.CocheRepository;
 import es.teknei.concesionario.repositorios.MarcaRepository;
 
 @SpringBootApplication
-@RestController
 public class ConcesionarioApplication implements CommandLineRunner{
 	
 	//@Autowired
@@ -32,6 +30,8 @@ public class ConcesionarioApplication implements CommandLineRunner{
 	public static void main(String[] args) {
 		SpringApplication.run(ConcesionarioApplication.class, args);
 	}
+
+
 	
 	@Override
 	public void run(String... args) throws Exception {
