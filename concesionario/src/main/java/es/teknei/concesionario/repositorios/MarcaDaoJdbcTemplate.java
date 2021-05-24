@@ -8,11 +8,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 
-import es.teknei.concesionario.entidades.Coche;
 import es.teknei.concesionario.entidades.Marca;
 
 @Repository
-public class MarcaDaoJdbcTemplate implements DaoMarca{
+public class MarcaDaoJdbcTemplate implements Dao<Marca>{
 
 	@Autowired
 	private JdbcTemplate jdbc;
@@ -22,7 +21,7 @@ public class MarcaDaoJdbcTemplate implements DaoMarca{
 		return jdbc.query("SELECT * FROM marcas", new BeanPropertyRowMapper<Marca>(Marca.class));
 	}
 
-	@Override
+	/*@Override
 	public Marca obtenerPorId(Long id) {
 		return jdbc.queryForObject("SELECT * FROM marcas WHERE id = ?", new BeanPropertyRowMapper<Marca>(Marca.class), id);
 	}
@@ -36,6 +35,6 @@ public class MarcaDaoJdbcTemplate implements DaoMarca{
 		marca.getCoches().addAll(coches);
 		
 		return marca;
-	}
+	}*/
 
 }

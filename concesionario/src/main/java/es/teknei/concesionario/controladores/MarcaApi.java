@@ -1,5 +1,7 @@
 package es.teknei.concesionario.controladores;
 
+import java.util.logging.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,24 +15,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+
+
 import es.teknei.concesionario.entidades.Marca;
 import es.teknei.concesionario.repositorios.Dao;
-import es.teknei.concesionario.repositorios.DaoMarca;
+
 
 
 
 @RestController
 @RequestMapping("/api/marcas")
 public class MarcaApi {
+	
+	private static final Logger LOGGER = Logger.getLogger(MarcaApi.class.getName());
+	
 	@Autowired
-	private DaoMarca dao;
+	private Dao<Marca> dao;
 	
 	@GetMapping
 	public Iterable<Marca> get() {
 		return dao.obtenerTodos();
 	}
 	
-	@GetMapping("{id}")
+	
+	
+	
+	/*@GetMapping("{id}")
 	public ResponseEntity<Marca> getPorId(@PathVariable Long id) {
 		Marca marca = dao.obtenerPorIdConCoches(id);
 		
@@ -64,7 +74,7 @@ public class MarcaApi {
 		} catch(Exception e) {
 			return new ResponseEntity<Marca>(HttpStatus.NOT_FOUND);
 		}
-	}
+	}*/
 
 
 }

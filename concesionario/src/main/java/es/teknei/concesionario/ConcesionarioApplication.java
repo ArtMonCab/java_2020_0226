@@ -5,24 +5,28 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestTemplate;
 
-import es.teknei.concesionario.repositorios.CocheRepository;
-import es.teknei.concesionario.repositorios.MarcaRepository;
+import es.teknei.concesionario.entidades.Coche;
+import es.teknei.concesionario.entidades.Marca;
+import es.teknei.concesionario.repositorios.Dao;
+import es.teknei.concesionario.repositorios.DaoCoche;
+
 
 @SpringBootApplication
 public class ConcesionarioApplication implements CommandLineRunner{
 	
-	//@Autowired
-	//private Dao<Coche> daoCoches;
-	
-	//@Autowired
-	//private MarcaDao daoMarcas;
+	@Autowired
+	private DaoCoche cocheDao;
 	
 	@Autowired
+	private Dao<Marca> marcaDao;
+	
+	/*@Autowired
 	private CocheRepository coches;
 	
 	@Autowired
-	private MarcaRepository marcas;
+	private MarcaRepository marcas;*/
 	
 	
 	
@@ -35,20 +39,14 @@ public class ConcesionarioApplication implements CommandLineRunner{
 	
 	@Override
 	public void run(String... args) throws Exception {
-		/*System.out.println(daoCoches.obtenerPorId(2L));
+		//System.out.println(cocheDao.obtenerPorId(2L));
 		
-		Marca marca = daoMarcas.obtenerporIdConCoches(1L);
-		
-		System.out.println(marca);
-
-		for (Coche coche : marca.getCoches()) {
-			System.out.println(coche);
-		}*/
-		
-		mostrarDatos();
+        RestTemplate plantilla = new RestTemplate();
+        String resultado = plantilla.getForObject("http://localhost:8080/api/marcas", String.class);
+        System.out.println(resultado);
 	}
 	
-	@Transactional
+	/*@Transactional
 	private void mostrarDatos() {
 		System.out.println(coches.findById(2L).orElse(null));
 		System.out.println(coches.findAll());
@@ -57,7 +55,7 @@ public class ConcesionarioApplication implements CommandLineRunner{
 		System.out.println(marcas.findAll());
 
 
-	}
+	}*/
 	
 	
 }
