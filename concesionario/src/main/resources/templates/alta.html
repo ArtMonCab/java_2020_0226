@@ -19,7 +19,7 @@
           </div>
           <div class="col-sm-9">
           
-			<form  action ="alta" method="post">
+			<form  th:action="listado" th:object="${coche}" method="post">
  				<h2>Alta</h2>
  	
  				<div class="form-row">	
@@ -45,7 +45,7 @@
 
     				<div class="form-group col-md-6">
       					<label for="matricula">Matrícula</label>
-      					<input type="text" class="form-control" id="matricula" name="matricula" required pattern="[a-z]+" title="Las calorias deben ser un numero entero">
+      					<input type="text" class="form-control" id="matricula" name="matricula">
     				</div>
   				</div>
 

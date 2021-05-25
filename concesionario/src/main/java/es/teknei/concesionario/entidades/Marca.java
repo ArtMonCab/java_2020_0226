@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -26,9 +27,11 @@ public class Marca{
 	private Long id;
 	private String nombre;
 	
-	@ToString.Exclude //Excluye el elemento del toString
-	@EqualsAndHashCode.Exclude //Excluye el elemento del hashCode
+	
+	@ToString.Exclude 
+	@EqualsAndHashCode.Exclude 
 	@OneToMany(mappedBy = "marca")
 	private final Set<Coche> coches = new HashSet<>();
-	
+
+
 }

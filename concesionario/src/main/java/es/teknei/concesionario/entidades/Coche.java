@@ -1,6 +1,5 @@
 package es.teknei.concesionario.entidades;
 
-import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,7 +23,7 @@ public class Coche{
 	private String modelo;
 	private String matricula;
 	
-	@ManyToOne
+	@ManyToOne 
 	private Marca marca;
 	
 }

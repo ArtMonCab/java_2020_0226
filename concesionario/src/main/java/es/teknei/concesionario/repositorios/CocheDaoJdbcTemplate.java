@@ -15,6 +15,9 @@ import es.teknei.concesionario.entidades.Coche;
 
 @Repository
 public class CocheDaoJdbcTemplate implements DaoCoche {
+	private static final String SQL_SELECT = "SELECT c.id, c.modelo, c.matricula, c.marca_id, m.id, m.nombre FROM coches c JOIN marcas m ON c.marca_id = m.id";
+	private static final String SQL_SELECT_MARCA = SQL_SELECT + " WHERE m.id = ?";
+	private static final String SQL_INSERT = "INSERT INTO coches (modelo, matricula, marca_id) VALUES (?, ?, ?)";
 	
 	@Autowired
 	private JdbcTemplate jdbc;
@@ -27,8 +30,7 @@ public class CocheDaoJdbcTemplate implements DaoCoche {
 
 		jdbc.update(connection -> {
 			PreparedStatement ps = connection.prepareStatement(
-					"INSERT INTO coches (modelo, matricula, marca_id) VALUES (?, ?, ?)",
-					Statement.RETURN_GENERATED_KEYS);
+					SQL_INSERT, Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, coche.getModelo());
 			ps.setString(2, coche.getMatricula());
 			ps.setLong(3, coche.getMarca().getId());
@@ -42,7 +44,7 @@ public class CocheDaoJdbcTemplate implements DaoCoche {
 
 	@Override
 	public Iterable<Coche> obtenerCochePorMarca(long id) {
-		return jdbc.query("SELECT * FROM coches where marca_id = ?", new BeanPropertyRowMapper<Coche>(Coche.class), id);
+		return jdbc.query(SQL_SELECT_MARCA, new BeanPropertyRowMapper<Coche>(Coche.class), id);
 	}
 
 }

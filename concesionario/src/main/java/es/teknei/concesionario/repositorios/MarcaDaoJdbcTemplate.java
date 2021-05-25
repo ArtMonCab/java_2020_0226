@@ -12,13 +12,14 @@ import es.teknei.concesionario.entidades.Marca;
 
 @Repository
 public class MarcaDaoJdbcTemplate implements Dao<Marca>{
-
+	private static final String SQL_SELECT= "SELECT m.id, m.nombre FROM marcas m";
+	
 	@Autowired
 	private JdbcTemplate jdbc;
 
 	@Override
 	public Iterable<Marca> obtenerTodos() {
-		return jdbc.query("SELECT * FROM marcas", new BeanPropertyRowMapper<Marca>(Marca.class));
+		return jdbc.query(SQL_SELECT, new BeanPropertyRowMapper<Marca>(Marca.class));
 	}
 
 	/*@Override

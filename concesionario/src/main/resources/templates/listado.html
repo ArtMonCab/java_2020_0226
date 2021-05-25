@@ -22,7 +22,7 @@
           </div>
           <div class="col-sm-9">
           
-			<form action="/listado" th:action="@{/listado}" th:object="${marcas}" method="post">
+			<form th:object="${marcas}" method="post">
 				<h2>Listado</h2>
  				<div class="form-row">	
 
@@ -32,7 +32,7 @@
     	
         			<div class="form-group col-md-4">
 						
-						<select class="form-control" name="marca">
+						<select class="form-control" name="marca" id="marca">
     						<option th:each="marca: ${marcas}" th:value="${marca.id}" th:text="${marca.nombre}"></option>
 						</select>
     				</div>

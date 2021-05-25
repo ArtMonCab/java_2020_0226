@@ -39,11 +39,9 @@ public class ConcesionarioApplication implements CommandLineRunner{
 	
 	@Override
 	public void run(String... args) throws Exception {
-		//System.out.println(cocheDao.obtenerPorId(2L));
+		System.out.println(cocheDao.obtenerCochePorMarca(1L));
 		
-        RestTemplate plantilla = new RestTemplate();
-        String resultado = plantilla.getForObject("http://localhost:8080/api/marcas", String.class);
-        System.out.println(resultado);
+        
 	}
 	
 	/*@Transactional
