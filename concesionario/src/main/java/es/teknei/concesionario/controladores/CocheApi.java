@@ -23,6 +23,7 @@ public class CocheApi {
 	@Autowired
 	private DaoCoche dao;
 	
+
 	
 	@GetMapping("{id}")
 	public ResponseEntity<Iterable<Coche>> getPorMarca(@PathVariable Long id) {
@@ -38,7 +39,7 @@ public class CocheApi {
 	
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Coche post(@RequestBody Coche coche) {
+	public Coche cochePost(@RequestBody Coche coche) {
 		return dao.insertar(coche);
 	}
 	/*@GetMapping

@@ -20,32 +20,5 @@ public class MarcaDaoMySql implements Dao<Marca>{
 		return jdbc.query(SQL_SELECT, new BeanPropertyRowMapper<Marca>(Marca.class));
 	}
 	
-	/*@Autowired
-	private DataSource dataSource;
-	
-	
-	public Set<Marca> obtenerTodos() {
-		try (Connection con = dataSource.getConnection();
-				Statement st = con.createStatement();
-				ResultSet rs = st.executeQuery(SQL_SELECT)) {
-			Set<Marca> marcas = new HashSet<>();
-			
-			Marca marca = null;
-
-			while (rs.next()) {
-				
-				marcas.add(marca);
-			}
-			
-			return marcas;
-		} catch (Exception e) {
-			throw new AccesoDatosException("Error al obtener todas las marcas", e);
-		}
-	}*/
-
-	
-
-
-
 
 }
