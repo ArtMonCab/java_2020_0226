@@ -22,7 +22,7 @@
           </div>
           <div class="col-sm-9">
           
-			<form th:object="${marcas}" method="post">
+			<form th:object="${marcas}"th:action="listado" method="post">
 				<h2>Listado</h2>
  				<div class="form-row">	
 
@@ -33,12 +33,17 @@
         			<div class="form-group col-md-4">
 						
 						<select class="form-control" name="marca" id="marca">
+							<option>Seleccione una marca</option>
     						<option th:each="marca: ${marcas}" th:value="${marca.id}" th:text="${marca.nombre}"></option>
 						</select>
     				</div>
     	
     				<div class="col-auto my-1">
     					<button type="submit" class="btn btn-primary">Consultar</button>
+    				</div>
+    				
+    				<div class="col-auto my-1">
+    					<button type="submit" class="btn btn-primary">Subir a Filenet</button>
     				</div>
 
   				</div>
@@ -53,8 +58,8 @@
 						</thead>
 						<tbody>
 							<tr th:each="coche: ${coches}">
-								<td th:text="${coche.modelo}">MODELO DEL COCHE</td>
-								<td th:text="${coche.matricula}">MATRICULA DEL COCHE</td>									
+								<td th:text="${coche.modelo}" id="modelo" name="modelo">MODELO DEL COCHE</td>
+								<td th:text="${coche.matricula}" id="matricula" name="matricula">MATRICULA DEL COCHE</td>									
 							</tr>
 						</tbody>
 					</table>

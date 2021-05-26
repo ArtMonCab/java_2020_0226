@@ -26,7 +26,7 @@ public class CocheApi {
 
 	
 	@GetMapping("{id}")
-	public ResponseEntity<Iterable<Coche>> getPorMarca(@PathVariable Long id) {
+	public ResponseEntity<Iterable<Coche>> cochePorMarcaGet(@PathVariable Long id) {
 		Iterable<Coche> coches = dao.obtenerCochePorMarca(id);
 		
 		if(coches == null) {

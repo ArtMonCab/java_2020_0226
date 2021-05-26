@@ -33,7 +33,7 @@ public class MarcaApi {
 	private Dao<Marca> dao;
 	
 	@GetMapping
-	public Iterable<Marca> get() {
+	public Iterable<Marca> marcasGet() {
 		return dao.obtenerTodos();
 	}
 	

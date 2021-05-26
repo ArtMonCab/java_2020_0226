@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import es.teknei.concesionario.entidades.Marca;
 
-@Repository
+//@Repository
 public class MarcaDaoMySql implements Dao<Marca>{
 	private static final String SQL_SELECT= "SELECT m.id, m.nombre FROM marcas m";
 	

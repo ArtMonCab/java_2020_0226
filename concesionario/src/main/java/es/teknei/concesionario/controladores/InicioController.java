@@ -36,16 +36,19 @@ public class InicioController {
 	public String listadoCoches(Model modelo) {
 		
 		modelo.addAttribute("marcas", marcaDao.obtenerTodos());
-		modelo.addAttribute("coches", cocheDao.obtenerCochePorMarca(1L));
 		return "listado";
 	}
 	
-	//Donde se envia el valor seleccionado
+	
     @PostMapping("/listado")
-    public String marcasPost(@ModelAttribute("marcas") Marca marcas) {
-    	System.out.println("Has elegido: "+ marcas);
+    public String marcasPost(@ModelAttribute("coches") Coche coches, Model modelo) {
+    	modelo.addAttribute("coches", cocheDao.obtenerCochePorMarca(coches.getMarca().getId()));
+    	//System.out.println("Has elegido: "+ coches.getMarca().getId());
+    	modelo.addAttribute("marcas", marcaDao.obtenerTodos());
+    	
         return "listado";
     }
+    
 	
 
 	@RequestMapping("/alta")
@@ -58,7 +61,6 @@ public class InicioController {
 
 	@PostMapping("/alta")
 	public String cochePost(Coche coche) {
-		//çclienteNegocio.altaCliente(cliente);
 		
 		cocheDao.insertar(coche);
 
