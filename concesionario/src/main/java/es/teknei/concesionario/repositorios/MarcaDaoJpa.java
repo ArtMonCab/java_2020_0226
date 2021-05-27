@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import es.teknei.concesionario.entidades.Marca;
 
-@Repository
+//@Repository
 public class MarcaDaoJpa implements Dao<Marca>{
 	
 	@Autowired

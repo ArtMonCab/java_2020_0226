@@ -16,7 +16,7 @@ import org.springframework.stereotype.Repository;
 import es.teknei.concesionario.entidades.Coche;
 import es.teknei.concesionario.entidades.Marca;
 
-//@Repository
+@Repository
 public class CocheDaoMySql implements DaoCoche {
 	private static final String SQL_SELECT = "SELECT c.id, c.modelo, c.matricula, c.marca_id, m.id, m.nombre FROM coches c JOIN marcas m ON c.marca_id = m.id";
 	private static final String SQL_INSERT = "INSERT INTO coches (modelo, matricula, marca_id) VALUES (?, ?, ?)";

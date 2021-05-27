@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import es.teknei.concesionario.entidades.Marca;
 import es.teknei.concesionario.repositorios.Dao;
+import es.teknei.concesionario.repositorios.MarcaRepository;
 
 
 
@@ -31,13 +33,19 @@ public class MarcaApi {
 	
 	@Autowired
 	private Dao<Marca> dao;
+	//private MarcaRepository repo;
 	
+	
+    /*@RequestMapping(value = "/listado", method = RequestMethod.GET)
+    public Iterable<Marca> obtenerTodos() {
+        return repo.findAll();
+    }*/
+    
+
 	@GetMapping
 	public Iterable<Marca> marcasGet() {
 		return dao.obtenerTodos();
 	}
-	
-	
 	
 	
 	/*@GetMapping("{id}")
