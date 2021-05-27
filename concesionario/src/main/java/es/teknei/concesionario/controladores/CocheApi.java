@@ -8,15 +8,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 
 import es.teknei.concesionario.entidades.Coche;
-import es.teknei.concesionario.repositorios.CocheRepository;
 import es.teknei.concesionario.repositorios.DaoCoche;
-
 
 
 @RestController
@@ -24,17 +21,6 @@ import es.teknei.concesionario.repositorios.DaoCoche;
 public class CocheApi {
 	@Autowired
 	private DaoCoche dao;
-	//private CocheRepository repo;
-	
-   /* @RequestMapping(value = "/alta", method = RequestMethod.POST)
-    public Coche altaCoche(@RequestBody Coche coche) {
-        return repo.save(coche);
-    }
-
-    @RequestMapping(value = "/listado/{id}", method = RequestMethod.GET)
-    public Iterable<Coche> cochesPorMarca(long id) {
-        return repo.findNamebyId(id);
-    }*/
 	
 	
 	@GetMapping("{id}")
