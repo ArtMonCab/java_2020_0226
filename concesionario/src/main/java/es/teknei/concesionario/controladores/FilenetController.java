@@ -19,7 +19,7 @@ import com.itextpdf.text.BaseColor;
 
 public class FilenetController {
 
-    Document document = new Document();
+    /*Document document = new Document()
     
     try {
     	String path = new File(".").getCanonicalPath();
@@ -65,7 +65,7 @@ public class FilenetController {
         e.printStackTrace();
     } catch (IOException e) {
 		e.printStackTrace();
-	}
+	}*/
 
 
 

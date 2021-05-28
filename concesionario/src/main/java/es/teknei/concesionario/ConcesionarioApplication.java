@@ -32,15 +32,15 @@ import es.teknei.concesionario.repositorios.DaoCoche;
 */
 
 @SpringBootApplication
-public class ConcesionarioApplication implements CommandLineRunner{
+public class ConcesionarioApplication{ // implements CommandLineRunner{
 	
-	@Autowired
+	/*@Autowired
 	private DaoCoche cocheDao;
 	
 	@Autowired
 	private Dao<Marca> marcaDao;
 	
-	/*@Autowired
+	@Autowired
 	private CocheRepository coches;
 	
 	@Autowired
@@ -55,14 +55,14 @@ public class ConcesionarioApplication implements CommandLineRunner{
 
 
 	
-	@Override
+	/*@Override
 	public void run(String... args) throws Exception {
 		System.out.println(cocheDao.obtenerCochePorMarca(1L));
 		
         
 	}
 	
-	/*@Transactional
+	@Transactional
 	private void mostrarDatos() {
 		System.out.println(coches.findById(2L).orElse(null));
 		System.out.println(coches.findAll());

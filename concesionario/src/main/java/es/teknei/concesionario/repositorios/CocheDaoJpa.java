@@ -5,10 +5,10 @@ import org.springframework.stereotype.Repository;
 
 import es.teknei.concesionario.entidades.Coche;
 
-//@Repository
+@Repository
 public class CocheDaoJpa implements DaoCoche{
 	@Autowired
-	private CocheRepository repo;
+	private CocheRestRepository repo;
 
 	@Override
 	public Iterable<Coche> obtenerTodos() {
