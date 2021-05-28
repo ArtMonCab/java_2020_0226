@@ -5,6 +5,8 @@
 <title>Principal</title>
 </head>
 
+
+	
 <body>
 
     <div class="container" role="main">
@@ -27,7 +29,7 @@
         			<div class="form-group col-md-6">
       					<label for="marca">Marca</label>
      	 				<select class="custom-select mr-sm-2" id="marca" name="marca">
-    						<option th:each="marca: ${marcas}" th:value="${marca.id}" th:text="${marca.nombre}"></option>
+							<option th:each="marca: ${marcas}" th:value="${marca.id}" th:text="${marca.nombre}"></option>				
 						</select>
     				</div>
 
@@ -44,7 +46,7 @@
   				<div class="form-row">
 
     				<div class="form-group col-md-6">
-      					<label for="matricula">Matrícula</label>
+      					<label for="matricula">Matricula</label>
       					<input type="text" class="form-control" id="matricula" name="matricula">
     				</div>
   				</div>

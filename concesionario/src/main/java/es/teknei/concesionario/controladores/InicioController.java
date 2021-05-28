@@ -5,6 +5,7 @@ package es.teknei.concesionario.controladores;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -30,11 +31,15 @@ public class InicioController {
 	
 	@RequestMapping("/listado")
 	public String listadoCoches(Model modelo) {
-		
 		modelo.addAttribute("marcas", marcaDao.obtenerTodos());
 		return "listado";
 	}
 	
+	@GetMapping("Listado")
+	public String cargarCoches(Model modelo) {
+		modelo.addAttribute("marcas", marcaDao.obtenerTodos());
+		return "listado";
+	}
 	
     @PostMapping("/listado")
     public String marcasPost(@ModelAttribute("coches") Coche coches, Model modelo) {
@@ -58,7 +63,7 @@ public class InicioController {
 		
 		cocheDao.insertar(coche);
 
-		return "/listado";
+		return "listado";
 	}
 	
 
