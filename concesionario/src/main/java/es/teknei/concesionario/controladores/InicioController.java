@@ -35,7 +35,7 @@ public class InicioController {
 		return "listado";
 	}
 	
-	@GetMapping("Listado")
+	@GetMapping("/listado")
 	public String cargarCoches(Model modelo) {
 		modelo.addAttribute("marcas", marcaDao.obtenerTodos());
 		return "listado";
@@ -63,7 +63,7 @@ public class InicioController {
 		
 		cocheDao.insertar(coche);
 
-		return "listado";
+		return "redirect:/listado";
 	}
 	
 

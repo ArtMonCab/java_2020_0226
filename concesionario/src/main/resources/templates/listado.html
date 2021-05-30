@@ -3,9 +3,6 @@
 	th:replace="~{_plantilla :: estructura(~{::body})}" lang="es">
 <head>
 <title>Listado de coches por marca</title>
-<script src="https://code.jquery.com/jquery.min.js"></script>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
 </head>
@@ -30,12 +27,29 @@
     					Marca
     				</div>
     	
-        			<div class="form-group col-md-4">
+        			<div class="form-group col-md-4" id="marcas" name="marcas">
 						
 						<select class="form-control" name="marca" id="marca">
 							<option>Seleccione una marca</option>
     						<option th:each="marca: ${marcas}" th:value="${marca.id}" th:text="${marca.nombre}"></option>
+							
 						</select>
+						
+						<script type="text/javascript">
+
+						$(document).ready(function (){
+							$('#select').append('<option value="1">One</option>');
+							
+							//$.getJSON('api/marcas', function(data) {
+								//$.each(data, function(key, value) {
+									//$("#marca").append('<option name="' + key + '">' + value + '</option>');
+									//$("#marca").append('<option>Prueba</option>');
+								//}); // close each()
+							//}); // close getJSON()
+
+						});
+
+						</script>
     				</div>
     	
     				<div class="col-auto my-1">
