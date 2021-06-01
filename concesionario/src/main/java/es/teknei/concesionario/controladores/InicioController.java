@@ -1,7 +1,6 @@
 package es.teknei.concesionario.controladores;
 
 
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -36,7 +35,6 @@ import es.teknei.concesionario.repositorios.DaoCoche;
 
 
 
-
 @Controller
 public class InicioController {
 	
@@ -45,6 +43,11 @@ public class InicioController {
 	
 	@Autowired
 	private Dao<Marca> marcaDao;
+	
+	@RequestMapping("/inicio")
+	public String inicio() {
+		return "inicio";
+	}
 	
 	@RequestMapping("/listado")
 	public String listadoCoches(Model modelo) {
@@ -99,7 +102,7 @@ public class InicioController {
     	String codigoFecha = new SimpleDateFormat("yyyyMMdd").format(fecha);
         //
     	try {
-    		String FILE_NAME = "c:/temp/" + marca + codigoFecha + ".pdf";
+    		String FILE_NAME = "c:/temp/" + marca + ".pdf";
             PdfWriter.getInstance(documento, new FileOutputStream(new File(FILE_NAME)));
             
             documento.open();

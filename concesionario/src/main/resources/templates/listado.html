@@ -11,6 +11,7 @@
       <div class="row">
           <div class="col-sm-3" style="background-color:#007bff">
 			<div class="list-group">
+				<a href="inicio" class="list-group-item" style="background-color:#007bff; border:none; color:black">Inicio</a>
   				<a href="alta" class="list-group-item" style="background-color:#007bff; border:none; color:black">
     				Alta coche
   				</a>
@@ -19,7 +20,7 @@
           </div>
           <div class="col-sm-9">
           
-			<form th:object="${marcas}"th:action="listado" method="post">
+			<form th:object="${marcas}" th:action="listado" method="post">
 				<h2>Listado</h2>
  				<div class="form-row">	
 
@@ -27,29 +28,28 @@
     					Marca
     				</div>
     	
-        			<div class="form-group col-md-4" id="marcas" name="marcas">
+        			<div class="form-group col-md-4" id="marcas">
 						
 						<select class="form-control" name="marca" id="marca">
-							<option>Seleccione una marca</option>
-    						<option th:each="marca: ${marcas}" th:value="${marca.id}" th:text="${marca.nombre}"></option>
-							
+							<option>Seleccionar marca</option>
+							<option th:each="marca: ${marcas}" th:value="${marca.id}" th:text="${marca.nombre}"></option>  	
 						</select>
 						
-						<script type="text/javascript">
+						<!--<script type="text/javascript">
 
 						$(document).ready(function (){
-							$('#select').append('<option value="1">One</option>');
+							$('#marca').append('<option value="1">One</option>');
 							
-							//$.getJSON('api/marcas', function(data) {
-								//$.each(data, function(key, value) {
-									//$("#marca").append('<option name="' + key + '">' + value + '</option>');
-									//$("#marca").append('<option>Prueba</option>');
-								//}); // close each()
-							//}); // close getJSON()
+							$.getJSON('api/marcas', function(data) {
+								$.each(data, function(key, value) {
+									$("#marca").append('<option name="' + key + '">' + value + '</option>');
+									$("#marca").append('<option>Prueba</option>');
+								}); // close each()
+							}); // close getJSON()
 
 						});
 
-						</script>
+						</script>-->
     				</div>
     	
     				<div class="col-auto my-1">

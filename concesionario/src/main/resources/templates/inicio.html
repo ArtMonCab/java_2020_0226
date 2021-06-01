@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{_plantilla :: estructura(~{::body})}" lang="es">
+<head>
+<title>Inicio</title>
+</head>
+
+<body>
+
+   		<form  th:action="inicio" >
+			<div class="list-group">
+  				<a href="alta" class="list-group-item" style="border:none">Alta coche</a>
+  				<a href="listado" class="list-group-item" style="border:none">Listado coches</a>
+  			</div>
+        </form>
+
+
+
+</body>
+</html>
