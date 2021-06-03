@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.filenet.api.collection.ContentElementList;
 import com.filenet.api.collection.ObjectStoreSet;
 import com.filenet.api.constants.AutoClassify;
 import com.filenet.api.constants.AutoUniqueName;
@@ -20,6 +21,8 @@ import com.filenet.api.constants.ClassNames;
 import com.filenet.api.constants.DefineSecurityParentage;
 import com.filenet.api.constants.RefreshMode;
 import com.filenet.api.core.Connection;
+import com.filenet.api.core.ContentReference;
+import com.filenet.api.core.ContentTransfer;
 import com.filenet.api.core.Document;
 import com.filenet.api.core.Domain;
 import com.filenet.api.core.Factory;
@@ -78,18 +81,18 @@ public class FilenetController {
     public void prueba() {
     	//crearDocumento();
     	//instanciar();
-    	insertDocument();
+    	//insertDocument();
+    	agregarFicherosDirectorio("C:\\temp\\", "\\ConcesionarioTeknei");
     	System.out.println("Prueba de Filenet");
     }
     
 
-    public static void addfiles_toicm(String directory, String lFolderPath)
+    public static void agregarFicherosDirectorio(String directory, String lFolderPath)
     {
         try {
         DocumentUtil.initialize();
         String path = directory;
-        System.out.println("This is the path:..............................."
-                + path);
+        System.out.println("This is the path -> " + path + "*");
         String file_name;
         File folder = new File(directory);
         File[] listOfFiles = folder.listFiles();
@@ -114,7 +117,7 @@ public class FilenetController {
          }
     }//end of method
 
-    public static void addfile_toicm(File file_name, String lFolderPath)
+    public static void agregarFichero(File file_name, String lFolderPath)
     {
         try {
         DocumentUtil.initialize();
@@ -170,7 +173,7 @@ public class FilenetController {
 		return "inicio";
 	}*/
     
-    /*public void crearDocumento() {
+    public void crearDocumento() {
 		//Parametros conexión
 		String uri = "http://34.234.153.200/wsi/FNCEWS40MTOM";
 		String usuario ="Arturo";
@@ -188,11 +191,21 @@ public class FilenetController {
 		
 		//Obtener objectos almacenados dominio
 		ObjectStoreSet osSet = domain.get_ObjectStores();
-		//ObjectStore os = null;
-		ObjectStore os = Factory.ObjectStore.fetchInstance(domain, "Teknei", null);
+		ObjectStore os = null;
+		//ObjectStore os = Factory.ObjectStore.fetchInstance(domain, "Teknei", null);
     	// Get document.
     	
-    	Document doc=Factory.Document.getInstance(os, ClassNames.DOCUMENT, new Id("{8FD91CF0-E991-426D-9BCB-B63F0E30E604}") );
+		Iterator osIter = osSet.iterator();
+		
+		while (osIter.hasNext()) {
+			os = (ObjectStore) osIter.next();
+		}
+    	//Document doc=Factory.Document.getInstance(os, ClassNames.DOCUMENT, new Id("{20CAC079-0000-CB1C-B882-323B9F581CD9}") );
+		
+		Document doc=Factory.Document.createInstance(os,"coches");
+		
+		doc.set_MimeType("pdf/application");
+		
 
     	// Check out the Document object and save it.
     	doc.checkout(com.filenet.api.constants.ReservationType.EXCLUSIVE, null, doc.getClassName(), doc.getProperties());
@@ -203,7 +216,6 @@ public class FilenetController {
 
     	// Specify internal and external files to be added as content.
     	File internalFile = new File("C:\temp\renault.pdf");
-    	// non-Windows: File internalFile = new File("/tmp/docs/mydoc.txt");
     	//String externalFile = "ftp://ftp.mycompany.com/docs/relnotes.txt";
 
     	// Add content to the Reservation object.
@@ -235,7 +247,7 @@ public class FilenetController {
     	reservation.checkin(AutoClassify.DO_NOT_AUTO_CLASSIFY, CheckinType.MAJOR_VERSION);
     	reservation.save(RefreshMode.REFRESH);
 
-}*/
+}
     
     public static void insertDocument() {
 		//Parametros conexión

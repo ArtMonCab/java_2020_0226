@@ -27,10 +27,8 @@ import com.filenet.api.util.UserContext;
 		public class DocumentUtil {
 
 		    public static ObjectStore objectStore = null;
-
 		    public static Domain domain = null;
-		    public static Connection connection = null;
-
+		    public static Connection conn = null;
 
 
 		    public static void initialize()
@@ -51,12 +49,12 @@ import com.filenet.api.util.UserContext;
 				String password ="Hola1234$";
 				
 				//Hacer la conexión
-				Connection conn = Factory.Connection.getConnection(uri);
+				conn = Factory.Connection.getConnection(uri);
 				Subject subject = UserContext.createSubject(conn, usuario, password, "FileNetP8WSI");
 				UserContext.get().pushSubject(subject);
 				
-		        domain = Factory.Domain.getInstance(connection, null);
-		        objectStore = Factory.ObjectStore.fetchInstance(domain, "TARGET", null);
+		        domain = Factory.Domain.getInstance(conn, null);
+		        objectStore = Factory.ObjectStore.fetchInstance(domain, "Teknei", null);
 		        System.out.println("\n\n objectStore--> " + objectStore.get_DisplayName());
 		    }
 
@@ -124,7 +122,7 @@ import com.filenet.api.util.UserContext;
 		        */
 		    }
 
-		    public static ObjectStore getObjecctStore()
+		    /*public static ObjectStore getObjecctStore()
 		    {
 		        if (objectStore != null) {
 		            return objectStore;
@@ -156,6 +154,6 @@ import com.filenet.api.util.UserContext;
 
 		        return objectStore;
 
-		    }
+		    }*/
 
 		}
