@@ -32,40 +32,29 @@ import com.filenet.api.util.UserContext;
 		    public static Connection connection = null;
 
 
-		    public static void main(String[] args)
-		    {
-		        initialize();
-		        /*
-		        addDocumentWithPath("/FNB", "C:\\Users\\Administrator\\Desktop\\Sample.txt.txt",
-		                "text/plain", "NNN", "Document");
-		        */
-		        File file = new File("E:\\Users\\Administrator\\Desktop\\TT.txt");
-
-		        FileInputStream fis = null;
-		        try {
-		            fis = new FileInputStream(file);
-		        } catch (FileNotFoundException e) {
-		            // TODO Auto-generated catch block
-		            e.printStackTrace();
-		        }
-
-		        addDocumentWithStream("/FNB", fis, "text/plain", "My New Doc", "Document");
-		    }
 
 		    public static void initialize()
 		    {
 
-		        System.setProperty("WASP.LOCATION", "C:\\Progra~1\\IBM\\WebSphere\\AppServer\\profiles\\AppSrv01\\installedApps\\P8Node01Cell\\FileNetEngine.ear \\cews.war\\WEB-INF\\classes\\com\\filenet\\engine\\wsi");
+		       /* System.setProperty("WASP.LOCATION", "C:\\Progra~1\\IBM\\WebSphere\\AppServer\\profiles\\AppSrv01\\installedApps\\P8Node01Cell\\FileNetEngine.ear \\cews.war\\WEB-INF\\classes\\com\\filenet\\engine\\wsi");
 		        System.setProperty("SECURITY.AUTH.LOGIN.CONFIG",
 		                "C:\\Progra~1\\IBM\\WebSphere\\AppServer\\profiles\\AppSrv01\\installedApps\\P8Node01Cell\\FileNetEngine.ear\\client-download.war\\FileNet\\Download\\dap501.153\\jaas.conf.wsi");
 		        System.setProperty(":SECURITY.AUTH.LOGIN.CONFIG",
 		                "C:\\Progra~1\\IBM\\WebSphere\\AppServer\\profiles\\AppSrv01\\installedApps\\P8Node01Cell\\FileNetEngine.ear\\client-download.war\\FileNet\\Download\\dap501.153\\jaas.conf.wsi");
-		        System.setProperty("java.security.auth.login.config","C:\\Progra~1\\IBM\\WebSphere\\AppServer\\java\\jre");
-		        connection = Factory.Connection.getConnection(CEConnection.uri);
-		        Subject sub = UserContext.createSubject(connection,
-		                com.user.CEConnection.username, CEConnection.password,
-		                CEConnection.stanza);
-		        UserContext.get().pushSubject(sub);
+		        
+		        System.setProperty("java.security.auth.login.config","C:\\Progra~1\\IBM\\WebSphere\\AppServer\\java\\jre");*/
+		    	
+		    	
+				//Parametros conexión
+				String uri = "http://34.234.153.200/wsi/FNCEWS40MTOM";
+				String usuario ="Arturo";
+				String password ="Hola1234$";
+				
+				//Hacer la conexión
+				Connection conn = Factory.Connection.getConnection(uri);
+				Subject subject = UserContext.createSubject(conn, usuario, password, "FileNetP8WSI");
+				UserContext.get().pushSubject(subject);
+				
 		        domain = Factory.Domain.getInstance(connection, null);
 		        objectStore = Factory.ObjectStore.fetchInstance(domain, "TARGET", null);
 		        System.out.println("\n\n objectStore--> " + objectStore.get_DisplayName());
@@ -80,9 +69,8 @@ import com.filenet.api.util.UserContext;
 		        System.out.println("\n\n Folder ID: " + folder.get_Id());
 		        // Document doc = Factory.Document.createInstance(os, classId);
 
-		        Document doc = CEUtil.createDocWithContent(new File(filePath), mimeType, 
-		                objectStore, docName, docClass);
-
+		        //Document doc = CEUtil.createDocNoContent(mimeType, objectStore, new File(filePath), docClass);
+		        Document doc = CEUtil.createDocNoContent(mimeType, objectStore, filePath, docClass);
 		        doc.save(RefreshMode.REFRESH);
 
 		        doc = CEUtil.createDocNoContent(mimeType, objectStore, docName, docClass);
@@ -142,13 +130,16 @@ import com.filenet.api.util.UserContext;
 		            return objectStore;
 		        }
 
-		        // Make connection.
-		        com.filenet.api.core.Connection conn = Factory.Connection
-		                .getConnection(CEConnection.uri);
-		        Subject subject = UserContext.createSubject(conn,
-		                CEConnection.username, CEConnection.password, null);
-		        UserContext.get().pushSubject(subject);
-
+				//Parametros conexión
+				String uri = "http://34.234.153.200/wsi/FNCEWS40MTOM";
+				String usuario ="Arturo";
+				String password ="Hola1234$";
+				
+				//Hacer la conexión
+				Connection conn = Factory.Connection.getConnection(uri);
+				Subject subject = UserContext.createSubject(conn, usuario, password, "FileNetP8WSI");
+				UserContext.get().pushSubject(subject);
+				
 		        try {
 		            // Get default domain.
 		            Domain domain = Factory.Domain.getInstance(conn, null);

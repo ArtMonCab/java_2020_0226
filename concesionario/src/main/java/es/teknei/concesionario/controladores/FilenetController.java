@@ -4,6 +4,7 @@ import javax.security.auth.Subject;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Iterator;
 
 import org.springframework.stereotype.Controller;
@@ -11,8 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.filenet.api.admin.StorageArea;
-import com.filenet.api.collection.ContentElementList;
 import com.filenet.api.collection.ObjectStoreSet;
 import com.filenet.api.constants.AutoClassify;
 import com.filenet.api.constants.AutoUniqueName;
@@ -21,8 +20,7 @@ import com.filenet.api.constants.ClassNames;
 import com.filenet.api.constants.DefineSecurityParentage;
 import com.filenet.api.constants.RefreshMode;
 import com.filenet.api.core.Connection;
-import com.filenet.api.core.ContentReference;
-import com.filenet.api.core.ContentTransfer;
+import com.filenet.api.core.Document;
 import com.filenet.api.core.Domain;
 import com.filenet.api.core.Factory;
 import com.filenet.api.core.Folder;
@@ -30,10 +28,13 @@ import com.filenet.api.core.ObjectStore;
 import com.filenet.api.core.ReferentialContainmentRelationship;
 import com.filenet.api.util.Id;
 import com.filenet.api.util.UserContext;
-import com.filenet.api.core.Document;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 import es.teknei.concesionario.entidades.Marca;
-import es.teknei.concesionario.controladores.DocumentUtil;
 
 @Controller
 public class FilenetController {
@@ -46,7 +47,7 @@ public class FilenetController {
 	
 	
 	 // Instantiate object store from domain.
-    public static void instanciar() // Example: "Domain1"
+    /*public static void instanciar() // Example: "Domain1"
     {
    	 
 		//Parametros conexión
@@ -71,15 +72,64 @@ public class FilenetController {
 	        String objStoreName = objStore.get_DisplayName();
 	        System.out.println("Object store name = " + objStoreName); 
 	    }
-    }
+    }*/
     
     @GetMapping("/filenet")
     public void prueba() {
     	//crearDocumento();
     	//instanciar();
+    	insertDocument();
     	System.out.println("Prueba de Filenet");
     }
     
+
+    public static void addfiles_toicm(String directory, String lFolderPath)
+    {
+        try {
+        DocumentUtil.initialize();
+        String path = directory;
+        System.out.println("This is the path:..............................."
+                + path);
+        String file_name;
+        File folder = new File(directory);
+        File[] listOfFiles = folder.listFiles();
+        for (int i = 0; i < listOfFiles.length; i++) 
+        {
+            if (listOfFiles[i].isFile())
+            {
+                file_name = listOfFiles[i].getName();
+                System.out.println(file_name);
+                String filePaths = directory + file_name;
+                // File file = new File("C:\\FNB\\att.jpg");
+                File file = new File(filePaths);
+                InputStream attStream = null;
+                    attStream = new FileInputStream(file);
+                DocumentUtil.addDocumentWithStream(lFolderPath, attStream,
+                        "pdf/application", file_name, "Document");
+            }
+        }
+        } catch (FileNotFoundException e) 
+        {
+        e.printStackTrace();
+         }
+    }//end of method
+
+    public static void addfile_toicm(File file_name, String lFolderPath)
+    {
+        try {
+        DocumentUtil.initialize();
+                InputStream attStream = null;
+                    attStream = new FileInputStream(file_name);
+                DocumentUtil.addDocumentWithStream(lFolderPath, attStream,
+                        "image/jpeg", file_name.getName(), "Document");
+                System.out.println("File added successfully");
+        } catch (Exception e) 
+        {
+        System.out.println(e.getMessage());
+       }
+    }//end of method
+
+
 	
 	//@GetMapping("/listados")
 	//public String subirFilenet(Marca marca) {
@@ -120,7 +170,7 @@ public class FilenetController {
 		return "inicio";
 	}*/
     
-    public void crearDocumento() {
+    /*public void crearDocumento() {
 		//Parametros conexión
 		String uri = "http://34.234.153.200/wsi/FNCEWS40MTOM";
 		String usuario ="Arturo";
@@ -185,9 +235,9 @@ public class FilenetController {
     	reservation.checkin(AutoClassify.DO_NOT_AUTO_CLASSIFY, CheckinType.MAJOR_VERSION);
     	reservation.save(RefreshMode.REFRESH);
 
-}
+}*/
     
-    /*public static void insertDocument() {
+    public static void insertDocument() {
 		//Parametros conexión
 		String uri = "http://34.234.153.200/wsi/FNCEWS40MTOM";
 		String usuario ="Arturo";
@@ -225,10 +275,10 @@ public class FilenetController {
             doc.save(RefreshMode.NO_REFRESH);
 
             // File the document.
-            Folder folder = Factory.Folder.getInstance(objStore, ClassNames.FOLDER, new Id("{42A3FC29-D635-4C37-8C86-84BAC73FFA3F}")); // id of folder to which you want to store document.
+            Folder folder = Factory.Folder.getInstance(objStore, ClassNames.FOLDER, new Id("{20CAC079-0000-CB1C-B882-323B9F581CD9}")); // id of folder to which you want to store document.
             ReferentialContainmentRelationship rcr = folder.file(doc, AutoUniqueName.AUTO_UNIQUE, "New Document via Java API",
                     DefineSecurityParentage.DO_NOT_DEFINE_SECURITY_PARENTAGE);
             rcr.save(RefreshMode.NO_REFRESH);
         }
-    }*/
+    }
 }
