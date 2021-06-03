@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
@@ -33,7 +32,7 @@ import es.teknei.concesionario.entidades.Marca;
 import es.teknei.concesionario.repositorios.Dao;
 import es.teknei.concesionario.repositorios.DaoCoche;
 
-
+import es.teknei.concesionario.librerias.PDFUtil;
 
 @Controller
 public class InicioController {
@@ -49,11 +48,6 @@ public class InicioController {
 		return "inicio";
 	}
 	
-	@RequestMapping("/listado")
-	public String listadoCoches(Model modelo) {
-		modelo.addAttribute("marcas", marcaDao.obtenerTodos());
-		return "listado";
-	}
 	
 	@GetMapping("/listado")
 	public String cargarCoches(Model modelo) {
@@ -71,6 +65,8 @@ public class InicioController {
     	String marca = coches.getMarca().getNombre();
     	
     	crearPDF(listadoCoches, marca);
+    	
+    	
 
     	modelo.addAttribute("marcas", marcaDao.obtenerTodos());
     	
@@ -94,19 +90,19 @@ public class InicioController {
 		return "redirect:/listado";
 	}
 	
-    public void crearPDF(Iterable<Coche> coches, String marca) {
+    
+    public static void crearPDF(Iterable<Coche> coches, String marca) {
     	
     	Document documento = new Document();
     	Date fecha = new Date();
-    	String codigoFecha = new SimpleDateFormat("yyyyMMdd").format(fecha);
-        //
+
     	try {
     		String FILE_NAME = "c:/temp/" + marca + ".pdf";
             PdfWriter.getInstance(documento, new FileOutputStream(new File(FILE_NAME)));
             
             documento.open();
             
-            documento.add(new Paragraph("Fichero " + marca + codigoFecha + ".pdf"));
+            documento.add(new Paragraph("Fichero " + marca + ".pdf"));
             documento.add(new Paragraph(" "));
             
             PdfPTable tabla = new PdfPTable(2);
@@ -130,7 +126,6 @@ public class InicioController {
 		}
     	
     }
-    
 
     
 }

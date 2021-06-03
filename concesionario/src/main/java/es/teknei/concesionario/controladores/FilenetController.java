@@ -18,9 +18,10 @@ public class FilenetController {
 	
     
     @GetMapping("/filenet")
-    public void prueba() {
+    public String AgregarPDF() {
     	agregarFicherosDirectorio("C:\\temp\\", "\\ConcesionarioTeknei");
-    	System.out.println("Prueba de Filenet");
+
+    	return "redirect:/inicio";
     }
     
 
@@ -29,7 +30,7 @@ public class FilenetController {
         try {
         DocumentUtil.initialize();
         String path = directory;
-        System.out.println("This is the path -> " + path + "*");
+        System.out.println("Los archivos PDF están en: " + path );
         String file_name;
         File folder = new File(directory);
         File[] listOfFiles = folder.listFiles();
