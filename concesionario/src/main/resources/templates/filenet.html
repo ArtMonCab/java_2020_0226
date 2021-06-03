@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{_plantilla :: estructura(~{::body})}" lang="es">
+<head>
+<title>Inicio</title>
+</head>
+
+<body>
+
+    <div class="container" role="main">
+      <div class="row">
+          <div class="col-sm-3" style="background-color:#007bff">
+			<div class="list-group">
+  				<a href="alta" class="list-group-item" style="background-color:#007bff; border:none; color:white">
+    				Alta coche
+  				</a>
+  				<a href="listado" class="list-group-item" style="background-color:#007bff; border:none; color:black">Listado coches</a>
+  			</div>
+          </div>
+          <div class="col-sm-9">
+          
+   		<form  th:action="filenet" >
+			<div class="list-group">
+  				<h3>Documentacion subida a Filenet</h3>
+  				<a href="inicio" class="list-group-item" style="border:none">Volver a inicio</a>
+  			</div>
+        </form>
+          </div>
+      </div>
+    </div>
+
+
+
+
+
+</body>
+</html>
