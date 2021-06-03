@@ -1,4 +1,4 @@
-package es.teknei.concesionario.controladores;
+package es.teknei.concesionario.librerias;
 
 import java.io.ByteArrayInputStream;
 

@@ -1,4 +1,4 @@
-package es.teknei.concesionario.controladores;
+package es.teknei.concesionario.librerias;
 
 	
 import java.io.File;
@@ -32,16 +32,7 @@ import com.filenet.api.util.UserContext;
 
 
 		    public static void initialize()
-		    {
-
-		       /* System.setProperty("WASP.LOCATION", "C:\\Progra~1\\IBM\\WebSphere\\AppServer\\profiles\\AppSrv01\\installedApps\\P8Node01Cell\\FileNetEngine.ear \\cews.war\\WEB-INF\\classes\\com\\filenet\\engine\\wsi");
-		        System.setProperty("SECURITY.AUTH.LOGIN.CONFIG",
-		                "C:\\Progra~1\\IBM\\WebSphere\\AppServer\\profiles\\AppSrv01\\installedApps\\P8Node01Cell\\FileNetEngine.ear\\client-download.war\\FileNet\\Download\\dap501.153\\jaas.conf.wsi");
-		        System.setProperty(":SECURITY.AUTH.LOGIN.CONFIG",
-		                "C:\\Progra~1\\IBM\\WebSphere\\AppServer\\profiles\\AppSrv01\\installedApps\\P8Node01Cell\\FileNetEngine.ear\\client-download.war\\FileNet\\Download\\dap501.153\\jaas.conf.wsi");
-		        
-		        System.setProperty("java.security.auth.login.config","C:\\Progra~1\\IBM\\WebSphere\\AppServer\\java\\jre");*/
-		    	
+		    {		    	
 		    	
 				//Parametros conexión
 				String uri = "http://34.234.153.200/wsi/FNCEWS40MTOM";
@@ -122,7 +113,7 @@ import com.filenet.api.util.UserContext;
 		        */
 		    }
 
-		    /*public static ObjectStore getObjecctStore()
+		    public static ObjectStore getObjectStore()
 		    {
 		        if (objectStore != null) {
 		            return objectStore;
@@ -154,6 +145,6 @@ import com.filenet.api.util.UserContext;
 
 		        return objectStore;
 
-		    }*/
+		    }
 
 		}
