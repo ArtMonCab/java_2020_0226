@@ -2,6 +2,7 @@ package es.teknei.concesionario.librerias;
 
 	
 import java.io.InputStream;
+import java.util.List;
 
 import javax.security.auth.Subject;
 
@@ -90,6 +91,52 @@ import com.filenet.api.util.UserContext;
 		        doc.set_ContentElements(contEleList);
 		        doc.getProperties().putValue("DocumentTitle", docName);
 
+		        doc.set_MimeType(mimeType);
+		        doc.checkin(AutoClassify.AUTO_CLASSIFY, CheckinType.MAJOR_VERSION);
+		        doc.save(RefreshMode.REFRESH);
+
+		        ReferentialContainmentRelationship rcr = folder.file(doc,
+		                AutoUniqueName.AUTO_UNIQUE, docName, 
+		                DefineSecurityParentage.DO_NOT_DEFINE_SECURITY_PARENTAGE);
+		        rcr.save(RefreshMode.REFRESH);
+		        /*
+
+		        doc.save(RefreshMode.REFRESH);
+
+		        doc = CEUtil.createDocNoContent(mimeType, objectStore, docName, docClass);
+
+		        CEUtil.checkinDoc(doc);
+		        ReferentialContainmentRelationship rcr = CEUtil.fileObject(objectStore, doc, folderPath);
+		        rcr.save(RefreshMode.REFRESH);
+		        */
+		    }
+		    
+		    public static void addDocumentWithStreamProperties(String folderPath,
+		            InputStream inputStream, String mimeType, 
+		            String docName, String docClass, List<String> marca, List<String> modelo, List<String> matricula) {
+
+		        Folder folder = Factory.Folder.fetchInstance(objectStore,
+		                folderPath, null);
+
+		        System.out.println("\n\n Folder ID: " + folder.get_Id());
+		        // Document doc = Factory.Document.createInstance(os, classId);
+
+		        Document doc = Factory.Document.createInstance(objectStore, "Coches");
+		        //Document doc = Factory.Document.getInstance(objectStore,"Coches",
+		        ContentElementList contEleList = Factory.ContentElement.createList();
+		        ContentTransfer ct = Factory.ContentTransfer.createInstance();
+
+		        ct.setCaptureSource(inputStream);
+		        ct.set_ContentType(mimeType);
+		        ct.set_RetrievalName(docName);
+		        contEleList.add(ct);
+		      
+		        doc.set_ContentElements(contEleList);
+		        doc.getProperties().putValue("DocumentTitle", docName);
+		        doc.getProperties().putValue("Marca", String.valueOf(marca));
+		        doc.getProperties().putValue("Modelo", String.valueOf(modelo));
+		        doc.getProperties().putValue("Matricula", String.valueOf(matricula));
+		        
 		        doc.set_MimeType(mimeType);
 		        doc.checkin(AutoClassify.AUTO_CLASSIFY, CheckinType.MAJOR_VERSION);
 		        doc.save(RefreshMode.REFRESH);

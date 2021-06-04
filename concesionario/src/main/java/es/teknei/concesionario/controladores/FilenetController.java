@@ -17,10 +17,8 @@ import es.teknei.concesionario.repositorios.Dao;
 import es.teknei.concesionario.repositorios.DaoCoche;
 
 import java.io.InputStream;
-//https://www.toolbox.com/tech/question/how-can-we-add-a-multivalue-using-api-041410/
-//https://www.ibm.com/support/pages/how-get-and-set-multi-value-properties-both-cm8-and-filenet-content-engine-using-ibm-content-integrator-ici
-//https://www.ibm.com/support/pages/how-do-i-set-values-multi-value-property-ibm-filenet-p8-content-engine-web-service-cews-app
-//https://stackoverflow.com/questions/54564866/api-for-adding-values-into-multi-value-property-into-filenet-p8-in-java
+import java.util.ArrayList;
+import java.util.List;
 @Controller
 public class FilenetController {
 	
@@ -33,21 +31,46 @@ public class FilenetController {
     
     @GetMapping("/filenet")
     public String AgregarPDF() {
-    		
+    	//Creo los PDF's de cada Marca y los subo a Filenet
     	Iterable<Marca> marcas = marcaDao.obtenerTodos();
-    	Iterable<Coche> listadoCoches = null;
+    	Iterable<Coche> coches = null;
     
     	
     	for (Marca marca:marcas) {
-    		listadoCoches = cocheDao.obtenerCochePorMarca(marca.getId());
-    		PDFUtil.crearPDFMarcas(listadoCoches, marca.getNombre());
+    		coches = cocheDao.obtenerCochePorMarca(marca.getId());
+    		PDFUtil.crearPDFMarcas(coches, marca.getNombre());
     	}
     	
-    	agregarFicherosDirectorio("C:\\temp\\concesionario\\", "\\ConcesionarioTeknei");
+    	agregarFicherosDirectorio("C:\\temp\\", "\\ConcesionarioTeknei");
 
-    	listadoCoches = cocheDao.obtenerTodos();
-    	PDFUtil.crearPDFTodos(listadoCoches);
+    	//Creo el PDF con todos los coches, le añado atributos multivalor y lo subo a Filenet
+    	coches = cocheDao.obtenerTodos();
+    	PDFUtil.crearPDFTodos(coches);
     	
+    	//Les introduzco los valores del os atributos
+    	
+
+    	
+    	List<String> marca = new ArrayList<String>();
+    	List<String> modelo = new ArrayList<String>();
+    	List<String> matricula = new ArrayList<String>();
+    	
+    	//Relleno los strings con lso valores del os atributos
+    	for (Coche coche:coches) {
+    		marca.add(coche.getMarca().getNombre());
+    		modelo.add(coche.getModelo());
+    		matricula.add(coche.getMatricula());
+    	}
+    	
+    	System.out.println("--------------------------");
+    	System.out.println(marca);
+    	System.out.println(modelo);
+    	System.out.println(matricula);
+    	System.out.println("------------------------");
+    	//doc.getProperties().putValue( accountNumbers, String.valueOf( accountNumbersSplit) )
+    	
+    	File fichero = new File("c:/temp/todos/Coches.pdf");
+    	agregarFichero(fichero, "\\ConcesionarioTeknei", marca, modelo, matricula);
     	return "redirect:/inicio";
     }
     
@@ -81,15 +104,15 @@ public class FilenetController {
          }
     }//end of method
 
-    public static void agregarFichero(File file_name, String lFolderPath)
+    public static void agregarFichero(File file_name, String lFolderPath, List<String> marca, List<String> modelo, List<String> matricula)
     {
         try {
         DocumentUtil.initialize();
                 InputStream attStream = null;
                     attStream = new FileInputStream(file_name);
-                DocumentUtil.addDocumentWithStream(lFolderPath, attStream,
-                        "image/jpeg", file_name.getName(), "Document");
-                System.out.println("File added successfully");
+                DocumentUtil.addDocumentWithStreamProperties(lFolderPath, attStream,
+                        "pdf/application", file_name.getName(), "Document", marca, modelo, matricula);
+                System.out.println("Fichero agregado con exito");
         } catch (Exception e) 
         {
         System.out.println(e.getMessage());

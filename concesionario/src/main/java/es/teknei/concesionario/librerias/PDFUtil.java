@@ -56,7 +56,7 @@ public class PDFUtil {
     	Document documento = new Document();
 
     	try {
-    		String FILE_NAME = "c:/temp/concesionarios/todos/Coches.pdf";
+    		String FILE_NAME = "c:/temp/todos/Coches.pdf";
             PdfWriter.getInstance(documento, new FileOutputStream(new File(FILE_NAME)));
             
             documento.open();
