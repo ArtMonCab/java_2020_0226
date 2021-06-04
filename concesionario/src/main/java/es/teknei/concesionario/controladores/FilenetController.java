@@ -17,7 +17,10 @@ import es.teknei.concesionario.repositorios.Dao;
 import es.teknei.concesionario.repositorios.DaoCoche;
 
 import java.io.InputStream;
-
+//https://www.toolbox.com/tech/question/how-can-we-add-a-multivalue-using-api-041410/
+//https://www.ibm.com/support/pages/how-get-and-set-multi-value-properties-both-cm8-and-filenet-content-engine-using-ibm-content-integrator-ici
+//https://www.ibm.com/support/pages/how-do-i-set-values-multi-value-property-ibm-filenet-p8-content-engine-web-service-cews-app
+//https://stackoverflow.com/questions/54564866/api-for-adding-values-into-multi-value-property-into-filenet-p8-in-java
 @Controller
 public class FilenetController {
 	
