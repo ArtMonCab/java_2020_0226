@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Date;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -14,7 +13,6 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import es.teknei.concesionario.entidades.Coche;
-import es.teknei.concesionario.entidades.Marca;
 
 public class PDFUtil {
 	

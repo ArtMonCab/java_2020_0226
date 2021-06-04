@@ -18,7 +18,6 @@ import es.teknei.concesionario.entidades.Marca;
 import es.teknei.concesionario.repositorios.Dao;
 import es.teknei.concesionario.repositorios.DaoCoche;
 
-import es.teknei.concesionario.librerias.PDFUtil;
 
 @Controller
 public class InicioController {
@@ -70,41 +69,6 @@ public class InicioController {
 	}
 	
     
-    /*public static void crearPDF(Iterable<Coche> coches, String marca) {
-    	
-    	Document documento = new Document();
-    	Date fecha = new Date();
-
-    	try {
-    		String FILE_NAME = "c:/temp/" + marca + ".pdf";
-            PdfWriter.getInstance(documento, new FileOutputStream(new File(FILE_NAME)));
-            
-            documento.open();
-            
-            documento.add(new Paragraph("Fichero " + marca + ".pdf"));
-            documento.add(new Paragraph(" "));
-            
-            PdfPTable tabla = new PdfPTable(2);
-            tabla.setHorizontalAlignment(Element.ALIGN_LEFT);
-            tabla.addCell("Modelo");
-            tabla.addCell("Matrícula");
-            for (Coche coche:coches) {
-            	tabla.addCell(coche.getModelo());
-            	tabla.addCell(coche.getMatricula());
-            }
-
-            documento.add(tabla);
-
-            documento.close();
-            
-    		
-        } catch (FileNotFoundException | DocumentException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-			e.printStackTrace();
-		}
-    	
-    }*/
 
     
 }
