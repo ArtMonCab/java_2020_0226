@@ -29,10 +29,10 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/amont/eclipse/jee-2020-092/eclipse/JavaCEWSclient/Jace.jar"/>
-	<classpathentry kind="lib" path="C:/Users/amont/eclipse/jee-2020-092/eclipse/JavaCEWSclient/Jace_t.jar"/>
-	<classpathentry kind="lib" path="C:/Users/amont/eclipse/jee-2020-092/eclipse/JavaCEWSclient/p8cel10n.jar"/>
-	<classpathentry kind="lib" path="C:/Users/amont/eclipse/jee-2020-092/eclipse/itextpdf-5.4.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/amont/eclipse/jee-2020-092/eclipse/lombok.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Curso JAVA/eclipse/jee-2020-09/eclipse/itextpdf-5.4.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Curso JAVA/eclipse/jee-2020-09/eclipse/lombok.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Curso JAVA/eclipse/jee-2020-09/eclipse/JavaCEWSclient/Jace.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Curso JAVA/eclipse/jee-2020-09/eclipse/JavaCEWSclient/Jace_t.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Curso JAVA/eclipse/jee-2020-09/eclipse/JavaCEWSclient/p8cel10n.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

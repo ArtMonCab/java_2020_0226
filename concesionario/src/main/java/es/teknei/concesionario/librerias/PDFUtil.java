@@ -16,7 +16,7 @@ import es.teknei.concesionario.entidades.Coche;
 
 public class PDFUtil {
 	
-    public static void crearPDF(Iterable<Coche> coches, String marca) {
+    public static void crearPDFMarcas(Iterable<Coche> coches, String marca) {
     	
     	Document documento = new Document();
 
@@ -34,6 +34,43 @@ public class PDFUtil {
             tabla.addCell("Modelo");
             tabla.addCell("Matrícula");
             for (Coche coche:coches) {
+            	tabla.addCell(coche.getModelo());
+            	tabla.addCell(coche.getMatricula());
+            }
+
+            documento.add(tabla);
+
+            documento.close();
+            
+    		
+        } catch (FileNotFoundException | DocumentException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+			e.printStackTrace();
+		}
+    	
+    }
+    
+    public static void crearPDFTodos(Iterable<Coche> coches) {
+    	
+    	Document documento = new Document();
+
+    	try {
+    		String FILE_NAME = "c:/temp/concesionarios/todos/Coches.pdf";
+            PdfWriter.getInstance(documento, new FileOutputStream(new File(FILE_NAME)));
+            
+            documento.open();
+            
+            documento.add(new Paragraph("Coches.pdf"));
+            documento.add(new Paragraph(" "));
+            
+            PdfPTable tabla = new PdfPTable(3);
+            tabla.setHorizontalAlignment(Element.ALIGN_LEFT);
+            tabla.addCell("Modelo");
+            tabla.addCell("Modelo");
+            tabla.addCell("Matrícula");
+            for (Coche coche:coches) {
+            	tabla.addCell(coche.getMarca().getNombre());
             	tabla.addCell(coche.getModelo());
             	tabla.addCell(coche.getMatricula());
             }

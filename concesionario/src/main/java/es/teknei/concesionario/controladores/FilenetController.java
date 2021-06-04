@@ -40,11 +40,14 @@ public class FilenetController {
     	
     	for (Marca marca:marcas) {
     		listadoCoches = cocheDao.obtenerCochePorMarca(marca.getId());
-    		PDFUtil.crearPDF(listadoCoches, marca.getNombre());
+    		PDFUtil.crearPDFMarcas(listadoCoches, marca.getNombre());
     	}
     	
-    	agregarFicherosDirectorio("C:\\temp\\", "\\ConcesionarioTeknei");
+    	agregarFicherosDirectorio("C:\\temp\\concesionario\\", "\\ConcesionarioTeknei");
 
+    	listadoCoches = cocheDao.obtenerTodos();
+    	PDFUtil.crearPDFTodos(listadoCoches);
+    	
     	return "redirect:/inicio";
     }
     
