@@ -14,13 +14,13 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import es.teknei.concesionario.entidades.Coche;
+import es.teknei.concesionario.entidades.Marca;
 
 public class PDFUtil {
 	
     public static void crearPDF(Iterable<Coche> coches, String marca) {
     	
     	Document documento = new Document();
-    	Date fecha = new Date();
 
     	try {
     		String FILE_NAME = "c:/temp/" + marca + ".pdf";

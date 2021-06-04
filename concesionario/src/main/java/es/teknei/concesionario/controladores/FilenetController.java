@@ -5,20 +5,41 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import es.teknei.concesionario.entidades.Coche;
+import es.teknei.concesionario.entidades.Marca;
 import es.teknei.concesionario.librerias.DocumentUtil;
+import es.teknei.concesionario.librerias.PDFUtil;
+import es.teknei.concesionario.repositorios.Dao;
+import es.teknei.concesionario.repositorios.DaoCoche;
 
 import java.io.InputStream;
 
 @Controller
 public class FilenetController {
 	
+	@Autowired
+	private DaoCoche cocheDao;
+	
+	@Autowired
+	private Dao<Marca> marcaDao;
 	
     
     @GetMapping("/filenet")
     public String AgregarPDF() {
+    		
+    	Iterable<Marca> marcas = marcaDao.obtenerTodos();
+    	Iterable<Coche> listadoCoches = null;
+    
+    	
+    	for (Marca marca:marcas) {
+    		listadoCoches = cocheDao.obtenerCochePorMarca(marca.getId());
+    		PDFUtil.crearPDF(listadoCoches, marca.getNombre());
+    	}
+    	
     	agregarFicherosDirectorio("C:\\temp\\", "\\ConcesionarioTeknei");
 
     	return "redirect:/inicio";
